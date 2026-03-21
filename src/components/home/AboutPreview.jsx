@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { siteMedia } from '../../data/site';
 import Button from '../ui/Button';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
@@ -51,8 +52,8 @@ function AboutPreview() {
             className="panel-card overflow-hidden"
           >
             <img
-              src="https://images.unsplash.com/photo-1505693530355-93f5a75b8f4b?auto=format&fit=crop&w=1200&q=80"
-              alt="Inviting guesthouse bedroom with natural light and warm textures"
+              src={siteMedia.aboutPreview.src}
+              alt={siteMedia.aboutPreview.alt}
               className="h-full min-h-[420px] w-full object-cover transition duration-300 ease-out hover:scale-105"
             />
             <div className="grid gap-4 border-t border-primary/10 bg-white p-8 sm:grid-cols-[1fr_auto] sm:items-center">

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { siteDetails } from '../../data/site';
 import Container from '../ui/Container';
 
 function Footer() {
@@ -17,10 +18,10 @@ function Footer() {
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-secondary">Visit</p>
             <ul className="mt-5 space-y-3 text-white/78">
-              <li>Lagjja Kongresi i Përmetit</li>
-              <li>Përmet, Albania</li>
-              <li>+355 69 555 1234</li>
-              <li>stay@shtepiaime.eu</li>
+              <li>{siteDetails.addressLine1}</li>
+              <li>{siteDetails.addressLine2}</li>
+              <li>{siteDetails.phone}</li>
+              <li>{siteDetails.email}</li>
             </ul>
           </div>
 
@@ -39,6 +40,14 @@ function Footer() {
               <Link to="/contact" className="hover:text-white">
                 Contact
               </Link>
+              <a
+                href={siteDetails.instagramUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-white"
+              >
+                Instagram
+              </a>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { siteMedia } from '../../data/site';
 import Button from '../ui/Button';
 import Container from '../ui/Container';
 
@@ -6,8 +7,8 @@ function Hero() {
   return (
     <section className="relative flex min-h-screen items-end overflow-hidden pb-16 pt-32 text-white sm:items-center">
       <img
-        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80"
-        alt="Mountain landscape surrounding Përmet, Albania"
+        src={siteMedia.hero.src}
+        alt={siteMedia.hero.alt}
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-foreground/45" />
@@ -20,7 +21,7 @@ function Hero() {
           className="max-w-3xl"
         >
           <span className="inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm uppercase tracking-[0.2em] text-white/85 backdrop-blur">
-            Boutique Guesthouse in Përmet
+             Guesthouse in Përmet
           </span>
           <h1 className="mt-6 font-display text-5xl leading-tight sm:text-6xl lg:text-[5.5rem]">
             Experience Comfort &amp; Authenticity in Përmet

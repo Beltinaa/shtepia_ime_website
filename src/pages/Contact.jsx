@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Container from '../components/ui/Container';
 import SectionHeading from '../components/ui/SectionHeading';
+import { siteDetails } from '../data/site';
 
 const initialForm = {
   name: '',
@@ -148,23 +149,32 @@ function Contact() {
                 <div className="mt-8 space-y-5 text-lg text-foreground/74">
                   <p className="inline-flex items-start gap-3">
                     <MapPin size={20} className="mt-1 shrink-0 text-primary" />
-                    Lagjja Kongresi i Përmetit, Përmet, Albania
+                    {siteDetails.addressLine1}, {siteDetails.addressLine2}
                   </p>
                   <p className="inline-flex items-center gap-3">
                     <Phone size={20} className="shrink-0 text-primary" />
-                    +355 69 555 1234
+                    {siteDetails.phone}
                   </p>
                   <p className="inline-flex items-center gap-3">
                     <Mail size={20} className="shrink-0 text-primary" />
-                    stay@shtepiaime.eu
+                    {siteDetails.email}
                   </p>
+                  <a
+                    href={siteDetails.instagramUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-3 text-primary transition duration-300 hover:text-accent"
+                  >
+                    <Instagram size={20} className="shrink-0" />
+                    {siteDetails.instagramHandle}
+                  </a>
                 </div>
               </article>
 
               <article className="overflow-hidden rounded-[32px] border border-primary/10 bg-white shadow-soft">
                 <iframe
                   title="Map showing the location of Shtëpia Ime in Përmet"
-                  src="https://www.google.com/maps?q=Permet%20Albania&output=embed"
+                  src={siteDetails.mapEmbedUrl}
                   className="h-[420px] w-full"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

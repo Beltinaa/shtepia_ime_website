@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { HeartHandshake, Leaf, MapPinned } from 'lucide-react';
+import { siteDetails, siteMedia } from '../data/site';
 import Container from '../components/ui/Container';
 import SectionHeading from '../components/ui/SectionHeading';
 
@@ -35,8 +36,8 @@ function About() {
     >
       <section className="relative flex min-h-[70vh] items-end overflow-hidden pb-16 pt-32 text-white">
         <img
-          src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1800&q=80"
-          alt="Landscape view over the mountains and valleys near Përmet"
+          src={siteMedia.aboutHero.src}
+          alt={siteMedia.aboutHero.alt}
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-foreground/45" />
@@ -57,8 +58,8 @@ function About() {
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
             <div className="overflow-hidden rounded-[32px]">
               <img
-                src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80"
-                alt="Elegant guest room interior with warm neutral textiles"
+                src={siteMedia.aboutStory.src}
+                alt={siteMedia.aboutStory.alt}
                 className="h-full min-h-[520px] w-full object-cover"
               />
             </div>
@@ -73,6 +74,26 @@ function About() {
                 We welcome couples, small families, and curious travelers looking for a more
                 thoughtful base between the river, the mountains, and the thermal baths.
               </p>
+              <a
+                href={siteDetails.instagramUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-8 inline-flex items-center gap-4 rounded-[22px] border border-primary/10 bg-muted px-5 py-4"
+              >
+                <img
+                  src={siteMedia.instagramProfile.src}
+                  alt={siteMedia.instagramProfile.alt}
+                  className="h-14 w-14 rounded-full object-cover"
+                />
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+                    On Instagram
+                  </p>
+                  <p className="mt-1 font-display text-2xl text-foreground">
+                    {siteDetails.instagramHandle}
+                  </p>
+                </div>
+              </a>
             </div>
           </div>
         </Container>
