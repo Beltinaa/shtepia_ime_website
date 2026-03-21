@@ -12,23 +12,23 @@ export const siteDetails = {
 
 export const siteMedia = {
   hero: {
-    src: '/images/langarica-canyon.jpg',
+    src: '/images/experiences/langarica-canyon.jpg',
     alt: 'Langarica Canyon and the Ottoman bridge near Përmet',
   },
   aboutPreview: {
-    src: '/images/garden-lounge.jpg',
+    src: '/images/property/garden-lounge.jpg',
     alt: 'Garden lounge area at Shtëpia Ime beneath the pergola',
   },
   aboutHero: {
-    src: '/images/guesthouse-night.jpg',
+    src: '/images/property/guesthouse-night.jpg',
     alt: 'Shtëpia Ime pergola and courtyard seating at night',
   },
   aboutStory: {
-    src: '/images/room-rustic-door.jpeg',
+    src: '/images/rooms/room-rustic-door.jpeg',
     alt: 'Guest room at Shtëpia Ime with timber beams and balcony doors',
   },
   instagramProfile: {
-    src: '/images/instagram-profile.jpg',
+    src: '/images/brand/logo.jpg',
     alt: 'Instagram profile image for Shtëpia Ime',
   },
 };
