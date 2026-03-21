@@ -40,9 +40,9 @@ function About() {
           alt={siteMedia.aboutHero.alt}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-foreground/45" />
+        <div className="absolute inset-0 bg-foreground/60" />
         <Container className="relative z-10">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl rounded-[30px] bg-foreground/20 p-6 text-shadow-soft backdrop-blur-[3px] sm:p-8">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-secondary">
               About Shtëpia Ime
             </p>

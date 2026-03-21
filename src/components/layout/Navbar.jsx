@@ -34,13 +34,14 @@ function Navbar() {
   }, [location.pathname]);
 
   const shellClasses = isTransparent
-    ? 'border-transparent bg-transparent text-white'
+    ? 'border-white/10 bg-foreground/14 text-white backdrop-blur-[6px]'
     : 'border-primary/10 bg-white/95 text-foreground shadow-sm backdrop-blur';
+  const brandClasses = isTransparent ? 'text-shadow-soft' : '';
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${shellClasses}`}>
       <Container className="flex h-20 items-center justify-between">
-        <Link to="/" className="font-display text-2xl tracking-[0.08em]">
+        <Link to="/" className={`font-display text-2xl tracking-[0.08em] ${brandClasses}`.trim()}>
           Shtëpia Ime
         </Link>
 
@@ -50,7 +51,7 @@ function Navbar() {
               key={to}
               to={to}
               className={({ isActive }) =>
-                `nav-link ${isTransparent ? 'text-white/85 hover:text-white' : 'text-foreground/75 hover:text-primary'} ${isActive ? (isTransparent ? 'text-white' : 'text-primary') : ''}`.trim()
+                `nav-link ${isTransparent ? 'text-white/92 text-shadow-soft hover:text-white' : 'text-foreground/75 hover:text-primary'} ${isActive ? (isTransparent ? 'text-white' : 'text-primary') : ''}`.trim()
               }
             >
               {label}

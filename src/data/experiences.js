@@ -15,7 +15,7 @@ export const experiences = [
     title: 'Mountain Hiking',
     description:
       'Follow panoramic trails through stone villages, pine forests, and high viewpoints shaped by the rhythm of southern Albania.',
-    image: '/images/experiences/langarica-canyon.jpg',
+    image: '/images/experiences/langarica-canyon.webp',
     duration: 'Half-day or full-day',
     season: 'Year-round',
   },
@@ -25,7 +25,7 @@ export const experiences = [
     title: 'Benja Thermal Baths',
     description:
       'Slip into mineral-rich thermal pools beneath the Ottoman bridge and unwind in one of the region’s most iconic natural settings.',
-    image: '/images/experiences/benja-thermal-pool.jpg',
+    image: '/images/experiences/benja-thermal-pool.webp',
     duration: '2-3 hours',
     season: 'Best at sunrise or sunset',
   },
