@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { siteMedia } from '../../data/site';
-import Button from '../ui/Button';
+import { siteDetails, siteMedia } from '../../data/site';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
 
@@ -13,35 +12,24 @@ function AboutPreview() {
         <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div>
             <SectionHeading
-              eyebrow="A House With Place"
-              title="A refined stay shaped by the pace of southern Albania."
-              description="Shtëpia Ime blends warm hospitality with calm, textural interiors and a direct connection to Përmet’s river valleys, mountain trails, and thermal springs. Every space is designed to feel intimate, restorative, and grounded in the local landscape."
+              eyebrow="About Us"
+              title="Shtëpia Ime"
+              description={`Located in a serene and beautiful area of the city, our guest house offers comfort and relaxation for anyone looking to explore the 'City of Flowers' and its breathtaking natural landscapes.`}
             />
-            <div className="mt-10 grid gap-6 sm:grid-cols-3">
-              <div>
-                <p className="font-display text-4xl text-primary">3</p>
-                <p className="mt-2 text-sm uppercase tracking-[0.18em] text-foreground/60">
-                  Signature rooms
-                </p>
-              </div>
-              <div>
-                <p className="font-display text-4xl text-primary">4 min</p>
-                <p className="mt-2 text-sm uppercase tracking-[0.18em] text-foreground/60">
-                  From town center
-                </p>
-              </div>
-              <div>
-                <p className="font-display text-4xl text-primary">Year-round</p>
-                <p className="mt-2 text-sm uppercase tracking-[0.18em] text-foreground/60">
-                  Outdoor escapes
-                </p>
-              </div>
-            </div>
-            <div className="mt-10">
-              <Button as="link" to="/about" variant="secondary">
-                Discover Our Story
-              </Button>
-            </div>
+            <p className="mt-6 text-lg leading-8 text-foreground/74">
+              Shtëpia Ime – a charming and cozy guest house in the heart of Përmet, where the
+              warmth of Albanian hospitality meets the tranquility of nature. Our name, meaning
+              'My Home', reflects our dedication to creating a welcoming and comfortable atmosphere
+              for every guest who walks through our doors. Whether you are visiting Përmet for its
+              breathtaking landscapes, rich cultural heritage, or simply seeking a peaceful
+              retreat, we are here to make your stay memorable.
+            </p>
+            <Link
+              to="/about"
+              className="mt-10 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary"
+            >
+              About Us <ArrowRight size={16} />
+            </Link>
           </div>
 
           <motion.div
@@ -57,15 +45,12 @@ function AboutPreview() {
               className="h-full min-h-[420px] w-full object-cover transition duration-300 ease-out hover:scale-105"
             />
             <div className="grid gap-4 border-t border-primary/10 bg-white p-8 sm:grid-cols-[1fr_auto] sm:items-center">
-              <p className="text-lg leading-8 text-foreground/74">
-                Expect local breakfasts, thoughtful concierge support, and a quiet base for
-                exploring the Vjosa valley.
-              </p>
+              <p className="text-lg leading-8 text-foreground/74">{siteDetails.address}</p>
               <Link
                 to="/about"
                 className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary"
               >
-                Read More <ArrowRight size={16} />
+                About Us <ArrowRight size={16} />
               </Link>
             </div>
           </motion.div>

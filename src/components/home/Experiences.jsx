@@ -9,13 +9,9 @@ function Experiences() {
     <section className="section-shell bg-muted">
       <Container>
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading
-            eyebrow="Signature Days"
-            title="Outdoor experiences that feel local, not packaged."
-            description="Stay close to the wild character of Përmet with a curated mix of rafting, hiking, and thermal bathing led by trusted local partners."
-          />
+          <SectionHeading eyebrow="Explore Përmet" title="Experiences" />
           <Button as="link" to="/experiences" variant="secondary">
-            View All Experiences
+            Explore Përmet
           </Button>
         </div>
 

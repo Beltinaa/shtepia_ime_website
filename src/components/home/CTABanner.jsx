@@ -1,5 +1,6 @@
 import Button from '../ui/Button';
 import Container from '../ui/Container';
+import { reservationEmailHref } from '../../data/site';
 
 function CTABanner() {
   return (
@@ -14,13 +15,9 @@ function CTABanner() {
               <h2 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">
                 Ready to Experience Përmet?
               </h2>
-              <p className="mt-4 max-w-2xl text-lg leading-8 text-foreground/72">
-                Reserve a room, ask about tailored activity planning, or let us help structure a
-                slower few days around the Vjosa valley.
-              </p>
             </div>
-            <Button as="link" to="/contact" size="lg">
-              Book Your Stay
+            <Button as="a" href={reservationEmailHref} size="lg">
+              Book Now
             </Button>
           </div>
         </div>

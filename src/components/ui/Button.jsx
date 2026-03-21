@@ -13,7 +13,7 @@ const sizeClasses = {
 };
 
 function sharedClasses({ variant, size, className }) {
-  return `btn-lift inline-flex items-center justify-center rounded-full font-semibold tracking-[0.08em] transition duration-300 ease-out ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
+  return `btn-lift inline-flex items-center justify-center rounded-md font-semibold tracking-[0.08em] transition duration-300 ease-out ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
 }
 
 function Button({

@@ -15,11 +15,7 @@ function Experiences() {
     >
       <section className="section-shell bg-background">
         <Container>
-          <SectionHeading
-            eyebrow="Experiences"
-            title="Days in Përmet that begin with nature and end with restoration."
-            description="Our experience collection is built around the Vjosa valley itself: wild water, mountain trails, and thermal pools reached at the right pace with reliable local hosts."
-          />
+          <SectionHeading title="Explore Përmet" />
           <div className="mt-16 space-y-6">
             {experiences.map((experience) => (
               <ExperienceCard key={experience.id} experience={experience} />

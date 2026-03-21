@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import AboutPreview from '../components/home/AboutPreview';
+import Amenities from '../components/home/Amenities';
 import CTABanner from '../components/home/CTABanner';
 import Experiences from '../components/home/Experiences';
 import FeaturedRooms from '../components/home/FeaturedRooms';
 import Hero from '../components/home/Hero';
+import SpecialOffer from '../components/home/SpecialOffer';
 import Testimonials from '../components/home/Testimonials';
 
 function Home() {
@@ -16,8 +18,10 @@ function Home() {
     >
       <Hero />
       <AboutPreview />
+      <Amenities />
       <Experiences />
       <FeaturedRooms />
+      <SpecialOffer />
       <Testimonials />
       <CTABanner />
     </motion.main>

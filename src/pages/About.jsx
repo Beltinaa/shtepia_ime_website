@@ -1,27 +1,29 @@
 import { motion } from 'framer-motion';
-import { HeartHandshake, Leaf, MapPinned } from 'lucide-react';
-import { siteDetails, siteMedia } from '../data/site';
+import Button from '../components/ui/Button';
 import Container from '../components/ui/Container';
 import SectionHeading from '../components/ui/SectionHeading';
+import { reservationEmailHref, siteMedia } from '../data/site';
 
-const values = [
+const amenities = [
   {
-    icon: HeartHandshake,
-    title: 'Warm Hospitality',
+    title: 'Cozy Guesthouse',
     description:
-      'Service stays personal, direct, and genuinely local rather than over-scripted.',
+      'Enjoy a warm and inviting stay with comfortable amenities and stunning mountain views.',
   },
   {
-    icon: Leaf,
-    title: 'Grounded Design',
+    title: 'Full Amenities',
     description:
-      'Natural textures, restrained materials, and quiet rooms create a slower atmosphere.',
+      'Enjoy air-conditioned rooms, a minibar, a private bathroom, and thoughtful amenities for a relaxing stay.',
   },
   {
-    icon: MapPinned,
-    title: 'Meaningful Access',
+    title: 'Morning Indulgence',
     description:
-      'Guests get reliable guidance to the best river, mountain, and thermal experiences nearby.',
+      'Wake up to a delightful buffet breakfast and complimentary coffee to start your day right.',
+  },
+  {
+    title: 'Outdoor Spaces',
+    description:
+      'Spend your days relaxing in the garden, making use of barbecue facilities, or admiring the stunning views.',
   },
 ];
 
@@ -40,15 +42,15 @@ function About() {
           alt={siteMedia.aboutHero.alt}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-foreground/60" />
+        <div className="absolute inset-0 bg-foreground/45" />
         <Container className="relative z-10">
-          <div className="max-w-3xl rounded-[30px] bg-foreground/20 p-6 text-shadow-soft backdrop-blur-[3px] sm:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-secondary">
-              About Shtëpia Ime
+          <div className="max-w-3xl">
+            <h1 className="font-display text-5xl leading-tight sm:text-6xl">About Us</h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">
+              Located in a serene and beautiful area of the city, our guest house offers comfort
+              and relaxation for anyone looking to explore the 'City of Flowers' and its
+              breathtaking natural landscapes.
             </p>
-            <h1 className="mt-4 font-display text-5xl leading-tight sm:text-6xl">
-              A guesthouse built to reflect the calm and character of Përmet.
-            </h1>
           </div>
         </Container>
       </section>
@@ -66,34 +68,13 @@ function About() {
 
             <div>
               <SectionHeading
-                eyebrow="Our Story"
-                title="Designed as a retreat, run with the intimacy of a home."
-                description="Shtëpia Ime began with a simple idea: create a stay in Përmet that feels warm, local, and carefully finished without losing the ease of a small guesthouse. The result is a handful of rooms, close attention to detail, and a style of hosting that helps guests connect with the valley rather than rush through it."
+                eyebrow="About Us"
+                title="Shtëpia Ime"
+                description="Shtëpia Ime – a charming and cozy guest house in the heart of Përmet, where the warmth of Albanian hospitality meets the tranquility of nature. Our name, meaning 'My Home', reflects our dedication to creating a welcoming and comfortable atmosphere for every guest who walks through our doors. Whether you are visiting Përmet for its breathtaking landscapes, rich cultural heritage, or simply seeking a peaceful retreat, we are here to make your stay memorable."
               />
-              <p className="mt-8 text-lg leading-8 text-foreground/74">
-                We welcome couples, small families, and curious travelers looking for a more
-                thoughtful base between the river, the mountains, and the thermal baths.
-              </p>
-              <a
-                href={siteDetails.instagramUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-8 inline-flex items-center gap-4 rounded-[22px] border border-primary/10 bg-muted px-5 py-4"
-              >
-                <img
-                  src={siteMedia.instagramProfile.src}
-                  alt={siteMedia.instagramProfile.alt}
-                  className="h-14 w-14 rounded-full object-cover"
-                />
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
-                    On Instagram
-                  </p>
-                  <p className="mt-1 font-display text-2xl text-foreground">
-                    {siteDetails.instagramHandle}
-                  </p>
-                </div>
-              </a>
+              <Button as="a" href={reservationEmailHref} className="mt-8">
+                Book Now
+              </Button>
             </div>
           </div>
         </Container>
@@ -101,17 +82,12 @@ function About() {
 
       <section className="section-shell bg-muted">
         <Container>
-          <SectionHeading
-            eyebrow="Values"
-            title="Three principles behind the experience."
-            description="Every design choice, hosting detail, and recommendation follows the same core priorities."
-          />
-          <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {values.map(({ icon: Icon, title, description }) => (
-              <article key={title} className="panel-card p-8">
-                <Icon size={28} className="text-primary" />
-                <h2 className="mt-6 font-display text-3xl">{title}</h2>
-                <p className="mt-4 text-lg leading-8 text-foreground/72">{description}</p>
+          <SectionHeading title="Amenities" />
+          <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {amenities.map(({ title, description }) => (
+              <article key={title} className="panel-card p-6">
+                <p className="font-display text-2xl text-primary">{title}</p>
+                <p className="mt-3 text-foreground/74">{description}</p>
               </article>
             ))}
           </div>

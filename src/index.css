@@ -62,10 +62,6 @@
     @apply transition duration-300 ease-out hover:-translate-y-0.5;
   }
 
-  .text-shadow-soft {
-    text-shadow: 0 4px 18px rgb(0 0 0 / 0.28);
-  }
-
   .nav-link {
     @apply text-sm font-medium uppercase tracking-[0.18em];
   }

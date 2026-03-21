@@ -1,30 +1,29 @@
 import { motion } from 'framer-motion';
 import {
   Bath,
-  CarFront,
+  BedDouble,
   Coffee,
-  Monitor,
+  Ruler,
+  ShowerHead,
   Snowflake,
-  Tv,
+  Trees,
   Users,
   Wifi,
-  Wind,
 } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import RoomGallery from '../components/rooms/RoomGallery';
 import Button from '../components/ui/Button';
 import Container from '../components/ui/Container';
 import { rooms } from '../data/rooms';
+import { buildRoomEmailHref, buildRoomWhatsAppHref } from '../data/site';
 
 const amenityMap = {
-  wifi: { label: 'High-speed Wi-Fi', icon: Wifi },
+  wifi: { label: 'Wi-Fi', icon: Wifi },
   ac: { label: 'Air conditioning', icon: Snowflake },
-  balcony: { label: 'Private balcony', icon: Wind },
+  balcony: { label: 'Balcony', icon: Trees },
   minibar: { label: 'Minibar', icon: Coffee },
-  tv: { label: 'Smart TV', icon: Tv },
-  breakfast: { label: 'Breakfast included', icon: Coffee },
-  parking: { label: 'Private parking', icon: CarFront },
-  bath: { label: 'Private bath', icon: Bath },
+  bathroom: { label: 'Private bathroom', icon: Bath },
+  'walk-in-shower': { label: 'Walk-in shower', icon: ShowerHead },
 };
 
 function RoomDetail() {
@@ -72,16 +71,17 @@ function RoomDetail() {
           </div>
 
           <aside className="panel-card rounded-[32px] p-8 lg:sticky lg:top-28">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
-              From €{room.price} per night
-            </p>
             <div className="mt-6 flex flex-wrap gap-4 text-sm text-foreground/70">
+              <span className="inline-flex items-center gap-2 rounded-full bg-muted px-4 py-2">
+                <BedDouble size={16} className="text-primary" />
+                {room.beds}
+              </span>
               <span className="inline-flex items-center gap-2 rounded-full bg-muted px-4 py-2">
                 <Users size={16} className="text-primary" />
                 Up to {room.guests} guests
               </span>
               <span className="inline-flex items-center gap-2 rounded-full bg-muted px-4 py-2">
-                <Monitor size={16} className="text-primary" />
+                <Ruler size={16} className="text-primary" />
                 {room.size} m²
               </span>
             </div>
@@ -110,23 +110,26 @@ function RoomDetail() {
               </div>
             </div>
 
-            <div className="mt-10 space-y-4 text-foreground/74">
-              <p>
-                Guests booking this room often pair their stay with a rafting trip or a sunrise
-                visit to Benja. We can help coordinate timing, transfers, and local recommendations.
-              </p>
+            <div className="mt-10 grid gap-3">
+              <Button as="a" href={buildRoomEmailHref(room.title)} size="lg" className="hidden w-full lg:inline-flex">
+                Book Now
+              </Button>
+              <a
+                href={buildRoomWhatsAppHref(room.title)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden w-full rounded-md bg-green-600 px-6 py-3 text-center text-sm font-semibold text-white transition duration-300 hover:bg-green-700 lg:inline-flex lg:items-center lg:justify-center"
+              >
+                Book via WhatsApp
+              </a>
             </div>
-
-            <Button as="link" to="/contact" size="lg" className="mt-10 hidden w-full lg:inline-flex">
-              Book Now
-            </Button>
           </aside>
         </div>
       </Container>
 
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-primary/10 bg-white/95 p-4 backdrop-blur lg:hidden">
         <Container className="px-0">
-          <Button as="link" to="/contact" size="lg" className="w-full">
+          <Button as="a" href={buildRoomEmailHref(room.title)} size="lg" className="w-full">
             Book Now
           </Button>
         </Container>

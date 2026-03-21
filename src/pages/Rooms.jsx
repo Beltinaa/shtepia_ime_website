@@ -15,11 +15,7 @@ function Rooms() {
     >
       <section className="section-shell bg-muted">
         <Container>
-          <SectionHeading
-            eyebrow="Rooms"
-            title="Three distinctive rooms, each with a quieter rhythm."
-            description="From balcony views to family-friendly garden access, every room is designed with generous proportions, natural materials, and the practical comforts guests actually notice."
-          />
+          <SectionHeading title="Rooms" />
         </Container>
       </section>
 

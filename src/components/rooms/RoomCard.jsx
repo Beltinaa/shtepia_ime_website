@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { Ruler, Users } from 'lucide-react';
+import { BedDouble, Ruler, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { buildRoomEmailHref, buildRoomWhatsAppHref } from '../../data/site';
 
 function RoomCard({ room }) {
   return (
@@ -19,15 +20,12 @@ function RoomCard({ room }) {
         />
       </div>
       <div className="p-6">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <h3 className="font-display text-2xl text-foreground">{room.title}</h3>
-            <p className="mt-2 text-sm uppercase tracking-[0.18em] text-accent">
-              From €{room.price} per night
-            </p>
-          </div>
-        </div>
+        <h3 className="font-display text-xl text-foreground">{room.title}</h3>
         <div className="mt-6 flex items-center gap-4 text-sm text-foreground/65">
+          <span className="inline-flex items-center gap-2">
+            <BedDouble size={16} className="text-primary" />
+            {room.beds}
+          </span>
           <span className="inline-flex items-center gap-2">
             <Users size={16} className="text-primary" />
             {room.guests} guests
@@ -38,6 +36,22 @@ function RoomCard({ room }) {
           </span>
         </div>
         <p className="mt-6 text-foreground/74">{room.description}</p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <a
+            href={buildRoomEmailHref(room.title)}
+            className="rounded-md bg-primary px-4 py-2 text-center text-sm font-semibold text-white transition duration-300 hover:bg-primary/90"
+          >
+            Book via Email
+          </a>
+          <a
+            href={buildRoomWhatsAppHref(room.title)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-md bg-green-600 px-4 py-2 text-center text-sm font-semibold text-white transition duration-300 hover:bg-green-700"
+          >
+            Book via WhatsApp
+          </a>
+        </div>
         <Link
           to={`/rooms/${room.slug}`}
           className="mt-6 inline-flex items-center text-sm font-semibold uppercase tracking-[0.18em] text-primary hover:underline"

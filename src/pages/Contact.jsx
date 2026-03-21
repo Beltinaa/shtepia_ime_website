@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Container from '../components/ui/Container';
 import SectionHeading from '../components/ui/SectionHeading';
-import { siteDetails } from '../data/site';
+import { buildContactFormHref, reservationEmailHref, siteDetails } from '../data/site';
 
 const initialForm = {
   name: '',
@@ -16,7 +16,6 @@ const initialForm = {
 
 function Contact() {
   const [formData, setFormData] = useState(initialForm);
-  const [submitted, setSubmitted] = useState(false);
   const minDate = new Date().toISOString().split('T')[0];
 
   const handleChange = ({ target: { name, value } }) => {
@@ -25,8 +24,7 @@ function Contact() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setSubmitted(true);
-    setFormData(initialForm);
+    window.location.href = buildContactFormHref(formData);
   };
 
   return (
@@ -39,11 +37,7 @@ function Contact() {
     >
       <section className="section-shell bg-background">
         <Container>
-          <SectionHeading
-            eyebrow="Contact"
-            title="Reserve a room or ask us to shape your stay."
-            description="Send your travel dates, room preference, and any activity plans. We usually respond quickly with availability, pricing, and recommendations."
-          />
+          <SectionHeading title="Contact" />
 
           <div className="mt-16 grid gap-8 xl:grid-cols-[0.95fr_1.05fr]">
             <div className="panel-card p-8 sm:p-10">
@@ -133,42 +127,40 @@ function Contact() {
                 <Button type="submit" size="lg" className="w-full sm:w-auto">
                   Send Inquiry
                 </Button>
-
-                {submitted ? (
-                  <p className="text-sm text-primary">
-                    Your inquiry has been prepared. Connect this form to your preferred booking or
-                    email workflow to make it live.
-                  </p>
-                ) : null}
               </form>
             </div>
 
             <div className="space-y-8">
               <article className="panel-card p-8 sm:p-10">
-                <h2 className="font-display text-3xl text-foreground">Visit Shtëpia Ime</h2>
+                <h2 className="font-display text-3xl text-foreground">Shtëpia Ime</h2>
                 <div className="mt-8 space-y-5 text-lg text-foreground/74">
                   <p className="inline-flex items-start gap-3">
                     <MapPin size={20} className="mt-1 shrink-0 text-primary" />
-                    {siteDetails.addressLine1}, {siteDetails.addressLine2}
+                    {siteDetails.address}
                   </p>
-                  <p className="inline-flex items-center gap-3">
-                    <Phone size={20} className="shrink-0 text-primary" />
-                    {siteDetails.phone}
-                  </p>
-                  <p className="inline-flex items-center gap-3">
-                    <Mail size={20} className="shrink-0 text-primary" />
-                    {siteDetails.email}
-                  </p>
+                  <div className="space-y-4">
+                    <a href={`tel:${siteDetails.phone.replace(/\s+/g, '')}`} className="inline-flex items-center gap-3">
+                      <Phone size={20} className="shrink-0 text-primary" />
+                      {siteDetails.phone}
+                    </a>
+                    <a href={`mailto:${siteDetails.email}`} className="mt-4 inline-flex items-center gap-3">
+                      <Mail size={20} className="shrink-0 text-primary" />
+                      {siteDetails.email}
+                    </a>
+                  </div>
                   <a
-                    href={siteDetails.instagramUrl}
+                    href="https://wa.me/355695602419"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 text-primary transition duration-300 hover:text-accent"
                   >
-                    <Instagram size={20} className="shrink-0" />
-                    {siteDetails.instagramHandle}
+                    <MessageCircle size={20} className="shrink-0" />
+                    {siteDetails.whatsapp}
                   </a>
                 </div>
+                <Button as="a" href={reservationEmailHref} className="mt-8">
+                  Book Now
+                </Button>
               </article>
 
               <article className="overflow-hidden rounded-[32px] border border-primary/10 bg-white shadow-soft">
