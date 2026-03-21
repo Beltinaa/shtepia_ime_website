@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #2d4a3e;
+  --secondary: #d4c4b0;
+  --accent: #8b7355;
+  --background: #fdfbf7;
+  --foreground: #1a1a1a;
+  --muted: #f5f0e8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background font-body text-base text-foreground antialiased;
+  }
+
+  a {
+    @apply transition-colors duration-300 ease-out;
+  }
+
+  img {
+    @apply block;
+  }
+
+  ::selection {
+    @apply bg-primary text-white;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply py-24 lg:py-32;
+  }
+
+  .eyebrow {
+    @apply mb-4 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-accent;
+  }
+
+  .section-title {
+    @apply font-display text-4xl leading-tight text-foreground sm:text-5xl lg:text-6xl;
+  }
+
+  .section-copy {
+    @apply max-w-2xl text-lg leading-8 text-foreground/78;
+  }
+
+  .panel-card {
+    @apply rounded-[28px] border border-primary/10 bg-white shadow-soft;
+  }
+
+  .btn-lift {
+    @apply transition duration-300 ease-out hover:-translate-y-0.5;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium uppercase tracking-[0.18em];
+  }
+
+  .field-base {
+    @apply w-full rounded-2xl border border-primary/15 bg-white px-4 py-3.5 text-foreground outline-none transition duration-300 placeholder:text-foreground/45 focus:border-primary/40 focus:ring-2 focus:ring-primary/10;
+  }
+}
