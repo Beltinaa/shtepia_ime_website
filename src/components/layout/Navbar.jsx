@@ -6,8 +6,8 @@ import Container from '../ui/Container';
 
 const navigation = [
   { label: 'Home', to: '/' },
-  { label: 'Rooms', to: '/rooms' },
   { label: 'About Us', to: '/about' },
+  { label: 'Rooms', to: '/rooms' },
   { label: 'Explore Përmet', to: '/explore-permet' },
   { label: 'Contact', to: '/contact' },
 ];

@@ -32,20 +32,42 @@ function RoomCard({ room }) {
         </div>
       </div>
       <div className="flex flex-grow flex-col p-6">
-        <h3 className="mb-2 font-display text-xl font-semibold text-foreground">{room.title}</h3>
+        <div className="min-h-[10.5rem]">
+          <h3 className="mb-2 min-h-[3.5rem] font-display text-xl font-semibold text-foreground">
+            {room.title}
+          </h3>
 
-        <div className="mb-3 flex flex-wrap items-center gap-4 text-sm text-foreground/65">
-          <span className="inline-flex items-center gap-1">
-            <Users size={16} className="text-primary" />
-            {room.guests} guests
-          </span>
-          <span className="inline-flex items-center gap-1">
-            <Maximize size={16} className="text-primary" />
-            {room.beds}
-          </span>
+          <div className="mb-3 flex flex-wrap items-center gap-4 text-sm text-foreground/65">
+            <span className="inline-flex items-center gap-1">
+              <Users size={16} className="text-primary" />
+              {room.guests} guests
+            </span>
+            <span className="inline-flex items-center gap-1">
+              <Maximize size={16} className="text-primary" />
+              {room.beds}
+            </span>
+          </div>
+
+          <p className="line-clamp-2 text-sm text-foreground/74">{room.description}</p>
         </div>
 
-        <p className="mb-4 line-clamp-2 text-sm text-foreground/74">{room.description}</p>
+        <button
+          type="button"
+          onClick={() => setIsExpanded((current) => !current)}
+          className="mb-4 mt-2 flex items-center justify-center gap-2 py-2 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+        >
+          {isExpanded ? (
+            <>
+              <span>Show Less</span>
+              <ChevronUp size={16} />
+            </>
+          ) : (
+            <>
+              <span>View Details</span>
+              <ChevronDown size={16} />
+            </>
+          )}
+        </button>
 
         <AnimatePresence initial={false}>
           {isExpanded ? (
@@ -72,26 +94,6 @@ function RoomCard({ room }) {
             </motion.div>
           ) : null}
         </AnimatePresence>
-
-        <button
-          type="button"
-          onClick={() => setIsExpanded((current) => !current)}
-          className="mb-4 flex items-center justify-center gap-2 py-2 text-sm font-medium text-primary transition-colors hover:text-primary/80"
-        >
-          {isExpanded ? (
-            <>
-              <span>Show Less</span>
-              <ChevronUp size={16} />
-            </>
-          ) : (
-            <>
-              <span>View Details</span>
-              <ChevronDown size={16} />
-            </>
-          )}
-        </button>
-
-        <div className="flex-grow" />
 
         <div className="mt-auto flex gap-3 border-t border-primary/10 pt-4">
           <a

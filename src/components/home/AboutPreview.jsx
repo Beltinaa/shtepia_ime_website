@@ -40,7 +40,7 @@ function AboutPreview() {
             viewport={{ once: true, margin: '-100px' }}
             variants={fadeInRight}
             whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
-            className="panel-card overflow-hidden"
+            className="panel-card overflow-hidden max-h-[700px]"
           >
             <img
               src={imageLibrary.garden}

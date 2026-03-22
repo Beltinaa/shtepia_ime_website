@@ -3,14 +3,6 @@ import { culinaryDelights } from '../../data/culinary';
 import { fadeInUp, scaleIn, staggerContainer } from '../../hooks/useScrollAnimation';
 import Container from '../ui/Container';
 
-const culinaryImages = {
-  Gliko: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800',
-  'Përmet Wine & Raki': 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800',
-  'Traditional Dishes': 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800',
-  'Freshly Baked Bread & Dairy Products':
-    'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800',
-};
-
 function CulinarySection() {
   return (
     <motion.section
@@ -46,7 +38,7 @@ function CulinarySection() {
             >
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src={culinaryImages[item.title] ?? item.image}
+                  src={item.image}
                   alt={item.title}
                   className="h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-110"
                 />

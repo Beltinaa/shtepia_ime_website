@@ -7,7 +7,7 @@ export const culinaryDelights = [
     title: 'Gliko',
     description:
       'A famous candied fruit delicacy made with figs, cherries, watermelon, and walnuts, often served with a warm cup of Albanian tea.',
-    image: imageLibrary.food,
+    image: imageLibrary.gliko,
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const culinaryDelights = [
     title: 'Traditional Dishes',
     description:
       "Try lakror (traditional pie), qifqi (rice balls from Gjirokastër, also popular in Përmet), and slow-cooked lamb dishes that highlight the region's authentic flavors.",
-    image: imageLibrary.courtyard,
+    image: imageLibrary.lakror,
   },
   {
     id: 4,
@@ -31,6 +31,6 @@ export const culinaryDelights = [
     title: 'Freshly Baked Bread & Dairy Products',
     description:
       'Experience handmade cheeses, fresh yogurt, and warm village bread prepared using time-honored techniques.',
-    image: imageLibrary.welcome,
+    image: imageLibrary.freshlyBakedBread,
   },
 ];

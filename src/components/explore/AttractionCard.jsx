@@ -1,17 +1,6 @@
 import { motion } from 'framer-motion';
 import { fadeInLeft, fadeInRight } from '../../hooks/useScrollAnimation';
 
-const attractionImages = {
-  'Bënja Thermal Baths & Kadiut Bridge':
-    'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800',
-  'Lengarica Canyon': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800',
-  'Nemerçka Mountain': 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800',
-  'Leusa Church – A Historic Treasure':
-    'https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=800',
-  "Vjosa River – Europe's Last Wild River":
-    'https://images.unsplash.com/photo-1530866323045-fc9ac5477403?w=800',
-};
-
 function AttractionCard({ attraction, index }) {
   const isReversed = index % 2 === 1;
 
@@ -29,7 +18,7 @@ function AttractionCard({ attraction, index }) {
           className="relative overflow-hidden rounded-2xl"
         >
           <img
-            src={attractionImages[attraction.title] ?? attraction.image}
+            src={attraction.image}
             alt={attraction.title}
             className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out hover:scale-105"
           />

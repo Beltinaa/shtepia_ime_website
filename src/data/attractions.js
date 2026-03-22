@@ -28,7 +28,7 @@ export const attractions = [
     title: 'Nemerçka Mountain',
     description:
       "Known as the Albanian Alps of the South, Nemerçka Mountain is a paradise for hikers and climbers. This towering peak provides spectacular panoramic views of the surrounding valleys and rivers. The challenging trails make it a rewarding experience for nature lovers and trekking enthusiasts.",
-    image: imageLibrary.hiking,
+    image: imageLibrary.nemerckaMountain,
   },
   {
     id: 4,

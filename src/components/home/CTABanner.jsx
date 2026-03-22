@@ -35,7 +35,7 @@ function CTABanner() {
                 rel="noopener noreferrer"
                 className="btn-lift inline-flex items-center justify-center rounded-md bg-green-600 px-8 py-4 text-base font-semibold tracking-[0.08em] text-white transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-green-700"
               >
-                Book Now
+                Book by Whatsapp
               </a>
             </div>
           </div>
