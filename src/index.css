@@ -79,4 +79,12 @@
     border-color: rgb(45 74 62 / 0.4);
     box-shadow: 0 0 0 4px rgb(45 74 62 / 0.1);
   }
+
+  .hero-background-layer {
+    @apply absolute inset-0 overflow-hidden;
+  }
+
+  .hero-background-media {
+    @apply absolute inset-0 h-full w-full object-cover;
+  }
 }

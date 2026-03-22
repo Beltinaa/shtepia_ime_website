@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { testimonials } from '../../data/testimonials';
+import { fadeInUp, scaleIn } from '../../hooks/useScrollAnimation';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
 
@@ -19,16 +20,22 @@ function Testimonials() {
   const review = testimonials[activeIndex];
 
   return (
-    <section className="section-shell bg-primary text-white">
+    <motion.section
+      className="section-shell bg-primary text-white"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-100px' }}
+      variants={fadeInUp}
+    >
       <Container>
         <SectionHeading eyebrow="Testimonials" title="Guest Experiences" light />
 
         <div className="mt-16 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <motion.article
             key={`${review.name}-${review.country}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
+            initial="hidden"
+            animate="visible"
+            variants={scaleIn}
             className="rounded-[32px] border border-white/10 bg-white/5 p-8 backdrop-blur sm:p-12"
           >
             <Quote size={36} className="text-secondary" />
@@ -40,7 +47,7 @@ function Testimonials() {
             </p>
           </motion.article>
 
-          <div className="flex items-center gap-3 lg:flex-col lg:items-end">
+          <motion.div variants={fadeInUp} className="flex items-center gap-3 lg:flex-col lg:items-end">
             <button
               type="button"
               className="btn-lift inline-flex rounded-full border border-white/15 p-3 text-white transition duration-300 hover:bg-white/10"
@@ -59,7 +66,7 @@ function Testimonials() {
             >
               <ChevronRight size={20} />
             </button>
-          </div>
+          </motion.div>
         </div>
 
         <div className="mt-8 flex gap-2">
@@ -76,7 +83,7 @@ function Testimonials() {
           ))}
         </div>
       </Container>
-    </section>
+    </motion.section>
   );
 }
 

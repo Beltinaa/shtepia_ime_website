@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { imageLibrary } from '../../data/site';
+import { fadeInLeft, fadeInRight } from '../../hooks/useScrollAnimation';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
 
@@ -10,7 +11,12 @@ function AboutPreview() {
     <section className="section-shell bg-background">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            variants={fadeInLeft}
+          >
             <SectionHeading title="make your stay truly exceptional" />
             <p className="mt-6 text-lg leading-8 text-foreground/74">
               Shtëpia Ime – a charming and cozy guest house in the heart of Përmet, where the
@@ -26,13 +32,14 @@ function AboutPreview() {
             >
               About Us <ArrowRight size={16} />
             </Link>
-          </div>
+          </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            variants={fadeInRight}
+            whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
             className="panel-card overflow-hidden"
           >
             <img

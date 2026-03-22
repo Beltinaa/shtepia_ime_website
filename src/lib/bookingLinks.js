@@ -7,12 +7,15 @@ const whatsappBookingBaseUrl = 'https://wa.me/355695602419';
 
 export function buildRoomEmailHref(roomTitle) {
   const subject = encodeURIComponent(`Booking Request - ${roomTitle}`);
+  const body = encodeURIComponent(
+    `Hello,\n\nI would like to book ${roomTitle}.\n\nCheck-in Date:\nCheck-out Date:\nNumber of Guests:\n\nThank you!`
+  );
 
-  return `mailto:${siteDetails.email}?subject=${subject}`;
+  return `mailto:${siteDetails.email}?subject=${subject}&body=${body}`;
 }
 
 export function buildRoomWhatsAppHref(roomTitle) {
-  const text = encodeURIComponent(`Hello! I would like to book the ${roomTitle}`);
+  const text = encodeURIComponent(`Hello! I would like to book ${roomTitle} at Shtëpia Ime.`);
 
   return `${whatsappBookingBaseUrl}?text=${text}`;
 }

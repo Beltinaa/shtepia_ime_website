@@ -5,6 +5,7 @@ import Button from '../components/ui/Button';
 import Container from '../components/ui/Container';
 import SectionHeading from '../components/ui/SectionHeading';
 import { siteDetails } from '../data/site';
+import { fadeInLeft, fadeInRight, fadeInUp } from '../hooks/useScrollAnimation';
 import { buildContactFormHref, reservationEmailHref } from '../lib/bookingLinks';
 
 const initialForm = {
@@ -69,7 +70,13 @@ function Contact() {
           />
 
           <div className="mt-16 grid gap-8 xl:grid-cols-[0.95fr_1.05fr]">
-            <div className="panel-card p-8 sm:p-10">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+              variants={fadeInLeft}
+              className="panel-card p-8 sm:p-10"
+            >
               <p className="eyebrow">Reach out to us</p>
               <p className="text-lg leading-8 text-foreground/74">
                 We&apos;d love to hear from you! Whether you need more information or want to book
@@ -158,10 +165,16 @@ function Contact() {
                   Book Now
                 </Button>
               </form>
-            </div>
+            </motion.div>
 
-            <div className="space-y-8">
-              <article className="panel-card p-8 sm:p-10">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+              variants={fadeInRight}
+              className="space-y-8"
+            >
+              <motion.article variants={fadeInUp} className="panel-card p-8 sm:p-10">
                 <h2 className="font-display text-3xl text-foreground">Contact Us</h2>
                 <div className="mt-8 space-y-5 text-lg text-foreground/74">
                   <p className="inline-flex items-start gap-3">
@@ -191,9 +204,12 @@ function Contact() {
                 <Button as="a" href={reservationEmailHref} className="mt-8">
                   Book Now
                 </Button>
-              </article>
+              </motion.article>
 
-              <article className="overflow-hidden rounded-[32px] border border-primary/10 bg-white shadow-soft">
+              <motion.article
+                variants={fadeInUp}
+                className="overflow-hidden rounded-[32px] border border-primary/10 bg-white shadow-soft"
+              >
                 <iframe
                   title="Map showing the location of Shtëpia Ime in Përmet"
                   src={siteDetails.mapEmbedUrl}
@@ -201,8 +217,8 @@ function Contact() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-              </article>
-            </div>
+              </motion.article>
+            </motion.div>
           </div>
         </Container>
       </section>

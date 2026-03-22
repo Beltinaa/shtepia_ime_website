@@ -1,9 +1,5 @@
 import { motion } from 'framer-motion';
-
-const reveal = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+import { fadeInUp } from '../../hooks/useScrollAnimation';
 
 function SectionHeading({
   eyebrow,
@@ -22,9 +18,8 @@ function SectionHeading({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 0.4, ease: 'easeOut' }}
-      variants={reveal}
+      viewport={{ once: true, margin: '-100px' }}
+      variants={fadeInUp}
       className={className}
     >
       {eyebrow ? <span className={`eyebrow ${eyebrowClasses} ${alignment}`.trim()}>{eyebrow}</span> : null}

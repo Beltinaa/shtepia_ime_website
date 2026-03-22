@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { siteMedia } from '../../data/site';
+import { fadeInLeft, fadeInRight } from '../../hooks/useScrollAnimation';
 import Container from '../ui/Container';
 
 function Welcome() {
@@ -9,10 +10,11 @@ function Welcome() {
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            variants={fadeInLeft}
+            whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
             className="overflow-hidden rounded-[28px]"
           >
             <img
@@ -23,10 +25,10 @@ function Welcome() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            variants={fadeInRight}
           >
             <p className="eyebrow">Welcome</p>
             <p className="max-w-2xl text-xl leading-9 text-foreground/78">

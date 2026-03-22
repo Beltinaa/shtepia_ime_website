@@ -3,6 +3,7 @@ import { imageLibrary, siteMedia } from '../data/site';
 import Container from '../components/ui/Container';
 import SectionHeading from '../components/ui/SectionHeading';
 import Button from '../components/ui/Button';
+import { fadeInLeft, fadeInRight, fadeInUp, staggerContainer } from '../hooks/useScrollAnimation';
 
 const ratings = {
   staff: 9.4,
@@ -30,7 +31,12 @@ function About() {
         />
         <div className="absolute inset-0 bg-foreground/45" />
         <Container className="relative z-10">
-          <div className="max-w-3xl">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+            className="max-w-3xl"
+          >
             <h1 className="font-display text-5xl leading-tight sm:text-6xl">About Us</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">
               Join us at GuestHouse &apos;Shtëpia ime&apos; for a stay filled with warmth, comfort,
@@ -38,22 +44,33 @@ function About() {
               nature, relax in a peaceful setting, or experience local hospitality, we&apos;re
               dedicated to making your visit truly special.
             </p>
-          </div>
+          </motion.div>
         </Container>
       </section>
 
       <section className="section-shell bg-background">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
-            <div className="overflow-hidden rounded-[28px]">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+              variants={fadeInLeft}
+              className="overflow-hidden rounded-[28px]"
+            >
               <img
                 src={siteMedia.aboutStory.src}
                 alt={siteMedia.aboutStory.alt}
                 className="h-full min-h-[520px] w-full object-cover"
               />
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+              variants={fadeInRight}
+            >
               <SectionHeading
                 eyebrow="Welcome to Shtëpia Ime"
                 title="Welcome to Shtëpia Ime"
@@ -62,66 +79,77 @@ function About() {
               <Button as="link" to="/rooms" className="mt-8">
                 Our Rooms
               </Button>
-            </div>
+            </motion.div>
           </div>
         </Container>
       </section>
 
-      <section className="section-shell bg-muted">
+      <motion.section
+        className="section-shell bg-muted"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-100px' }}
+        variants={staggerContainer}
+      >
         <Container>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-6">
-            <article className="panel-card p-6 text-center">
+          <motion.div variants={staggerContainer} className="grid gap-6 md:grid-cols-2 xl:grid-cols-6">
+            <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
               <p className="font-display text-4xl text-primary">{ratings.staff}</p>
               <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">Staff</p>
-            </article>
-            <article className="panel-card p-6 text-center">
+            </motion.article>
+            <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
               <p className="font-display text-4xl text-primary">{ratings.facilities}</p>
               <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
                 Facilities
               </p>
-            </article>
-            <article className="panel-card p-6 text-center">
+            </motion.article>
+            <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
               <p className="font-display text-4xl text-primary">{ratings.cleanliness}</p>
               <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
                 Cleanliness
               </p>
-            </article>
-            <article className="panel-card p-6 text-center">
+            </motion.article>
+            <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
               <p className="font-display text-4xl text-primary">{ratings.comfort}</p>
               <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
                 Comfort
               </p>
-            </article>
-            <article className="panel-card p-6 text-center">
+            </motion.article>
+            <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
               <p className="font-display text-4xl text-primary">{ratings.valueForMoney}</p>
               <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
                 Value for Money
               </p>
-            </article>
-            <article className="panel-card p-6 text-center">
+            </motion.article>
+            <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
               <p className="font-display text-4xl text-primary">{ratings.location}</p>
               <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
                 Location
               </p>
-            </article>
-          </div>
-          <p className="mt-10 text-center text-lg text-foreground/74">
+            </motion.article>
+          </motion.div>
+          <motion.p variants={fadeInUp} className="mt-10 text-center text-lg text-foreground/74">
             We pride ourselves on delivering unparalleled service to our guests.
-          </p>
+          </motion.p>
         </Container>
-      </section>
+      </motion.section>
 
       <section className="section-shell bg-background">
         <Container className="space-y-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
-            <div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20"
+          >
+            <motion.div variants={fadeInLeft}>
               <img
                 src={imageLibrary.roomSunlit}
                 alt="Comfortable room at Shtëpia Ime"
                 className="aspect-[4/3] w-full rounded-[28px] object-cover"
               />
-            </div>
-            <div>
+            </motion.div>
+            <motion.div variants={fadeInRight}>
               <h2 className="font-display text-4xl leading-tight sm:text-5xl">
                 A Home Away from Home
               </h2>
@@ -133,11 +161,16 @@ function About() {
                 ensuring a cozy and restful environment for solo travelers, couples, families, and
                 groups alike.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
-            <div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20"
+          >
+            <motion.div variants={fadeInLeft}>
               <h2 className="font-display text-4xl leading-tight sm:text-5xl">
                 An Oasis of Tranquility
               </h2>
@@ -149,25 +182,30 @@ function About() {
                 refreshing experience that connects you with the region&apos;s rich agricultural
                 traditions.
               </p>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div variants={fadeInRight}>
               <img
                 src={imageLibrary.garden}
                 alt="Courtyard and fruit garden atmosphere"
                 className="aspect-[4/3] w-full rounded-[28px] object-cover"
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
-            <div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20"
+          >
+            <motion.div variants={fadeInLeft}>
               <img
                 src={imageLibrary.roomDoor}
                 alt="Guest room designed for a memorable stay"
                 className="aspect-[4/3] w-full rounded-[28px] object-cover"
               />
-            </div>
-            <div>
+            </motion.div>
+            <motion.div variants={fadeInRight}>
               <h2 className="font-display text-4xl leading-tight sm:text-5xl">
                 Authentic Hospitality
               </h2>
@@ -178,8 +216,8 @@ function About() {
                 activities, or simply sharing stories over a cup of coffee, we go the extra mile to
                 create a warm and memorable experience.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </Container>
       </section>
 

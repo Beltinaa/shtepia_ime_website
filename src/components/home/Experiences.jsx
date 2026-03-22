@@ -1,12 +1,20 @@
+import { motion } from 'framer-motion';
 import { experiences } from '../../data/experiences';
 import { reservationEmailHref } from '../../lib/bookingLinks';
+import { fadeInUp, staggerContainer } from '../../hooks/useScrollAnimation';
 import ExperienceCard from '../experiences/ExperienceCard';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
 
 function Experiences() {
   return (
-    <section className="section-shell bg-muted">
+    <motion.section
+      className="section-shell bg-muted"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-100px' }}
+      variants={staggerContainer}
+    >
       <Container>
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
@@ -15,20 +23,23 @@ function Experiences() {
           />
         </div>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-3">
+        <motion.div variants={staggerContainer} className="mt-16 grid gap-6 lg:grid-cols-3">
           {experiences.map((experience) => (
-            <ExperienceCard key={experience.id} experience={experience} compact />
+            <motion.div key={experience.id} variants={fadeInUp}>
+              <ExperienceCard experience={experience} compact />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <a
+        <motion.a
+          variants={fadeInUp}
           href={reservationEmailHref}
           className="mt-10 inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary/90"
         >
           Book Your Adventure Today!
-        </a>
+        </motion.a>
       </Container>
-    </section>
+    </motion.section>
   );
 }
 

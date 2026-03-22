@@ -1,24 +1,50 @@
 import { motion } from 'framer-motion';
+import { fadeInLeft, fadeInRight } from '../../hooks/useScrollAnimation';
 
-function AttractionCard({ attraction }) {
+const attractionImages = {
+  'Bënja Thermal Baths & Kadiut Bridge':
+    'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800',
+  'Lengarica Canyon': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800',
+  'Nemerçka Mountain': 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800',
+  'Leusa Church – A Historic Treasure':
+    'https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=800',
+  "Vjosa River – Europe's Last Wild River":
+    'https://images.unsplash.com/photo-1530866323045-fc9ac5477403?w=800',
+};
+
+function AttractionCard({ attraction, index }) {
+  const isReversed = index % 2 === 1;
+
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.4, ease: 'easeOut' }}
-      className="panel-card overflow-hidden"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-100px' }}
+      variants={isReversed ? fadeInRight : fadeInLeft}
+      className="grid items-center gap-12 lg:grid-cols-2"
     >
-      <div className="overflow-hidden">
-        <img
-          src={attraction.image}
-          alt={attraction.title}
-          className="aspect-[4/3] w-full object-cover transition duration-300 ease-out hover:scale-105"
-        />
+      <div className={isReversed ? 'lg:order-2' : ''}>
+        <motion.div
+          whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
+          className="relative overflow-hidden rounded-2xl"
+        >
+          <img
+            src={attractionImages[attraction.title] ?? attraction.image}
+            alt={attraction.title}
+            className="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+        </motion.div>
       </div>
-      <div className="p-8">
-        <h3 className="font-display text-3xl leading-tight text-foreground">{attraction.title}</h3>
-        <p className="mt-4 whitespace-pre-line text-base leading-8 text-foreground/74">
+
+      <div className={isReversed ? 'lg:order-1' : ''}>
+        <span className="mb-2 block font-medium text-primary">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <h3 className="font-display text-3xl leading-tight text-foreground md:text-4xl">
+          {attraction.title}
+        </h3>
+        <p className="mt-6 whitespace-pre-line text-lg leading-relaxed text-foreground/74">
           {attraction.description}
         </p>
       </div>

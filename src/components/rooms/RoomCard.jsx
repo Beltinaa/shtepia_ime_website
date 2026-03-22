@@ -1,63 +1,116 @@
-import { motion } from 'framer-motion';
-import { BedDouble, Ruler, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronDown, ChevronUp, Mail, Maximize, MessageCircle, Users } from 'lucide-react';
 import { buildRoomEmailHref, buildRoomWhatsAppHref } from '../../lib/bookingLinks';
+import { fadeInUp } from '../../hooks/useScrollAnimation';
 
 function RoomCard({ room }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const roomImage = room.images?.[0] ?? room.image;
+
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.4, ease: 'easeOut' }}
-      className="panel-card group min-w-[18rem] overflow-hidden transition duration-300 ease-out hover:scale-[1.02] hover:shadow-xl"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-80px' }}
+      variants={fadeInUp}
+      whileHover={{
+        y: -8,
+        boxShadow: '0 20px 40px rgba(26,26,26,0.12)',
+        transition: { duration: 0.3, ease: 'easeOut' },
+      }}
+      className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-lg transition-shadow duration-300"
     >
-      <div className="overflow-hidden">
+      <div className="relative h-64 overflow-hidden">
         <img
-          src={room.images[0]}
+          src={roomImage}
           alt={room.title}
-          className="aspect-[4/3] w-full object-cover transition duration-300 ease-out group-hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
         />
+        <div className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-sm font-medium text-foreground shadow-sm backdrop-blur-sm">
+          {room.size} m²
+        </div>
       </div>
-      <div className="p-6">
-        <h3 className="font-display text-xl text-foreground">{room.title}</h3>
-        <div className="mt-6 flex items-center gap-4 text-sm text-foreground/65">
-          <span className="inline-flex items-center gap-2">
-            <BedDouble size={16} className="text-primary" />
-            {room.beds}
-          </span>
-          <span className="inline-flex items-center gap-2">
+      <div className="flex flex-grow flex-col p-6">
+        <h3 className="mb-2 font-display text-xl font-semibold text-foreground">{room.title}</h3>
+
+        <div className="mb-3 flex flex-wrap items-center gap-4 text-sm text-foreground/65">
+          <span className="inline-flex items-center gap-1">
             <Users size={16} className="text-primary" />
             {room.guests} guests
           </span>
-          <span className="inline-flex items-center gap-2">
-            <Ruler size={16} className="text-primary" />
-            {room.size} m²
+          <span className="inline-flex items-center gap-1">
+            <Maximize size={16} className="text-primary" />
+            {room.beds}
           </span>
         </div>
-        <p className="mt-6 text-foreground/74">{room.description}</p>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+
+        <p className="mb-4 line-clamp-2 text-sm text-foreground/74">{room.description}</p>
+
+        <AnimatePresence initial={false}>
+          {isExpanded ? (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="overflow-hidden"
+            >
+              <div className="border-t border-primary/10 pb-4 pt-4">
+                <p className="mb-4 text-sm text-foreground/74">{room.description}</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {room.amenities.map((amenity) => (
+                    <span
+                      key={amenity}
+                      className="rounded-md bg-muted px-2 py-1 text-xs capitalize text-foreground/74"
+                    >
+                      {amenity.replace(/-/g, ' ')}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+
+        <button
+          type="button"
+          onClick={() => setIsExpanded((current) => !current)}
+          className="mb-4 flex items-center justify-center gap-2 py-2 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+        >
+          {isExpanded ? (
+            <>
+              <span>Show Less</span>
+              <ChevronUp size={16} />
+            </>
+          ) : (
+            <>
+              <span>View Details</span>
+              <ChevronDown size={16} />
+            </>
+          )}
+        </button>
+
+        <div className="flex-grow" />
+
+        <div className="mt-auto flex gap-3 border-t border-primary/10 pt-4">
           <a
             href={buildRoomEmailHref(room.title)}
-            className="rounded-md bg-primary px-4 py-2 text-center text-sm font-semibold text-white transition duration-300 hover:bg-primary/90"
+            className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-center text-sm font-medium text-white transition-colors duration-300 hover:bg-primary/90"
           >
+            <Mail size={16} />
             Book via Email
           </a>
           <a
             href={buildRoomWhatsAppHref(room.title)}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-md bg-green-600 px-4 py-2 text-center text-sm font-semibold text-white transition duration-300 hover:bg-green-700"
+            className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-green-600 px-4 py-3 text-center text-sm font-medium text-white transition-colors duration-300 hover:bg-green-700"
           >
-            Book via WhatsApp
+            <MessageCircle size={16} />
+            WhatsApp
           </a>
         </div>
-        <Link
-          to={`/rooms/${room.slug}`}
-          className="mt-6 inline-flex items-center text-sm font-semibold uppercase tracking-[0.18em] text-primary hover:underline"
-        >
-          View Details
-        </Link>
       </div>
     </motion.article>
   );

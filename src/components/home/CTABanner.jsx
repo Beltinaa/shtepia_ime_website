@@ -1,10 +1,18 @@
+import { motion } from 'framer-motion';
 import Button from '../ui/Button';
 import { reservationEmailHref, reservationWhatsAppHref } from '../../lib/bookingLinks';
+import { fadeInUp } from '../../hooks/useScrollAnimation';
 import Container from '../ui/Container';
 
 function CTABanner() {
   return (
-    <section className="pb-24 lg:pb-32">
+    <motion.section
+      className="pb-24 lg:pb-32"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-100px' }}
+      variants={fadeInUp}
+    >
       <Container>
         <div className="rounded-[36px] bg-secondary px-6 py-12 text-foreground sm:px-10 lg:px-16 lg:py-14">
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
@@ -33,7 +41,7 @@ function CTABanner() {
           </div>
         </div>
       </Container>
-    </section>
+    </motion.section>
   );
 }
 

@@ -1,14 +1,16 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { fadeInUp } from '../../hooks/useScrollAnimation';
 
 function ExperienceCard({ experience, compact = false }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.4, ease: 'easeOut' }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-80px' }}
+      variants={fadeInUp}
+      whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
       className={`group relative overflow-hidden rounded-[28px] ${
         compact ? 'min-h-[18rem] sm:min-h-[20rem]' : 'min-h-[22rem] sm:min-h-[26rem]'
       }`}
@@ -16,7 +18,7 @@ function ExperienceCard({ experience, compact = false }) {
       <img
         src={experience.image}
         alt={experience.title}
-        className="absolute inset-0 h-full w-full object-cover object-center transition duration-300 ease-out group-hover:scale-105"
+        className="absolute inset-0 h-full w-full object-cover object-center transition duration-500 ease-out group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-foreground/45" />
 

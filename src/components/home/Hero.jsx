@@ -1,16 +1,59 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { siteMedia } from '../../data/site';
 import Button from '../ui/Button';
 import Container from '../ui/Container';
 
 function Hero() {
+  const [isMobileVideo, setIsMobileVideo] = useState(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+
+    return window.matchMedia('(max-width: 767px)').matches;
+  });
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const handleChange = (event) => {
+      setIsMobileVideo(event.matches);
+    };
+
+    setIsMobileVideo(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
+  }, []);
+
+  const heroVideoSrc = isMobileVideo ? siteMedia.hero.mobileVideoSrc : siteMedia.hero.desktopVideoSrc;
+
   return (
     <section className="relative flex min-h-screen items-end overflow-hidden pb-16 pt-32 text-white sm:items-center">
-      <img
-        src={siteMedia.hero.src}
-        alt={siteMedia.hero.alt}
-        className="absolute inset-0 h-full w-full object-cover"
-      />
+      <div className="hero-background-layer" aria-hidden="true">
+        <img
+          src={siteMedia.hero.posterSrc}
+          alt=""
+          className="hero-background-media"
+        />
+        <video
+          key={heroVideoSrc}
+          className="hero-background-media"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={siteMedia.hero.posterSrc}
+        >
+          <source src={heroVideoSrc} type="video/mp4" />
+        </video>
+      </div>
       <div className="absolute inset-0 bg-foreground/45" />
 
       <Container className="relative z-10">

@@ -34,8 +34,11 @@ export const siteMedia = {
     alt: 'Shtëpia Ime Logo',
   },
   hero: {
-    src: imageLibrary.hero,
-    alt: 'Langarica Canyon and the mountain landscape near Përmet',
+    src: '/images/hero-poster.jpg',
+    alt: 'A cyclist resting on a rocky green landscape near Përmet',
+    posterSrc: '/images/hero-poster.jpg',
+    mobileVideoSrc: '/videos/hero-mobile.mp4',
+    desktopVideoSrc: '/videos/hero-desktop.mp4',
   },
   welcome: {
     src: imageLibrary.welcome,

@@ -5,10 +5,11 @@ import { reservationEmailHref } from '../../lib/bookingLinks';
 import Container from '../ui/Container';
 
 const navigation = [
+  { label: 'Home', to: '/' },
   { label: 'Rooms', to: '/rooms' },
   { label: 'About Us', to: '/about' },
-  { label: 'Contact', to: '/contact' },
   { label: 'Explore Përmet', to: '/explore-permet' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 function Navbar() {
@@ -51,7 +52,11 @@ function Navbar() {
               key={to}
               to={to}
               className={({ isActive }) =>
-                `nav-link ${isTransparent ? 'text-white/85 hover:text-white' : 'text-foreground/75 hover:text-primary'} ${isActive ? (isTransparent ? 'text-white' : 'text-primary') : ''}`.trim()
+                `nav-link relative pb-1 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:transition-all after:duration-300 after:ease-out ${
+                  isTransparent
+                    ? 'text-white/85 hover:text-white after:bg-white'
+                    : 'text-foreground/75 hover:text-primary after:bg-primary'
+                } ${isActive ? (isTransparent ? 'text-white after:w-full' : 'text-primary after:w-full') : 'after:w-0 hover:after:w-full'}`.trim()
               }
             >
               {label}
@@ -94,7 +99,7 @@ function Navbar() {
               key={to}
               to={to}
               className={({ isActive }) =>
-                `rounded-2xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] ${
+                `rounded-2xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] transition duration-300 ${
                   isActive ? 'bg-muted text-primary' : 'text-foreground/70 hover:bg-muted'
                 }`
               }

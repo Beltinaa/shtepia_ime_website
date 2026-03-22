@@ -1,48 +1,71 @@
 import { motion } from 'framer-motion';
 import { culinaryDelights } from '../../data/culinary';
+import { fadeInUp, scaleIn, staggerContainer } from '../../hooks/useScrollAnimation';
 import Container from '../ui/Container';
+
+const culinaryImages = {
+  Gliko: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800',
+  'Përmet Wine & Raki': 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800',
+  'Traditional Dishes': 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800',
+  'Freshly Baked Bread & Dairy Products':
+    'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800',
+};
 
 function CulinarySection() {
   return (
-    <section className="section-shell bg-muted">
+    <motion.section
+      className="section-shell bg-muted"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-100px' }}
+      variants={staggerContainer}
+    >
       <Container>
-        <div className="max-w-4xl">
+        <motion.div variants={fadeInUp} className="mx-auto max-w-4xl text-center">
           <h2 className="section-title">A Taste of Përmet – Culinary Delights</h2>
           <p className="section-copy mt-6">
             Përmet is renowned for its local cuisine, offering organic, homemade dishes that
             showcase the region&apos;s rich culinary traditions. Some must-try specialties include:
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
+        <motion.div
+          variants={staggerContainer}
+          className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+        >
           {culinaryDelights.map((item) => (
             <motion.article
               key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
-              className="panel-card overflow-hidden"
+              variants={scaleIn}
+              whileHover={{
+                y: -8,
+                boxShadow: '0 20px 40px rgba(26,26,26,0.1)',
+                transition: { duration: 0.3, ease: 'easeOut' },
+              }}
+              className="overflow-hidden rounded-2xl bg-white shadow-lg transition-shadow duration-300"
             >
-              <div className="overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
                 <img
-                  src={item.image}
+                  src={culinaryImages[item.title] ?? item.image}
                   alt={item.title}
-                  className="aspect-[4/3] w-full object-cover transition duration-300 ease-out hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-110"
                 />
+                <div className="absolute left-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-white text-2xl shadow-lg">
+                  {item.emoji}
+                </div>
               </div>
-              <div className="p-8">
-                <p className="text-3xl">{item.emoji}</p>
-                <h3 className="mt-4 font-display text-3xl leading-tight text-foreground">
+
+              <div className="p-6">
+                <h3 className="font-display text-xl font-semibold leading-tight text-foreground">
                   {item.title}
                 </h3>
-                <p className="mt-4 text-base leading-8 text-foreground/74">{item.description}</p>
+                <p className="mt-3 text-sm text-foreground/74">{item.description}</p>
               </div>
             </motion.article>
           ))}
-        </div>
+        </motion.div>
       </Container>
-    </section>
+    </motion.section>
   );
 }
 
