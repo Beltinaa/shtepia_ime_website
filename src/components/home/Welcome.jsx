@@ -6,7 +6,7 @@ import Container from '../ui/Container';
 
 function Welcome() {
   return (
-    <section className="section-shell bg-background">
+    <section id="welcome" className="section-shell bg-background">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
           <motion.div

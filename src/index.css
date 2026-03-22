@@ -11,6 +11,7 @@
   --background: #fdfbf7;
   --foreground: #1a1a1a;
   --muted: #f5f0e8;
+  --muted-foreground: #6b7280;
 }
 
 @layer base {
@@ -79,12 +80,52 @@
     border-color: rgb(45 74 62 / 0.4);
     box-shadow: 0 0 0 4px rgb(45 74 62 / 0.1);
   }
+}
 
-  .hero-background-layer {
-    @apply absolute inset-0 overflow-hidden;
+.hero-background-layer {
+  @apply absolute inset-0 overflow-hidden;
+}
+
+.hero-background-media {
+  @apply absolute inset-0 h-full w-full object-cover;
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
+.hero-video {
+  object-fit: cover;
+  object-position: center;
+}
+
+@supports not (object-fit: cover) {
+  .hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
   }
+}
 
-  .hero-background-media {
-    @apply absolute inset-0 h-full w-full object-cover;
+@media (max-width: 767px) {
+  .hero-video {
+    object-position: center center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    animation: none;
   }
 }

@@ -1,6 +1,6 @@
 export const siteDetails = {
   name: 'Shtëpia Ime',
-  address: 'Baba Alushi Street, Sedie District, 500 m from center, 6400 Përmet, Albania',
+  address: 'Baba Alushi Street, Sedie District, 500 m from center, 6400 Permet, Albania',
   phone: '+355 69 560 2419',
   email: 'info@shtepiaime.eu',
   whatsapp: '+355 69 560 2419',
@@ -38,11 +38,24 @@ export const siteMedia = {
     alt: 'Shtëpia Ime Logo',
   },
   hero: {
-    src: '/images/hero-poster.jpg',
     alt: 'A cyclist resting on a rocky green landscape near Përmet',
-    posterSrc: '/images/hero-poster.jpg',
-    mobileVideoSrc: '/videos/hero-mobile.mp4',
-    desktopVideoSrc: '/videos/hero-desktop.mp4',
+    sources: {
+      mobile: {
+        mp4: '/videos/hero-mobile.mp4',
+        webm: '/videos/hero-mobile.webm',
+        poster: '/videos/hero-poster-mobile.jpg',
+      },
+      tablet: {
+        mp4: '/videos/hero-tablet.mp4',
+        webm: '/videos/hero-tablet.webm',
+        poster: '/videos/hero-poster-desktop.jpg',
+      },
+      desktop: {
+        mp4: '/videos/hero-desktop.mp4',
+        webm: '/videos/hero-desktop.webm',
+        poster: '/videos/hero-poster-desktop.jpg',
+      },
+    },
   },
   welcome: {
     src: imageLibrary.welcome,
