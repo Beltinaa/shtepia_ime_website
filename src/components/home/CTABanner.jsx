@@ -1,6 +1,6 @@
 import Button from '../ui/Button';
+import { reservationEmailHref, reservationWhatsAppHref } from '../../lib/bookingLinks';
 import Container from '../ui/Container';
-import { reservationEmailHref } from '../../data/site';
 
 function CTABanner() {
   return (
@@ -13,12 +13,23 @@ function CTABanner() {
                 Plan Your Escape
               </p>
               <h2 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">
-                Ready to Experience Përmet?
+                Unparalleled Amenities
               </h2>
+              <p className="mt-4 text-lg leading-8 text-foreground/74">Book your reservation</p>
             </div>
-            <Button as="a" href={reservationEmailHref} size="lg">
-              Book Now
-            </Button>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Button as="a" href={reservationEmailHref} size="lg">
+                Book Now
+              </Button>
+              <a
+                href={reservationWhatsAppHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-lift inline-flex items-center justify-center rounded-md bg-green-600 px-8 py-4 text-base font-semibold tracking-[0.08em] text-white transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-green-700"
+              >
+                Book Now
+              </a>
+            </div>
           </div>
         </div>
       </Container>

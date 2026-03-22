@@ -1,6 +1,34 @@
+import { imageLibrary } from './site';
+
 export const rooms = [
   {
     id: 1,
+    slug: 'double-room-with-balcony',
+    title: 'Double Room with Balcony',
+    description:
+      'This double room features a fireplace. Guests will find a stovetop, a refrigerator, kitchenware and a tea and coffee maker in the well-fitted kitchen. The double room also features a barbecue. The spacious double room offers air conditioning, a washing machine, a terrace with garden views as well as a private bathroom boasting a walk-in shower. The unit has 2 beds.',
+    beds: '1 sofa bed and 1 queen bed',
+    guests: 3,
+    size: 32,
+    amenities: [
+      'fireplace',
+      'kitchen',
+      'stovetop',
+      'refrigerator',
+      'kitchenware',
+      'tea-coffee-maker',
+      'barbecue',
+      'ac',
+      'washing-machine',
+      'terrace',
+      'garden-views',
+      'bathroom',
+      'walk-in-shower',
+    ],
+    images: [imageLibrary.roomWide, imageLibrary.roomDoor, imageLibrary.roomDetail],
+  },
+  {
+    id: 2,
     slug: 'double-room-balcony-1',
     title: 'Double Room with Balcony 1 (3 Adults)',
     description:
@@ -8,15 +36,23 @@ export const rooms = [
     beds: '2 queen beds',
     guests: 3,
     size: 23,
-    amenities: ['wifi', 'ac', 'balcony', 'minibar', 'bathroom', 'walk-in-shower'],
-    images: [
-      '/images/rooms/room-sunlit-bed.webp',
-      '/images/rooms/room-rustic-door.webp',
-      '/images/rooms/room-headboard.webp',
-    ],
+    amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
+    images: [imageLibrary.roomSunlit, imageLibrary.roomDoor, imageLibrary.roomDetail],
   },
   {
-    id: 2,
+    id: 3,
+    slug: 'deluxe-double-room-balcony-1',
+    title: 'Deluxe Double Room with Balcony 1',
+    description:
+      'The double room offers air conditioning, a mini-bar, a terrace with garden views as well as a private bathroom boasting a walk-in shower. The unit has 1 bed.',
+    beds: '1 queen bed',
+    guests: 2,
+    size: 22,
+    amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
+    images: [imageLibrary.roomWide, imageLibrary.roomDoor, imageLibrary.roomDetail],
+  },
+  {
+    id: 4,
     slug: 'deluxe-double-room-balcony-2',
     title: 'Deluxe Double Room with Balcony 2',
     description:
@@ -24,11 +60,31 @@ export const rooms = [
     beds: '1 queen bed',
     guests: 2,
     size: 22,
-    amenities: ['wifi', 'ac', 'balcony', 'minibar', 'bathroom', 'walk-in-shower'],
-    images: [
-      '/images/rooms/room-wide-bed.webp',
-      '/images/rooms/room-rustic-door.webp',
-      '/images/rooms/room-headboard.webp',
-    ],
+    amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
+    images: [imageLibrary.roomSunlit, imageLibrary.roomDoor, imageLibrary.roomDetail],
+  },
+  {
+    id: 5,
+    slug: 'double-room-balcony-2',
+    title: 'Double Room with Balcony 2 (3 Adults)',
+    description:
+      'The spacious double room features air conditioning, a mini-bar, a terrace with garden views as well as a private bathroom boasting a walk-in shower. The unit has 2 beds.',
+    beds: '1 twin bed and 1 queen bed',
+    guests: 3,
+    size: 26,
+    amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
+    images: [imageLibrary.roomWide, imageLibrary.roomSunlit, imageLibrary.roomDetail],
+  },
+  {
+    id: 6,
+    slug: 'deluxe-double-room-balcony-3',
+    title: 'Deluxe Double Room with Balcony 3',
+    description:
+      'The double room provides air conditioning, a mini-bar, a terrace with garden views as well as a private bathroom featuring a walk-in shower. The unit offers 1 bed.',
+    beds: '1 queen bed',
+    guests: 2,
+    size: 22,
+    amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
+    images: [imageLibrary.roomSunlit, imageLibrary.roomDoor, imageLibrary.roomDetail],
   },
 ];

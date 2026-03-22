@@ -1,6 +1,7 @@
 import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { reservationEmailHref, siteDetails, siteMedia } from '../../data/site';
+import { siteDetails, siteMedia } from '../../data/site';
+import { reservationEmailHref } from '../../lib/bookingLinks';
 import Container from '../ui/Container';
 
 function Footer() {
@@ -15,7 +16,7 @@ function Footer() {
             </div>
             <p className="mt-5 text-white/74">
               Located in a serene and beautiful area of the city, our guest house offers comfort
-              and relaxation for anyone looking to explore the 'City of Flowers' and its
+              and relaxation for anyone looking to explore the &apos;City of Flowers&apos; and its
               breathtaking natural landscapes.
             </p>
           </div>
@@ -59,14 +60,14 @@ function Footer() {
               <Link to="/rooms" className="hover:text-white">
                 Rooms
               </Link>
-              <Link to="/experiences" className="hover:text-white">
-                Explore Përmet
-              </Link>
               <Link to="/about" className="hover:text-white">
                 About Us
               </Link>
               <Link to="/contact" className="hover:text-white">
                 Contact
+              </Link>
+              <Link to="/explore-permet" className="hover:text-white">
+                Explore Përmet
               </Link>
               <a href={reservationEmailHref} className="hover:text-white">
                 Book Now

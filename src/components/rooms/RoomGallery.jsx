@@ -27,7 +27,7 @@ function RoomGallery({ images, title }) {
         <div className="grid grid-cols-3 gap-3">
           {images.map((image, index) => (
             <button
-              key={image}
+              key={`${image}-${index}`}
               type="button"
               onClick={() => setActiveImage(image)}
               className={`overflow-hidden rounded-2xl border transition duration-300 ${

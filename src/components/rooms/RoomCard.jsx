@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { BedDouble, Ruler, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { buildRoomEmailHref, buildRoomWhatsAppHref } from '../../data/site';
+import { buildRoomEmailHref, buildRoomWhatsAppHref } from '../../lib/bookingLinks';
 
 function RoomCard({ room }) {
   return (

@@ -21,7 +21,7 @@ function Testimonials() {
   return (
     <section className="section-shell bg-primary text-white">
       <Container>
-        <SectionHeading eyebrow="Testimonials" title="Testimonials" light />
+        <SectionHeading eyebrow="Testimonials" title="Guest Experiences" light />
 
         <div className="mt-16 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <motion.article

@@ -1,31 +1,17 @@
 import { motion } from 'framer-motion';
-import Button from '../components/ui/Button';
+import { imageLibrary, siteMedia } from '../data/site';
 import Container from '../components/ui/Container';
 import SectionHeading from '../components/ui/SectionHeading';
-import { reservationEmailHref, siteMedia } from '../data/site';
+import Button from '../components/ui/Button';
 
-const amenities = [
-  {
-    title: 'Cozy Guesthouse',
-    description:
-      'Enjoy a warm and inviting stay with comfortable amenities and stunning mountain views.',
-  },
-  {
-    title: 'Full Amenities',
-    description:
-      'Enjoy air-conditioned rooms, a minibar, a private bathroom, and thoughtful amenities for a relaxing stay.',
-  },
-  {
-    title: 'Morning Indulgence',
-    description:
-      'Wake up to a delightful buffet breakfast and complimentary coffee to start your day right.',
-  },
-  {
-    title: 'Outdoor Spaces',
-    description:
-      'Spend your days relaxing in the garden, making use of barbecue facilities, or admiring the stunning views.',
-  },
-];
+const ratings = {
+  staff: 9.4,
+  facilities: 9.1,
+  cleanliness: 9.4,
+  comfort: 9.4,
+  valueForMoney: 9.5,
+  location: 9.4,
+};
 
 function About() {
   return (
@@ -47,9 +33,10 @@ function About() {
           <div className="max-w-3xl">
             <h1 className="font-display text-5xl leading-tight sm:text-6xl">About Us</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">
-              Located in a serene and beautiful area of the city, our guest house offers comfort
-              and relaxation for anyone looking to explore the 'City of Flowers' and its
-              breathtaking natural landscapes.
+              Join us at GuestHouse &apos;Shtëpia ime&apos; for a stay filled with warmth, comfort,
+              and unforgettable moments in the heart of Përmet. Whether you&apos;re here to explore
+              nature, relax in a peaceful setting, or experience local hospitality, we&apos;re
+              dedicated to making your visit truly special.
             </p>
           </div>
         </Container>
@@ -58,7 +45,7 @@ function About() {
       <section className="section-shell bg-background">
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
-            <div className="overflow-hidden rounded-[32px]">
+            <div className="overflow-hidden rounded-[28px]">
               <img
                 src={siteMedia.aboutStory.src}
                 alt={siteMedia.aboutStory.alt}
@@ -68,12 +55,12 @@ function About() {
 
             <div>
               <SectionHeading
-                eyebrow="About Us"
-                title="Shtëpia Ime"
-                description="Shtëpia Ime – a charming and cozy guest house in the heart of Përmet, where the warmth of Albanian hospitality meets the tranquility of nature. Our name, meaning 'My Home', reflects our dedication to creating a welcoming and comfortable atmosphere for every guest who walks through our doors. Whether you are visiting Përmet for its breathtaking landscapes, rich cultural heritage, or simply seeking a peaceful retreat, we are here to make your stay memorable."
+                eyebrow="Welcome to Shtëpia Ime"
+                title="Welcome to Shtëpia Ime"
+                description="We are a charming and cozy guest house in the heart of Përmet, where the warmth of Albanian hospitality meets the tranquility of nature. Our name, meaning 'My Home', reflects our dedication to creating a welcoming and comfortable atmosphere for every guest who walks through our doors. Whether you are visiting Përmet for its breathtaking landscapes, rich cultural heritage, or simply seeking a peaceful retreat, we are here to make your stay memorable."
               />
-              <Button as="a" href={reservationEmailHref} className="mt-8">
-                Book Now
+              <Button as="link" to="/rooms" className="mt-8">
+                Our Rooms
               </Button>
             </div>
           </div>
@@ -82,15 +69,129 @@ function About() {
 
       <section className="section-shell bg-muted">
         <Container>
-          <SectionHeading title="Amenities" />
-          <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {amenities.map(({ title, description }) => (
-              <article key={title} className="panel-card p-6">
-                <p className="font-display text-2xl text-primary">{title}</p>
-                <p className="mt-3 text-foreground/74">{description}</p>
-              </article>
-            ))}
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-6">
+            <article className="panel-card p-6 text-center">
+              <p className="font-display text-4xl text-primary">{ratings.staff}</p>
+              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">Staff</p>
+            </article>
+            <article className="panel-card p-6 text-center">
+              <p className="font-display text-4xl text-primary">{ratings.facilities}</p>
+              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
+                Facilities
+              </p>
+            </article>
+            <article className="panel-card p-6 text-center">
+              <p className="font-display text-4xl text-primary">{ratings.cleanliness}</p>
+              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
+                Cleanliness
+              </p>
+            </article>
+            <article className="panel-card p-6 text-center">
+              <p className="font-display text-4xl text-primary">{ratings.comfort}</p>
+              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
+                Comfort
+              </p>
+            </article>
+            <article className="panel-card p-6 text-center">
+              <p className="font-display text-4xl text-primary">{ratings.valueForMoney}</p>
+              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
+                Value for Money
+              </p>
+            </article>
+            <article className="panel-card p-6 text-center">
+              <p className="font-display text-4xl text-primary">{ratings.location}</p>
+              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
+                Location
+              </p>
+            </article>
           </div>
+          <p className="mt-10 text-center text-lg text-foreground/74">
+            We pride ourselves on delivering unparalleled service to our guests.
+          </p>
+        </Container>
+      </section>
+
+      <section className="section-shell bg-background">
+        <Container className="space-y-24">
+          <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+            <div>
+              <img
+                src={imageLibrary.roomSunlit}
+                alt="Comfortable room at Shtëpia Ime"
+                className="aspect-[4/3] w-full rounded-[28px] object-cover"
+              />
+            </div>
+            <div>
+              <h2 className="font-display text-4xl leading-tight sm:text-5xl">
+                A Home Away from Home
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-foreground/74">
+                At Shtëpia Ime, we believe that every guest deserves a place where they can feel at
+                ease, relax, and fully enjoy their journey. Our guest house is designed with a
+                homely and inviting ambiance, offering the perfect balance between traditional charm
+                and modern comfort. Each of our six well-appointed rooms is furnished with care,
+                ensuring a cozy and restful environment for solo travelers, couples, families, and
+                groups alike.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+            <div>
+              <h2 className="font-display text-4xl leading-tight sm:text-5xl">
+                An Oasis of Tranquility
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-foreground/74">
+                Surrounded by lush greenery, Shtëpia Ime features a spacious courtyard where guests
+                can unwind, read a book, or simply enjoy the fresh air under the shade of trees.
+                One of the highlights of our outdoor space is our seasonal fruit garden, where
+                guests can taste fresh, hand-picked fruits straight from the trees—an authentic and
+                refreshing experience that connects you with the region&apos;s rich agricultural
+                traditions.
+              </p>
+            </div>
+            <div>
+              <img
+                src={imageLibrary.garden}
+                alt="Courtyard and fruit garden atmosphere"
+                className="aspect-[4/3] w-full rounded-[28px] object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+            <div>
+              <img
+                src={imageLibrary.roomDoor}
+                alt="Guest room designed for a memorable stay"
+                className="aspect-[4/3] w-full rounded-[28px] object-cover"
+              />
+            </div>
+            <div>
+              <h2 className="font-display text-4xl leading-tight sm:text-5xl">
+                Authentic Hospitality
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-foreground/74">
+                What truly sets us apart is our commitment to hospitality. We take pride in
+                offering personalized service, ensuring that each guest feels valued and cared for
+                throughout their stay. Whether it&apos;s providing local recommendations, arranging
+                activities, or simply sharing stories over a cup of coffee, we go the extra mile to
+                create a warm and memorable experience.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="section-shell bg-muted">
+        <Container>
+          <SectionHeading
+            title="Explore Përmet"
+            description="At Shtëpia Ime, we invite you to embrace the beauty of Përmet while enjoying the comfort of a home away from home. Whether you're here for a weekend escape, a cultural journey, or an outdoor adventure, our doors are always open to welcome you."
+          />
+          <Button as="link" to="/explore-permet" className="mt-10">
+            Explore Përmet
+          </Button>
         </Container>
       </section>
     </motion.main>

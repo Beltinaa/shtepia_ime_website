@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { reservationEmailHref, siteMedia } from '../../data/site';
+import { siteMedia } from '../../data/site';
 import Button from '../ui/Button';
 import Container from '../ui/Container';
 
@@ -28,8 +28,8 @@ function Hero() {
             hospitality and nature blend in perfect harmony.
           </p>
           <div className="mt-10">
-            <Button as="a" href={reservationEmailHref} size="lg">
-              Book Your Stay
+            <Button as="link" to="/contact" size="lg">
+              Contact Us
             </Button>
           </div>
         </motion.div>

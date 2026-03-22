@@ -5,7 +5,7 @@ import Footer from './components/layout/Footer';
 import Navbar from './components/layout/Navbar';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Experiences from './pages/Experiences';
+import ExplorPermet from './pages/ExplorPermet';
 import Home from './pages/Home';
 import RoomDetail from './pages/RoomDetail';
 import Rooms from './pages/Rooms';
@@ -32,9 +32,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/rooms" element={<Rooms />} />
           <Route path="/rooms/:slug" element={<RoomDetail />} />
-          <Route path="/experiences" element={<Experiences />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/explore-permet" element={<ExplorPermet />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AnimatePresence>

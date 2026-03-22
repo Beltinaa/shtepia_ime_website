@@ -1,11 +1,9 @@
 import Button from '../ui/Button';
+import { reservationEmailHref } from '../../lib/bookingLinks';
 import Container from '../ui/Container';
-import { reservationEmailHref } from '../../data/site';
 
 const specialOffer = {
-  headline: 'Adventure & Relaxation Package – €100 per person',
-  description:
-    "Enjoy the perfect balance of excitement and tranquility with this exclusive package. Wake up to a delicious breakfast, explore the stunning landscapes of Përmet, and experience the adrenaline of rafting on Europe's last wild river!",
+  title: 'Book Now! Adventure & Relaxation Package – €100 per person',
   includes: [
     '2-night stay at Shtepia Ime Guesthouse',
     'Daily homemade breakfast',
@@ -22,11 +20,14 @@ function SpecialOffer() {
             Special Offer
           </p>
           <h2 className="mt-4 font-display text-4xl leading-tight text-foreground sm:text-5xl">
-            {specialOffer.headline}
+            Exclusive Offers for an Unforgettable Stay
           </h2>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-foreground/74">
-            {specialOffer.description}
+            Enjoy the perfect balance of excitement and tranquility with this exclusive package.
+            Wake up to a delicious breakfast, explore the stunning landscapes of Përmet, and
+            experience the adrenaline of rafting on Europe&apos;s last wild river!
           </p>
+          <p className="mt-8 text-lg font-semibold text-primary">{specialOffer.title}</p>
           <ul className="mt-8 space-y-3 text-foreground/74">
             {specialOffer.includes.map((item) => (
               <li key={item} className="rounded-2xl bg-muted px-4 py-3">

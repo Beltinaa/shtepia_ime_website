@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { reservationEmailHref, siteMedia } from '../../data/site';
+import { reservationEmailHref } from '../../lib/bookingLinks';
 import Container from '../ui/Container';
 
 const navigation = [
   { label: 'Rooms', to: '/rooms' },
   { label: 'About Us', to: '/about' },
   { label: 'Contact', to: '/contact' },
-  { label: 'Explore Përmet', to: '/experiences' },
+  { label: 'Explore Përmet', to: '/explore-permet' },
 ];
 
 function Navbar() {
@@ -41,7 +41,7 @@ function Navbar() {
     <header className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${shellClasses}`}>
       <Container className="flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
-          <img src={siteMedia.logo.src} alt={siteMedia.logo.alt} className="h-10 w-auto" />
+          <img src="/image/logo.webp" alt="Shtëpia Ime Logo" className="h-10 w-auto" />
           <span className="font-display text-xl font-semibold">Shtëpia Ime</span>
         </Link>
 

@@ -7,6 +7,7 @@ import FeaturedRooms from '../components/home/FeaturedRooms';
 import Hero from '../components/home/Hero';
 import SpecialOffer from '../components/home/SpecialOffer';
 import Testimonials from '../components/home/Testimonials';
+import Welcome from '../components/home/Welcome';
 
 function Home() {
   return (
@@ -17,9 +18,10 @@ function Home() {
       transition={{ duration: 0.4, ease: 'easeOut' }}
     >
       <Hero />
+      <Welcome />
+      <Experiences />
       <AboutPreview />
       <Amenities />
-      <Experiences />
       <FeaturedRooms />
       <SpecialOffer />
       <Testimonials />

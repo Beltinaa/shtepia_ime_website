@@ -3,24 +3,37 @@ import {
   Bath,
   BedDouble,
   Coffee,
+  Flame,
+  Home,
+  Mountain,
+  Refrigerator,
   Ruler,
   ShowerHead,
   Snowflake,
   Trees,
   Users,
-  Wifi,
+  UtensilsCrossed,
+  WashingMachine,
 } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import RoomGallery from '../components/rooms/RoomGallery';
 import Button from '../components/ui/Button';
 import Container from '../components/ui/Container';
 import { rooms } from '../data/rooms';
-import { buildRoomEmailHref, buildRoomWhatsAppHref } from '../data/site';
+import { buildRoomEmailHref, buildRoomWhatsAppHref } from '../lib/bookingLinks';
 
 const amenityMap = {
-  wifi: { label: 'Wi-Fi', icon: Wifi },
+  fireplace: { label: 'Fireplace', icon: Flame },
+  kitchen: { label: 'Kitchen', icon: Home },
+  stovetop: { label: 'Stovetop', icon: UtensilsCrossed },
+  refrigerator: { label: 'Refrigerator', icon: Refrigerator },
+  kitchenware: { label: 'Kitchenware', icon: UtensilsCrossed },
+  'tea-coffee-maker': { label: 'Tea and coffee maker', icon: Coffee },
+  barbecue: { label: 'Barbecue', icon: Flame },
   ac: { label: 'Air conditioning', icon: Snowflake },
-  balcony: { label: 'Balcony', icon: Trees },
+  'washing-machine': { label: 'Washing machine', icon: WashingMachine },
+  terrace: { label: 'Terrace', icon: Trees },
+  'garden-views': { label: 'Garden views', icon: Mountain },
   minibar: { label: 'Minibar', icon: Coffee },
   bathroom: { label: 'Private bathroom', icon: Bath },
   'walk-in-shower': { label: 'Walk-in shower', icon: ShowerHead },
@@ -91,6 +104,7 @@ function RoomDetail() {
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {room.amenities.map((amenity) => {
                   const item = amenityMap[amenity];
+
                   if (!item) {
                     return null;
                   }
@@ -111,7 +125,12 @@ function RoomDetail() {
             </div>
 
             <div className="mt-10 grid gap-3">
-              <Button as="a" href={buildRoomEmailHref(room.title)} size="lg" className="hidden w-full lg:inline-flex">
+              <Button
+                as="a"
+                href={buildRoomEmailHref(room.title)}
+                size="lg"
+                className="hidden w-full lg:inline-flex"
+              >
                 Book Now
               </Button>
               <a
