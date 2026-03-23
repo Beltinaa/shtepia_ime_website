@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { siteMedia } from '../../data/site';
-import { fadeInLeft, fadeInRight } from '../../hooks/useScrollAnimation';
+import { fadeInLeft, fadeInRight } from '../../lib/animations';
 import Container from '../ui/Container';
 
 function Welcome() {
@@ -15,7 +15,7 @@ function Welcome() {
             viewport={{ once: true, margin: '-100px' }}
             variants={fadeInLeft}
             whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
-            className="overflow-hidden rounded-[28px]"
+            className="overflow-hidden rounded-2xl shadow-lg"
           >
             <img
               src={siteMedia.welcome.src}
@@ -31,14 +31,17 @@ function Welcome() {
             variants={fadeInRight}
           >
             <p className="eyebrow">Welcome</p>
-            <p className="max-w-2xl text-xl leading-9 text-foreground/78">
+            <h2 className="section-title mt-5 max-w-2xl">
+              A peaceful guesthouse rooted in warmth and place
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
               Located in a serene and beautiful area of the city, our guest house offers comfort
               and relaxation for anyone looking to explore the &apos;City of Flowers&apos; and its
               breathtaking natural landscapes.
             </p>
             <Link
               to="/about"
-              className="mt-8 inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary/90"
+              className="btn-primary mt-8 inline-flex items-center justify-center"
             >
               Read More
             </Link>

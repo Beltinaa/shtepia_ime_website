@@ -4,9 +4,10 @@ import CulinarySection from '../components/explore/CulinarySection';
 import ExperienceCard from '../components/experiences/ExperienceCard';
 import Container from '../components/ui/Container';
 import SectionHeading from '../components/ui/SectionHeading';
-import { fadeInUp, staggerContainer } from '../hooks/useScrollAnimation';
+import { fadeInUp, staggerContainer } from '../lib/animations';
 import { experiences } from '../data/experiences';
 import { attractions, topAttractions } from '../data/attractions';
+import { imageLibrary } from '../data/site';
 
 function ExplorPermet() {
   return (
@@ -41,21 +42,39 @@ function ExplorPermet() {
       </motion.section>
 
       <motion.section
-        className="section-shell bg-muted"
+        className="relative overflow-hidden py-20 text-white lg:py-32"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-100px' }}
         variants={staggerContainer}
       >
-        <Container>
-          <SectionHeading title="Top Attractions in Përmet" />
-          <motion.div variants={staggerContainer} className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+        <img
+          src={imageLibrary.permetLandscape}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-primary/82" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(212,196,176,0.15),transparent_28%)]" />
+
+        <Container className="relative z-10">
+          <motion.div variants={fadeInUp} className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow text-secondary">Discover</p>
+            <h2 className="section-title text-white">Top Attractions in Përmet</h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/78">
+              Explore the breathtaking natural wonders and historical treasures of this hidden gem
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-5"
+          >
             {topAttractions.map((attraction) => (
               <motion.article
                 key={attraction}
                 variants={fadeInUp}
                 whileHover={{ y: -6, transition: { duration: 0.3, ease: 'easeOut' } }}
-                className="panel-card p-5 text-sm font-semibold text-foreground/78"
+                className="rounded-2xl border border-white/12 bg-white/8 p-5 text-sm font-semibold text-white/88 shadow-md backdrop-blur-sm"
               >
                 {attraction}
               </motion.article>

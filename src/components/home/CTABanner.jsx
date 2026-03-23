@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
 import { reservationEmailHref, reservationWhatsAppHref } from '../../lib/bookingLinks';
-import { fadeInUp } from '../../hooks/useScrollAnimation';
+import { fadeInUp } from '../../lib/animations';
 import Container from '../ui/Container';
 
 function CTABanner() {
@@ -14,7 +14,7 @@ function CTABanner() {
       variants={fadeInUp}
     >
       <Container>
-        <div className="rounded-[36px] bg-secondary px-6 py-12 text-foreground sm:px-10 lg:px-16 lg:py-14">
+        <div className="rounded-[2rem] bg-secondary px-6 py-12 text-foreground shadow-lg sm:px-10 lg:px-16 lg:py-14">
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
@@ -23,7 +23,7 @@ function CTABanner() {
               <h2 className="mt-4 font-display text-4xl leading-tight sm:text-5xl">
                 Unparalleled Amenities
               </h2>
-              <p className="mt-4 text-lg leading-8 text-foreground/74">Book your reservation</p>
+              <p className="mt-4 text-lg leading-8 text-muted-foreground">Book your reservation</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button as="a" href={reservationEmailHref} size="lg">
@@ -33,7 +33,7 @@ function CTABanner() {
                 href={reservationWhatsAppHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-lift inline-flex items-center justify-center rounded-md bg-green-600 px-8 py-4 text-base font-semibold tracking-[0.08em] text-white transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-green-700"
+                className="btn-lift inline-flex items-center justify-center rounded-xl bg-green-600 px-8 py-4 text-base font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-green-700"
               >
                 Book by Whatsapp
               </a>

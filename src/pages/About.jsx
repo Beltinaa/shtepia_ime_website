@@ -3,7 +3,7 @@ import { imageLibrary, siteMedia } from '../data/site';
 import Container from '../components/ui/Container';
 import SectionHeading from '../components/ui/SectionHeading';
 import Button from '../components/ui/Button';
-import { fadeInLeft, fadeInRight, fadeInUp, staggerContainer } from '../hooks/useScrollAnimation';
+import { fadeInLeft, fadeInRight, fadeInUp, staggerContainer } from '../lib/animations';
 
 const ratings = {
   staff: 9.4,
@@ -29,7 +29,7 @@ function About() {
           alt={siteMedia.aboutHero.alt}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-foreground/45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/48 via-foreground/34 to-foreground/62" />
         <Container className="relative z-10">
           <motion.div
             initial="hidden"
@@ -56,7 +56,7 @@ function About() {
               whileInView="visible"
               viewport={{ once: true, margin: '-100px' }}
               variants={fadeInLeft}
-              className="overflow-hidden rounded-[28px]"
+              className="overflow-hidden rounded-2xl shadow-lg"
             >
               <img
                 src={siteMedia.aboutStory.src}
@@ -94,41 +94,59 @@ function About() {
         <Container>
           <motion.div variants={staggerContainer} className="grid gap-6 md:grid-cols-2 xl:grid-cols-6">
             <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/60">
+                Rating
+              </p>
               <p className="font-display text-4xl text-primary">{ratings.staff}</p>
-              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">Staff</p>
+              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-muted-foreground">Staff</p>
             </motion.article>
             <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/60">
+                Rating
+              </p>
               <p className="font-display text-4xl text-primary">{ratings.facilities}</p>
-              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
+              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-muted-foreground">
                 Facilities
               </p>
             </motion.article>
             <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/60">
+                Rating
+              </p>
               <p className="font-display text-4xl text-primary">{ratings.cleanliness}</p>
-              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
+              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-muted-foreground">
                 Cleanliness
               </p>
             </motion.article>
             <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/60">
+                Rating
+              </p>
               <p className="font-display text-4xl text-primary">{ratings.comfort}</p>
-              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
+              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-muted-foreground">
                 Comfort
               </p>
             </motion.article>
             <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/60">
+                Rating
+              </p>
               <p className="font-display text-4xl text-primary">{ratings.valueForMoney}</p>
-              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
+              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-muted-foreground">
                 Value for Money
               </p>
             </motion.article>
             <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/60">
+                Rating
+              </p>
               <p className="font-display text-4xl text-primary">{ratings.location}</p>
-              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-foreground/62">
+              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-muted-foreground">
                 Location
               </p>
             </motion.article>
           </motion.div>
-          <motion.p variants={fadeInUp} className="mt-10 text-center text-lg text-foreground/74">
+          <motion.p variants={fadeInUp} className="mt-10 text-center text-lg text-muted-foreground">
             We pride ourselves on delivering unparalleled service to our guests.
           </motion.p>
         </Container>
@@ -146,14 +164,14 @@ function About() {
               <img
                 src={imageLibrary.roomSunlit}
                 alt="Comfortable room at Shtëpia Ime"
-                className="aspect-[4/3] w-full rounded-[28px] object-cover"
+                className="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
               />
             </motion.div>
             <motion.div variants={fadeInRight}>
               <h2 className="font-display text-4xl leading-tight sm:text-5xl">
                 A Home Away from Home
               </h2>
-              <p className="mt-6 text-lg leading-8 text-foreground/74">
+              <p className="mt-6 text-lg leading-8 text-muted-foreground">
                 At Shtëpia Ime, we believe that every guest deserves a place where they can feel at
                 ease, relax, and fully enjoy their journey. Our guest house is designed with a
                 homely and inviting ambiance, offering the perfect balance between traditional charm
@@ -174,7 +192,7 @@ function About() {
               <h2 className="font-display text-4xl leading-tight sm:text-5xl">
                 An Oasis of Tranquility
               </h2>
-              <p className="mt-6 text-lg leading-8 text-foreground/74">
+              <p className="mt-6 text-lg leading-8 text-muted-foreground">
                 Surrounded by lush greenery, Shtëpia Ime features a spacious courtyard where guests
                 can unwind, read a book, or simply enjoy the fresh air under the shade of trees.
                 One of the highlights of our outdoor space is our seasonal fruit garden, where
@@ -187,7 +205,7 @@ function About() {
               <img
                 src={imageLibrary.garden}
                 alt="Courtyard and fruit garden atmosphere"
-                className="aspect-[4/3] w-full rounded-[28px] object-cover"
+                className="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
               />
             </motion.div>
           </motion.div>
@@ -202,14 +220,14 @@ function About() {
               <img
                 src={imageLibrary.roomDoor}
                 alt="Guest room designed for a memorable stay"
-                className="aspect-[4/3] w-full rounded-[28px] object-cover"
+                className="aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
               />
             </motion.div>
             <motion.div variants={fadeInRight}>
               <h2 className="font-display text-4xl leading-tight sm:text-5xl">
                 Authentic Hospitality
               </h2>
-              <p className="mt-6 text-lg leading-8 text-foreground/74">
+              <p className="mt-6 text-lg leading-8 text-muted-foreground">
                 What truly sets us apart is our commitment to hospitality. We take pride in
                 offering personalized service, ensuring that each guest feels valued and cared for
                 throughout their stay. Whether it&apos;s providing local recommendations, arranging

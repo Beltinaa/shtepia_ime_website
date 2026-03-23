@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { imageLibrary } from '../../data/site';
-import { fadeInLeft, fadeInRight } from '../../hooks/useScrollAnimation';
+import { fadeInLeft, fadeInRight } from '../../lib/animations';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
 
@@ -18,7 +18,7 @@ function AboutPreview() {
             variants={fadeInLeft}
           >
             <SectionHeading title="make your stay truly exceptional" />
-            <p className="mt-6 text-lg leading-8 text-foreground/74">
+            <p className="mt-6 text-lg leading-8 text-muted-foreground">
               Shtëpia Ime – a charming and cozy guest house in the heart of Përmet, where the
               warmth of Albanian hospitality meets the tranquility of nature. Our name, meaning
               &apos;My Home&apos;, reflects our dedication to creating a welcoming and comfortable
@@ -28,7 +28,7 @@ function AboutPreview() {
             </p>
             <Link
               to="/about"
-              className="mt-10 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary"
+              className="mt-10 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary transition-all duration-300 hover:gap-3"
             >
               About Us <ArrowRight size={16} />
             </Link>
@@ -40,12 +40,12 @@ function AboutPreview() {
             viewport={{ once: true, margin: '-100px' }}
             variants={fadeInRight}
             whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
-            className="panel-card overflow-hidden max-h-[700px]"
+            className="overflow-hidden rounded-2xl shadow-lg"
           >
             <img
               src={imageLibrary.garden}
               alt="Garden lounge area at Shtëpia Ime beneath the pergola"
-              className="h-full min-h-[420px] w-full object-cover transition duration-300 ease-out hover:scale-105"
+              className="h-full min-h-[360px] w-full object-cover transition duration-300 ease-out hover:scale-105 lg:min-h-[420px]"
             />
           </motion.div>
         </div>

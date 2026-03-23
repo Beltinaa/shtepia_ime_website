@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,12 +6,25 @@
 
 :root {
   --primary: #2d4a3e;
+  --primary-light: #3d6b5a;
   --secondary: #d4c4b0;
   --accent: #8b7355;
   --background: #fdfbf7;
   --foreground: #1a1a1a;
   --muted: #f5f0e8;
   --muted-foreground: #6b7280;
+  --white: #ffffff;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
 }
 
 @layer base {
@@ -20,7 +33,12 @@
   }
 
   body {
-    @apply bg-background font-body text-base text-foreground antialiased;
+    @apply font-body text-base antialiased;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: 'liga' 1, 'kern' 1;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
   }
 
   a {
@@ -31,31 +49,40 @@
     @apply block;
   }
 
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
   ::selection {
-    @apply bg-primary text-white;
+    background-color: var(--primary);
+    color: var(--white);
   }
 }
 
 @layer components {
   .section-shell {
-    @apply py-24 lg:py-32;
+    @apply py-20 lg:py-32;
   }
 
   .eyebrow {
-    @apply mb-4 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-accent;
+    @apply mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em];
+    color: var(--accent);
   }
 
   .section-title {
-    @apply font-display text-4xl leading-tight text-foreground sm:text-5xl lg:text-6xl;
+    @apply font-display text-4xl leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl;
+    color: var(--foreground);
   }
 
   .section-copy {
     @apply max-w-2xl text-lg leading-8;
-    color: rgb(26 26 26 / 0.78);
+    color: var(--muted-foreground);
   }
 
   .panel-card {
-    @apply rounded-[28px] border bg-white shadow-soft;
+    @apply rounded-2xl border bg-white shadow-md;
     border-color: rgb(45 74 62 / 0.1);
   }
 
@@ -64,11 +91,12 @@
   }
 
   .nav-link {
-    @apply text-sm font-medium uppercase tracking-[0.18em];
+    @apply text-sm font-medium tracking-[0.08em];
   }
 
   .field-base {
-    @apply w-full rounded-2xl bg-white px-4 py-3.5 text-foreground outline-none transition duration-300;
+    @apply w-full rounded-lg bg-white px-4 py-3.5 outline-none transition duration-300;
+    color: var(--foreground);
     border: 1px solid rgb(45 74 62 / 0.15);
   }
 
@@ -79,6 +107,52 @@
   .field-base:focus {
     border-color: rgb(45 74 62 / 0.4);
     box-shadow: 0 0 0 4px rgb(45 74 62 / 0.1);
+  }
+
+  .card-surface {
+    @apply rounded-2xl border bg-white shadow-md;
+    border-color: rgb(45 74 62 / 0.1);
+  }
+
+  .card-surface-lg {
+    @apply rounded-2xl border bg-white shadow-lg;
+    border-color: rgb(45 74 62 / 0.1);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl px-8 py-4 text-sm font-semibold tracking-[0.08em] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg;
+    background-color: var(--primary);
+    color: var(--white);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--primary-light);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl border-2 px-8 py-4 text-sm font-semibold tracking-[0.08em] transition-all duration-300 hover:-translate-y-0.5;
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+
+  .hero-title-green {
+    color: var(--primary-light);
+    text-shadow:
+      0 0 60px rgba(255, 255, 255, 0.9),
+      0 0 30px rgba(255, 255, 255, 0.7),
+      0 4px 20px rgba(0, 0, 0, 0.3);
+    -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.2);
+  }
+
+  .hero-text-shadow {
+    text-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.5),
+      0 4px 20px rgba(0, 0, 0, 0.3);
   }
 }
 

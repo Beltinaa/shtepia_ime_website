@@ -1,11 +1,9 @@
-import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronDown, ChevronUp, Mail, Maximize, MessageCircle, Users } from 'lucide-react';
-import { buildRoomEmailHref, buildRoomWhatsAppHref } from '../../lib/bookingLinks';
-import { fadeInUp } from '../../hooks/useScrollAnimation';
+import { motion } from 'framer-motion';
+import { Bed, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { fadeInUp, hoverEffects } from '../../lib/animations';
 
 function RoomCard({ room }) {
-  const [isExpanded, setIsExpanded] = useState(false);
   const roomImage = room.images?.[0] ?? room.image;
 
   return (
@@ -14,105 +12,53 @@ function RoomCard({ room }) {
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
       variants={fadeInUp}
-      whileHover={{
-        y: -8,
-        boxShadow: '0 20px 40px rgba(26,26,26,0.12)',
-        transition: { duration: 0.3, ease: 'easeOut' },
-      }}
-      className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-lg transition-shadow duration-300"
+      whileHover={hoverEffects.lift}
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-md transition-all duration-300"
     >
       <div className="relative h-64 overflow-hidden">
         <img
           src={roomImage}
           alt={room.title}
-          className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-sm font-medium text-foreground shadow-sm backdrop-blur-sm">
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <div className="absolute right-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-sm font-semibold text-primary shadow-sm backdrop-blur-sm">
           {room.size} m²
         </div>
       </div>
+
       <div className="flex flex-grow flex-col p-6">
-        <div className="min-h-[10.5rem]">
-          <h3 className="mb-2 min-h-[3.5rem] font-display text-xl font-semibold text-foreground">
-            {room.title}
-          </h3>
+        <h3 className="mb-3 min-h-[3.5rem] font-display text-2xl leading-tight text-foreground">
+          {room.title}
+        </h3>
 
-          <div className="mb-3 flex flex-wrap items-center gap-4 text-sm text-foreground/65">
-            <span className="inline-flex items-center gap-1">
-              <Users size={16} className="text-primary" />
-              {room.guests} guests
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <Maximize size={16} className="text-primary" />
-              {room.beds}
-            </span>
-          </div>
-
-          <p className="line-clamp-2 text-sm text-foreground/74">{room.description}</p>
+        <div className="mb-4 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+          <span className="inline-flex items-center gap-1.5">
+            <Users size={16} className="text-primary" />
+            {room.guests} guests
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <Bed size={16} className="text-primary" />
+            {room.beds}
+          </span>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setIsExpanded((current) => !current)}
-          className="mb-4 mt-2 flex items-center justify-center gap-2 py-2 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+        <p className="mb-6 text-sm leading-7 text-muted-foreground">{room.description}</p>
+
+        <Link
+          to={`/rooms/${room.slug}`}
+          className="mt-auto inline-flex items-center gap-2 font-semibold text-primary transition-all duration-300 hover:gap-3 hover:text-primary-light"
         >
-          {isExpanded ? (
-            <>
-              <span>Show Less</span>
-              <ChevronUp size={16} />
-            </>
-          ) : (
-            <>
-              <span>View Details</span>
-              <ChevronDown size={16} />
-            </>
-          )}
-        </button>
-
-        <AnimatePresence initial={false}>
-          {isExpanded ? (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="overflow-hidden"
-            >
-              <div className="border-t border-primary/10 pb-4 pt-4">
-                <p className="mb-4 text-sm text-foreground/74">{room.description}</p>
-                <div className="grid grid-cols-2 gap-2">
-                  {room.amenities.map((amenity) => (
-                    <span
-                      key={amenity}
-                      className="rounded-md bg-muted px-2 py-1 text-xs capitalize text-foreground/74"
-                    >
-                      {amenity.replace(/-/g, ' ')}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
-
-        <div className="mt-auto flex gap-3 border-t border-primary/10 pt-4">
-          <a
-            href={buildRoomEmailHref(room.title)}
-            className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-center text-sm font-medium text-white transition-colors duration-300 hover:bg-primary/90"
-          >
-            <Mail size={16} />
-            Book via Email
-          </a>
-          <a
-            href={buildRoomWhatsAppHref(room.title)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-green-600 px-4 py-3 text-center text-sm font-medium text-white transition-colors duration-300 hover:bg-green-700"
-          >
-            <MessageCircle size={16} />
-            WhatsApp
-          </a>
-        </div>
+          View Details
+          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+        </Link>
       </div>
     </motion.article>
   );

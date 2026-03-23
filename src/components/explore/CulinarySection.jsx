@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { culinaryDelights } from '../../data/culinary';
-import { fadeInUp, scaleIn, staggerContainer } from '../../hooks/useScrollAnimation';
+import { fadeInUp, scaleIn, staggerContainer } from '../../lib/animations';
 import Container from '../ui/Container';
 
 function CulinarySection() {
@@ -34,7 +34,7 @@ function CulinarySection() {
                 boxShadow: '0 20px 40px rgba(26,26,26,0.1)',
                 transition: { duration: 0.3, ease: 'easeOut' },
               }}
-              className="overflow-hidden rounded-2xl bg-white shadow-lg transition-shadow duration-300"
+              className="card-surface overflow-hidden transition-shadow duration-300"
             >
               <div className="relative h-48 overflow-hidden">
                 <img
@@ -51,7 +51,7 @@ function CulinarySection() {
                 <h3 className="font-display text-xl font-semibold leading-tight text-foreground">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm text-foreground/74">{item.description}</p>
+                <p className="mt-3 text-sm text-muted-foreground">{item.description}</p>
               </div>
             </motion.article>
           ))}

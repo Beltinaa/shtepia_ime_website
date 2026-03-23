@@ -23,6 +23,7 @@ export const imageLibrary = {
   nemerckaMountain: '/images/nemercka-mountain.webp',
   canyon: '/images/climbing-and-hiking.webp',
   church: '/images/leusa-church.webp',
+  permetLandscape: '/images/nemercka-mountain.webp',
   food: '/images/welcome.webp',
   gliko: '/images/gliko.webp',
   raki: '/images/permet-raki.webp',

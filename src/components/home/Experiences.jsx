@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { experiences } from '../../data/experiences';
 import { reservationEmailHref } from '../../lib/bookingLinks';
-import { fadeInUp, staggerContainer } from '../../hooks/useScrollAnimation';
+import { fadeInUp, staggerContainer } from '../../lib/animations';
 import ExperienceCard from '../experiences/ExperienceCard';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
@@ -26,7 +26,7 @@ function Experiences() {
         <motion.div variants={staggerContainer} className="mt-16 grid gap-6 lg:grid-cols-3">
           {experiences.map((experience) => (
             <motion.div key={experience.id} variants={fadeInUp}>
-              <ExperienceCard experience={experience} compact />
+              <ExperienceCard experience={experience} />
             </motion.div>
           ))}
         </motion.div>
@@ -34,7 +34,7 @@ function Experiences() {
         <motion.a
           variants={fadeInUp}
           href={reservationEmailHref}
-          className="mt-10 inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary/90"
+          className="btn-primary mt-10 inline-flex items-center justify-center"
         >
           Book Your Adventure Today!
         </motion.a>

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { siteMedia } from '../../data/site';
+import { reservationEmailHref } from '../../lib/bookingLinks';
 import Button from '../ui/Button';
 import Container from '../ui/Container';
 
@@ -153,7 +154,7 @@ function Hero() {
   };
 
   return (
-    <section className="relative flex min-h-screen items-end overflow-hidden pb-16 pt-32 text-white sm:items-center">
+    <section className="relative min-h-screen overflow-hidden text-white">
       <div className="hero-background-layer" aria-hidden="true">
         <img
           src={activeSource.poster}
@@ -184,27 +185,60 @@ function Hero() {
           </video>
         ) : null}
       </div>
-      <div className="absolute inset-0 bg-foreground/45" />
+      <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/35 to-foreground/65" />
+      <div className="absolute inset-0 bg-foreground/10" />
 
-      <Container className="relative z-10">
+      <Container className="relative z-10 flex min-h-screen items-center justify-center px-4 py-32">
         <motion.div
+          className="max-w-5xl text-center"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-          className="max-w-3xl"
+          transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          <h1 className="mt-6 font-display text-5xl leading-tight sm:text-6xl lg:text-[5.5rem]">
-            Experience Comfort &amp; Authenticity in the Heart of Përmet
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80 sm:text-xl">
-            Welcome to Shtëpia Ime, nestled in the heart of Përmet—a peaceful destination where
-            hospitality and nature blend in perfect harmony.
-          </p>
-          <div className="mt-10">
-            <Button as="link" to="/contact" size="lg">
-              Contact Us
+          <motion.h1
+            className="font-display leading-[0.98] tracking-tight"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
+          >
+            <span className="hero-text-shadow block text-4xl font-light text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              Experience
+            </span>
+            <span className="hero-title-green block text-5xl font-semibold sm:text-6xl md:text-7xl lg:text-8xl">
+              Comfort &amp; Authenticity
+            </span>
+            <span className="hero-text-shadow mt-4 block text-2xl font-light tracking-[0.08em] text-white/92 sm:text-3xl md:text-4xl">
+              in the Heart of Përmet
+            </span>
+          </motion.h1>
+
+          <motion.p
+            className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-white/95 sm:text-xl"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+          >
+            <span className="hero-text-shadow inline-block rounded-2xl border border-white/20 bg-black/20 px-5 py-3 backdrop-blur-md">
+              Where Albanian hospitality meets the tranquility of nature
+            </span>
+          </motion.p>
+
+          <motion.div
+            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
+          >
+            <Button as="a" href={reservationEmailHref} size="lg">
+              Book Your Stay
             </Button>
-          </div>
+            <a
+              href="/rooms"
+              className="inline-flex items-center justify-center rounded-xl border border-white/35 bg-white/12 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20"
+            >
+              Explore Rooms
+            </a>
+          </motion.div>
         </motion.div>
       </Container>
 

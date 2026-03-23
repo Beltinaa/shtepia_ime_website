@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '../../hooks/useScrollAnimation';
+import { fadeInUp, staggerContainer } from '../../lib/animations';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
 
@@ -33,7 +33,7 @@ const amenities = [
 function Amenities() {
   return (
     <motion.section
-      className="section-shell bg-muted"
+      className="section-shell bg-background"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
@@ -51,10 +51,13 @@ function Amenities() {
                 boxShadow: '0 20px 40px rgba(26,26,26,0.08)',
                 transition: { duration: 0.3, ease: 'easeOut' },
               }}
-              className="panel-card p-8"
+              className="card-surface p-8"
             >
+              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-primary/60">
+                {String(id).padStart(2, '0')}
+              </span>
               <h3 className="font-display text-2xl text-foreground">{title}</h3>
-              <p className="mt-4 text-foreground/74">{description}</p>
+              <p className="mt-4 text-muted-foreground">{description}</p>
             </motion.article>
           ))}
         </motion.div>

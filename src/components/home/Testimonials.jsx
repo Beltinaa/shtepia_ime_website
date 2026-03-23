@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { testimonials } from '../../data/testimonials';
-import { fadeInUp, scaleIn } from '../../hooks/useScrollAnimation';
+import { fadeInUp, scaleIn } from '../../lib/animations';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
 
@@ -21,14 +21,14 @@ function Testimonials() {
 
   return (
     <motion.section
-      className="section-shell bg-primary text-white"
+      className="section-shell bg-muted"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
       variants={fadeInUp}
     >
       <Container>
-        <SectionHeading eyebrow="Testimonials" title="Guest Experiences" light />
+        <SectionHeading eyebrow="Testimonials" title="Guest Experiences" />
 
         <div className="mt-16 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <motion.article
@@ -36,13 +36,13 @@ function Testimonials() {
             initial="hidden"
             animate="visible"
             variants={scaleIn}
-            className="rounded-[32px] border border-white/10 bg-white/5 p-8 backdrop-blur sm:p-12"
+            className="card-surface-lg p-8 sm:p-12"
           >
             <Quote size={36} className="text-secondary" />
-            <p className="mt-8 max-w-3xl font-display text-3xl leading-tight sm:text-4xl">
+            <p className="mt-8 max-w-3xl font-display text-3xl leading-tight text-foreground sm:text-4xl">
               “{review.text}”
             </p>
-            <p className="mt-8 text-sm font-semibold uppercase tracking-[0.2em] text-white/68">
+            <p className="mt-8 text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
               {review.name}, {review.country}
             </p>
           </motion.article>
@@ -50,7 +50,7 @@ function Testimonials() {
           <motion.div variants={fadeInUp} className="flex items-center gap-3 lg:flex-col lg:items-end">
             <button
               type="button"
-              className="btn-lift inline-flex rounded-full border border-white/15 p-3 text-white transition duration-300 hover:bg-white/10"
+              className="btn-lift inline-flex rounded-full border border-primary/15 bg-white p-3 text-primary transition duration-300 hover:bg-primary hover:text-white"
               onClick={() =>
                 setActiveIndex((activeIndex - 1 + testimonials.length) % testimonials.length)
               }
@@ -60,7 +60,7 @@ function Testimonials() {
             </button>
             <button
               type="button"
-              className="btn-lift inline-flex rounded-full border border-white/15 p-3 text-white transition duration-300 hover:bg-white/10"
+              className="btn-lift inline-flex rounded-full border border-primary/15 bg-white p-3 text-primary transition duration-300 hover:bg-primary hover:text-white"
               onClick={() => setActiveIndex((activeIndex + 1) % testimonials.length)}
               aria-label="Show next testimonial"
             >
@@ -76,7 +76,7 @@ function Testimonials() {
               type="button"
               onClick={() => setActiveIndex(index)}
               className={`h-2.5 rounded-full transition-all duration-300 ${
-                activeIndex === index ? 'w-10 bg-secondary' : 'w-2.5 bg-white/30'
+                activeIndex === index ? 'w-10 bg-primary' : 'w-2.5 bg-primary/20'
               }`}
               aria-label={`Show testimonial ${index + 1}`}
             />

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { fadeInUp } from '../../hooks/useScrollAnimation';
+import { fadeInUp } from '../../lib/animations';
 
 function SectionHeading({
   eyebrow,
@@ -12,7 +12,7 @@ function SectionHeading({
   const alignment = align === 'center' ? 'mx-auto text-center' : '';
   const eyebrowClasses = light ? 'text-secondary' : 'text-accent';
   const titleClasses = light ? 'text-white' : 'text-foreground';
-  const copyClasses = light ? 'text-white/74' : 'text-foreground/78';
+  const copyClasses = light ? 'text-white/78' : 'text-muted-foreground';
 
   return (
     <motion.div
@@ -22,7 +22,9 @@ function SectionHeading({
       variants={fadeInUp}
       className={className}
     >
-      {eyebrow ? <span className={`eyebrow ${eyebrowClasses} ${alignment}`.trim()}>{eyebrow}</span> : null}
+      {eyebrow ? (
+        <span className={`eyebrow ${eyebrowClasses} ${alignment}`.trim()}>{eyebrow}</span>
+      ) : null}
       <h2 className={`section-title ${titleClasses} ${alignment}`.trim()}>{title}</h2>
       {description ? (
         <p className={`section-copy ${copyClasses} mt-6 ${alignment}`.trim()}>{description}</p>

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { rooms } from '../../data/rooms';
-import { fadeInUp, staggerContainer } from '../../hooks/useScrollAnimation';
+import { fadeInUp, staggerContainer } from '../../lib/animations';
 import Button from '../ui/Button';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';

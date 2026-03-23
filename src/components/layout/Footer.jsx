@@ -24,17 +24,17 @@ function Footer() {
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-secondary">Contact</p>
             <div className="mt-5 space-y-4 text-white/78">
-              <p className="flex items-start gap-2">
+              <p className="flex items-start gap-3">
                 <MapPin size={18} className="mt-1 shrink-0 text-secondary" />
                 <span>{siteDetails.address}</span>
               </p>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <Phone size={18} className="shrink-0 text-secondary" />
                 <a href={`tel:${siteDetails.phone.replace(/\s+/g, '')}`} className="hover:text-white">
                   {siteDetails.phone}
                 </a>
               </div>
-              <div className="mt-4 flex items-center gap-2">
+              <div className="mt-4 flex items-center gap-3">
                 <Mail size={18} className="shrink-0 text-secondary" />
                 <a href={`mailto:${siteDetails.email}`} className="hover:text-white">
                   {siteDetails.email}
@@ -45,7 +45,7 @@ function Footer() {
                   href="https://wa.me/355695602419"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-white"
+                  className="flex items-center gap-3 hover:text-white"
                 >
                   <MessageCircle size={18} className="shrink-0 text-secondary" />
                   {siteDetails.whatsapp}

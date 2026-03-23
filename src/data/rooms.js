@@ -1,5 +1,14 @@
 import { imageLibrary } from './site';
 
+const roomPhotos = {
+  fireplaceSuite: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800',
+  brightBalcony: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800',
+  deluxeSerene: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800',
+  deluxeModern: 'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800',
+  spaciousRetreat: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800',
+  luxeBedroom: 'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=800',
+};
+
 export const rooms = [
   {
     id: 1,
@@ -25,7 +34,8 @@ export const rooms = [
       'bathroom',
       'walk-in-shower',
     ],
-    images: [imageLibrary.roomWide, imageLibrary.roomDoor, imageLibrary.roomDetail],
+    image: roomPhotos.fireplaceSuite,
+    images: [roomPhotos.fireplaceSuite, imageLibrary.roomWide, imageLibrary.roomDetail],
   },
   {
     id: 2,
@@ -37,7 +47,8 @@ export const rooms = [
     guests: 3,
     size: 23,
     amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
-    images: [imageLibrary.roomSunlit, imageLibrary.roomDoor, imageLibrary.roomDetail],
+    image: roomPhotos.brightBalcony,
+    images: [roomPhotos.brightBalcony, imageLibrary.roomSunlit, imageLibrary.roomDoor],
   },
   {
     id: 3,
@@ -49,7 +60,8 @@ export const rooms = [
     guests: 2,
     size: 22,
     amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
-    images: [imageLibrary.roomWide, imageLibrary.roomDoor, imageLibrary.roomDetail],
+    image: roomPhotos.deluxeSerene,
+    images: [roomPhotos.deluxeSerene, imageLibrary.roomWide, imageLibrary.roomDoor],
   },
   {
     id: 4,
@@ -61,7 +73,8 @@ export const rooms = [
     guests: 2,
     size: 22,
     amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
-    images: [imageLibrary.roomSunlit, imageLibrary.roomDoor, imageLibrary.roomDetail],
+    image: roomPhotos.deluxeModern,
+    images: [roomPhotos.deluxeModern, imageLibrary.roomSunlit, imageLibrary.roomDetail],
   },
   {
     id: 5,
@@ -73,7 +86,8 @@ export const rooms = [
     guests: 3,
     size: 26,
     amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
-    images: [imageLibrary.roomWide, imageLibrary.roomSunlit, imageLibrary.roomDetail],
+    image: roomPhotos.spaciousRetreat,
+    images: [roomPhotos.spaciousRetreat, imageLibrary.roomWide, imageLibrary.roomSunlit],
   },
   {
     id: 6,
@@ -85,6 +99,7 @@ export const rooms = [
     guests: 2,
     size: 22,
     amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
-    images: [imageLibrary.roomSunlit, imageLibrary.roomDoor, imageLibrary.roomDetail],
+    image: roomPhotos.luxeBedroom,
+    images: [roomPhotos.luxeBedroom, imageLibrary.roomDoor, imageLibrary.roomDetail],
   },
 ];

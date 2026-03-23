@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   AlertCircle,
+  ArrowRight,
   Calendar,
   CheckCircle,
   Clock,
@@ -16,6 +17,36 @@ import {
 import Container from '../components/ui/Container';
 import { siteDetails } from '../data/site';
 import { rooms } from '../data/rooms';
+
+function ContactInfoCard({ item, index }) {
+  const Icon = item.icon;
+
+  return (
+    <motion.a
+      href={item.href}
+      target={item.label === 'WhatsApp' || item.label === 'Address' ? '_blank' : undefined}
+      rel={item.label === 'WhatsApp' || item.label === 'Address' ? 'noopener noreferrer' : undefined}
+      className="group flex items-start gap-5 rounded-2xl border border-primary/10 bg-white p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-lg"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.3 + index * 0.1, ease: 'easeOut' }}
+      whileHover={{ x: 4 }}
+    >
+      <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary">
+        <Icon className="h-6 w-6 text-primary transition-colors group-hover:text-white" />
+      </div>
+      <div className="min-w-0 flex-1">
+        <span className="mb-1 block text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          {item.label}
+        </span>
+        <span className="break-words text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+          {item.value}
+        </span>
+      </div>
+      <ArrowRight className="mt-1 h-5 w-5 flex-shrink-0 text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+    </motion.a>
+  );
+}
 
 const initialFormData = {
   name: '',
@@ -43,28 +74,24 @@ function Contact() {
       label: 'Phone',
       value: siteDetails.phone,
       href: 'tel:+355695602419',
-      color: 'bg-blue-500',
     },
     {
       icon: Mail,
       label: 'Email',
       value: siteDetails.email,
       href: 'mailto:info@shtepiaime.eu',
-      color: 'bg-primary',
     },
     {
       icon: MessageCircle,
       label: 'WhatsApp',
       value: siteDetails.whatsapp,
       href: 'https://wa.me/355695602419',
-      color: 'bg-green-500',
     },
     {
       icon: MapPin,
       label: 'Address',
       value: siteDetails.address,
       href: 'https://maps.google.com/?q=Baba+Alushi+Street+Permet+Albania',
-      color: 'bg-red-500',
     },
   ];
 
@@ -195,7 +222,7 @@ ${formData.message}
 
   return (
     <main className="min-h-screen bg-background pt-20">
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary/95 to-accent py-24 lg:py-32">
+      <section className="relative overflow-hidden bg-primary py-24 lg:py-32">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute left-0 top-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white blur-3xl" />
           <div className="absolute bottom-0 right-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-secondary blur-3xl" />
@@ -241,36 +268,12 @@ ${formData.message}
 
               <div className="space-y-4">
                 {contactInfo.map((item, index) => (
-                  <motion.a
-                    key={item.label}
-                    href={item.href}
-                    target={item.label === 'WhatsApp' || item.label === 'Address' ? '_blank' : undefined}
-                    rel={item.label === 'WhatsApp' || item.label === 'Address' ? 'noopener noreferrer' : undefined}
-                    className="group flex items-start gap-4 rounded-xl border border-gray-100 bg-white p-4 transition-all duration-300 hover:border-primary/20 hover:shadow-lg"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 + index * 0.1, ease: 'easeOut' }}
-                    whileHover={{ x: 4 }}
-                  >
-                    <div
-                      className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl text-white shadow-lg transition-transform group-hover:scale-110 ${item.color}`}
-                    >
-                      <item.icon className="h-5 w-5" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <span className="mb-1 block text-sm text-[color:var(--muted-foreground)]">
-                        {item.label}
-                      </span>
-                      <span className="break-words font-medium text-foreground transition-colors group-hover:text-primary">
-                        {item.value}
-                      </span>
-                    </div>
-                  </motion.a>
+                  <ContactInfoCard key={item.label} item={item} index={index} />
                 ))}
               </div>
 
               <motion.div
-                className="rounded-xl bg-muted/50 p-6"
+                className="rounded-2xl bg-muted/70 p-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.7, ease: 'easeOut' }}
@@ -295,7 +298,7 @@ ${formData.message}
               >
                 <a
                   href="mailto:info@shtepiaime.eu?subject=Booking%20Inquiry"
-                  className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 font-medium text-white transition-colors hover:bg-primary/90"
+                  className="btn-primary flex flex-1 items-center justify-center gap-2 px-6 py-3 text-base"
                 >
                   <Mail className="h-5 w-5" />
                   Email Us
@@ -357,7 +360,7 @@ ${formData.message}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           placeholder="Your full name"
-                          className={`w-full rounded-xl border py-3 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
+                          className={`w-full rounded-lg border py-3.5 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
                             errors.name && touched.name
                               ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200'
                               : 'border-gray-200 focus:border-primary focus:ring-primary/20'
@@ -392,7 +395,7 @@ ${formData.message}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           placeholder="your@email.com"
-                          className={`w-full rounded-xl border py-3 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
+                          className={`w-full rounded-lg border py-3.5 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
                             errors.email && touched.email
                               ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200'
                               : 'border-gray-200 focus:border-primary focus:ring-primary/20'
@@ -429,7 +432,7 @@ ${formData.message}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           placeholder="+355 69 XXX XXXX"
-                          className={`w-full rounded-xl border py-3 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
+                          className={`w-full rounded-lg border py-3.5 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
                             errors.phone && touched.phone
                               ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200'
                               : 'border-gray-200 focus:border-primary focus:ring-primary/20'
@@ -460,7 +463,7 @@ ${formData.message}
                         name="room"
                         value={formData.room}
                         onChange={handleChange}
-                        className="w-full cursor-pointer appearance-none rounded-xl border border-gray-200 bg-white px-4 py-3 transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        className="w-full cursor-pointer appearance-none rounded-lg border border-gray-200 bg-white px-4 py-3.5 transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                       >
                         <option value="">Choose a room...</option>
                         {roomOptions.map((room) => (
@@ -487,7 +490,7 @@ ${formData.message}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           min={today}
-                          className={`w-full cursor-pointer rounded-xl border py-3 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
+                          className={`w-full cursor-pointer rounded-lg border py-3.5 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
                             errors.checkin && touched.checkin
                               ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200'
                               : 'border-gray-200 focus:border-primary focus:ring-primary/20'
@@ -523,7 +526,7 @@ ${formData.message}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           min={formData.checkin || today}
-                          className={`w-full cursor-pointer rounded-xl border py-3 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
+                          className={`w-full cursor-pointer rounded-lg border py-3.5 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
                             errors.checkout && touched.checkout
                               ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200'
                               : 'border-gray-200 focus:border-primary focus:ring-primary/20'
@@ -559,7 +562,7 @@ ${formData.message}
                         onBlur={handleBlur}
                         placeholder="Tell us about your stay requirements, special requests, or any questions you have..."
                         rows={5}
-                        className={`w-full resize-none rounded-xl border py-3 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
+                        className={`w-full resize-none rounded-lg border py-3.5 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
                           errors.message && touched.message
                             ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200'
                             : 'border-gray-200 focus:border-primary focus:ring-primary/20'

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Sparkles } from 'lucide-react';
 import Container from '../ui/Container';
-import { fadeInLeft, fadeInRight, scaleIn } from '../../hooks/useScrollAnimation';
+import { fadeInLeft, fadeInRight, scaleIn } from '../../lib/animations';
 
 const specialOffer = {
   heading: 'Exclusive Offers for an Unforgettable Stay',
@@ -22,35 +22,14 @@ const packageWhatsAppHref =
 
 function SpecialOffer() {
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-accent" />
-      <div className="absolute left-0 top-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-3xl" />
-      <div className="absolute bottom-0 right-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-secondary/20 blur-3xl" />
+    <section className="section-shell bg-muted">
+      <Container>
+        <div className="relative overflow-hidden rounded-[2rem] bg-primary px-6 py-12 text-white shadow-lg sm:px-10 lg:px-14 lg:py-16">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(212,196,176,0.22),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_30%)]" />
+          <div className="pointer-events-none absolute right-8 top-8 hidden h-28 w-28 rounded-full border border-white/10 lg:block" />
+          <div className="pointer-events-none absolute bottom-10 left-[46%] hidden h-16 w-16 rounded-full bg-white/5 lg:block" />
 
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {[...Array(6)].map((_, index) => (
-          <motion.div
-            key={index}
-            className="absolute h-2 w-2 rounded-full bg-white/20"
-            style={{
-              left: `${20 + index * 12}%`,
-              top: `${24 + (index % 3) * 22}%`,
-            }}
-            animate={{
-              y: [0, -24, 0],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 3 + index * 0.4,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
-      </div>
-
-      <Container className="relative z-10">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="relative grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -58,7 +37,7 @@ function SpecialOffer() {
             variants={fadeInLeft}
           >
             <motion.div
-              className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm"
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 backdrop-blur-sm"
               animate={{ scale: [1, 1.04, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             >
@@ -66,13 +45,13 @@ function SpecialOffer() {
               <span className="font-medium text-white/90">Special Offer</span>
             </motion.div>
 
-            <h2 className="font-display text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
+            <h2 className="font-display text-4xl font-semibold leading-tight text-white md:text-5xl lg:text-6xl">
               {specialOffer.heading}
             </h2>
             <p className="mt-4 text-2xl font-semibold leading-tight text-secondary sm:text-3xl">
               {specialOffer.title}
             </p>
-            <p className="mt-6 text-lg leading-relaxed text-white/80">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/82">
               {specialOffer.description}
             </p>
 
@@ -126,7 +105,7 @@ function SpecialOffer() {
           >
             <motion.div
               variants={fadeInRight}
-              className="rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-md lg:p-12"
+              className="rounded-[1.75rem] border border-white/15 bg-white/10 p-8 backdrop-blur-md lg:p-12"
             >
               <div className="mb-8 text-center">
                 <span className="text-lg text-white/60">Starting from</span>
@@ -178,6 +157,7 @@ function SpecialOffer() {
               Best Value!
             </motion.div>
           </motion.div>
+        </div>
         </div>
       </Container>
     </section>

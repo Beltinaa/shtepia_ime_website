@@ -3,6 +3,7 @@ import Container from '../components/ui/Container';
 import SectionHeading from '../components/ui/SectionHeading';
 import RoomCard from '../components/rooms/RoomCard';
 import { rooms } from '../data/rooms';
+import { fadeInUp } from '../lib/animations';
 
 function Rooms() {
   return (
@@ -15,10 +16,12 @@ function Rooms() {
     >
       <section className="section-shell bg-muted">
         <Container>
-          <SectionHeading
-            title="Our Rooms"
-            description="Our guest house consists of six comfortable rooms, carefully furnished to create a warm and homely atmosphere. Our accommodations are perfect for solo travelers, families, or groups of friends seeking a special place to stay."
-          />
+          <motion.div initial="hidden" animate="visible" variants={fadeInUp} className="max-w-4xl">
+            <SectionHeading
+              title="Our Rooms"
+              description="Our guest house consists of six comfortable rooms, carefully furnished to create a warm and homely atmosphere. Our accommodations are perfect for solo travelers, families, or groups of friends seeking a special place to stay."
+            />
+          </motion.div>
         </Container>
       </section>
 
