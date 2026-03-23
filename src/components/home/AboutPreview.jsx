@@ -10,7 +10,7 @@ function AboutPreview() {
   return (
     <section className="section-shell bg-background">
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <div className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -40,12 +40,12 @@ function AboutPreview() {
             viewport={{ once: true, margin: '-100px' }}
             variants={fadeInRight}
             whileHover={{ y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
-            className="overflow-hidden rounded-2xl shadow-lg"
+            className="overflow-hidden rounded-2xl shadow-lg lg:max-w-[35rem] lg:justify-self-end"
           >
             <img
-              src={imageLibrary.garden}
-              alt="Garden lounge area at Shtëpia Ime beneath the pergola"
-              className="h-full min-h-[360px] w-full object-cover transition duration-300 ease-out hover:scale-105 lg:min-h-[420px]"
+              src={imageLibrary.balcony}
+              alt="Balcony view at Shtëpia Ime"
+              className="aspect-[4/3] w-full object-cover transition duration-300 ease-out hover:scale-105 lg:aspect-[4/4.4]"
             />
           </motion.div>
         </div>

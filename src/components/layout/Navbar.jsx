@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { reservationEmailHref } from '../../lib/bookingLinks';
+import { siteMedia } from '../../data/site';
 import Container from '../ui/Container';
 
 const navigation = [
@@ -44,7 +45,7 @@ function Navbar() {
     >
       <Container className="flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
-          <img src="/image/logo.webp" alt="Shtëpia Ime Logo" className="h-10 w-auto" />
+          <img src={siteMedia.logo.src} alt={siteMedia.logo.alt} className="h-10 w-auto" />
           <span className="font-display text-xl font-semibold">Shtëpia Ime</span>
         </Link>
 

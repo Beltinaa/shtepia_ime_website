@@ -3,6 +3,7 @@ import Container from '../components/ui/Container';
 import SectionHeading from '../components/ui/SectionHeading';
 import RoomCard from '../components/rooms/RoomCard';
 import { rooms } from '../data/rooms';
+import { imageLibrary } from '../data/site';
 import { fadeInUp } from '../lib/animations';
 
 function Rooms() {
@@ -14,13 +15,23 @@ function Rooms() {
       transition={{ duration: 0.4, ease: 'easeOut' }}
       className="pt-28"
     >
-      <section className="section-shell bg-muted">
-        <Container>
-          <motion.div initial="hidden" animate="visible" variants={fadeInUp} className="max-w-4xl">
-            <SectionHeading
-              title="Our Rooms"
-              description="Our guest house consists of six comfortable rooms, carefully furnished to create a warm and homely atmosphere. Our accommodations are perfect for solo travelers, families, or groups of friends seeking a special place to stay."
-            />
+      <section className="relative flex min-h-[70vh] items-end overflow-hidden pb-16 pt-32 text-white">
+        <img
+          src={imageLibrary.roomWide}
+          alt="Wide guest room interior at Shtëpia Ime"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/48 via-foreground/34 to-foreground/62" />
+        <Container className="relative z-10">
+          <motion.div initial="hidden" animate="visible" variants={fadeInUp} className="max-w-3xl">
+            <h1 className="font-display text-5xl font-semibold leading-tight text-[#5f4b36] drop-shadow-sm sm:text-6xl">
+              Our Rooms
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg font-medium leading-8 text-[#5f4b36] drop-shadow-sm">
+              Our guest house consists of six comfortable rooms, carefully furnished to create a
+              warm and homely atmosphere. Our accommodations are perfect for solo travelers,
+              families, or groups of friends seeking a special place to stay.
+            </p>
           </motion.div>
         </Container>
       </section>

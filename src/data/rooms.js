@@ -1,12 +1,12 @@
 import { imageLibrary } from './site';
 
 const roomPhotos = {
-  fireplaceSuite: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800',
-  brightBalcony: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800',
-  deluxeSerene: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800',
-  deluxeModern: 'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800',
-  spaciousRetreat: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800',
-  luxeBedroom: 'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=800',
+  fireplaceSuite: imageLibrary.room1,
+  brightBalcony: imageLibrary.room2,
+  deluxeSerene: imageLibrary.room3,
+  deluxeModern: imageLibrary.room4,
+  spaciousRetreat: imageLibrary.room2,
+  luxeBedroom: imageLibrary.room4,
 };
 
 export const rooms = [
@@ -35,7 +35,7 @@ export const rooms = [
       'walk-in-shower',
     ],
     image: roomPhotos.fireplaceSuite,
-    images: [roomPhotos.fireplaceSuite, imageLibrary.roomWide, imageLibrary.roomDetail],
+    images: [roomPhotos.fireplaceSuite, imageLibrary.balcony, imageLibrary.roomWide],
   },
   {
     id: 2,
@@ -48,7 +48,7 @@ export const rooms = [
     size: 23,
     amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
     image: roomPhotos.brightBalcony,
-    images: [roomPhotos.brightBalcony, imageLibrary.roomSunlit, imageLibrary.roomDoor],
+    images: [roomPhotos.brightBalcony, imageLibrary.balcony, imageLibrary.roomSunlit],
   },
   {
     id: 3,
@@ -61,7 +61,7 @@ export const rooms = [
     size: 22,
     amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
     image: roomPhotos.deluxeSerene,
-    images: [roomPhotos.deluxeSerene, imageLibrary.roomWide, imageLibrary.roomDoor],
+    images: [roomPhotos.deluxeSerene, imageLibrary.balcony, imageLibrary.roomDoor],
   },
   {
     id: 4,
@@ -74,7 +74,7 @@ export const rooms = [
     size: 22,
     amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
     image: roomPhotos.deluxeModern,
-    images: [roomPhotos.deluxeModern, imageLibrary.roomSunlit, imageLibrary.roomDetail],
+    images: [roomPhotos.deluxeModern, imageLibrary.balcony, imageLibrary.roomDetail],
   },
   {
     id: 5,
@@ -87,7 +87,7 @@ export const rooms = [
     size: 26,
     amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
     image: roomPhotos.spaciousRetreat,
-    images: [roomPhotos.spaciousRetreat, imageLibrary.roomWide, imageLibrary.roomSunlit],
+    images: [roomPhotos.spaciousRetreat, imageLibrary.balcony, imageLibrary.roomSunlit],
   },
   {
     id: 6,
@@ -100,6 +100,6 @@ export const rooms = [
     size: 22,
     amenities: ['ac', 'minibar', 'terrace', 'garden-views', 'bathroom', 'walk-in-shower'],
     image: roomPhotos.luxeBedroom,
-    images: [roomPhotos.luxeBedroom, imageLibrary.roomDoor, imageLibrary.roomDetail],
+    images: [roomPhotos.luxeBedroom, imageLibrary.balcony, imageLibrary.roomDetail],
   },
 ];

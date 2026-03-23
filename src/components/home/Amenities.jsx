@@ -33,14 +33,14 @@ const amenities = [
 function Amenities() {
   return (
     <motion.section
-      className="section-shell bg-background"
+      className="section-shell bg-[#765d42]"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
       variants={staggerContainer}
     >
       <Container>
-        <SectionHeading title="Serene & Comfortable Stay" />
+        <SectionHeading title="Serene & Comfortable Stay" light />
         <motion.div variants={staggerContainer} className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {amenities.map(({ id, title, description }) => (
             <motion.article

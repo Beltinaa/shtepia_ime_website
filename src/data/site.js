@@ -12,6 +12,11 @@ export const siteDetails = {
 export const imageLibrary = {
   hero: '/images/climbing-and-hiking.webp',
   welcome: '/images/welcome.webp',
+  room1: '/images/room1.webp',
+  room2: '/images/room2.webp',
+  room3: '/images/room3.webp',
+  room4: '/images/room4.webp',
+  balcony: '/images/balcony.webp',
   roomSunlit: '/images/guest-room-sunlit-beds.webp',
   roomWide: '/images/guest-room-wide-bed.webp',
   roomDetail: '/images/guest-room-headboard-detail.webp',
@@ -24,6 +29,7 @@ export const imageLibrary = {
   canyon: '/images/climbing-and-hiking.webp',
   church: '/images/leusa-church.webp',
   permetLandscape: '/images/nemercka-mountain.webp',
+  topAttractionsBackground: '/images/benja-thermal-baths.webp',
   food: '/images/welcome.webp',
   gliko: '/images/gliko.webp',
   raki: '/images/permet-raki.webp',
@@ -35,7 +41,7 @@ export const imageLibrary = {
 
 export const siteMedia = {
   logo: {
-    src: '/image/logo.webp',
+    src: '/images/logo.webp',
     alt: 'Shtëpia Ime Logo',
   },
   hero: {

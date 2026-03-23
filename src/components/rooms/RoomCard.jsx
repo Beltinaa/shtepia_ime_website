@@ -15,7 +15,11 @@ function RoomCard({ room }) {
       whileHover={hoverEffects.lift}
       className="group flex h-full flex-col overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-md transition-all duration-300"
     >
-      <div className="relative h-64 overflow-hidden">
+      <Link
+        to={`/rooms/${room.slug}`}
+        aria-label={`View details for ${room.title}`}
+        className="relative block h-64 overflow-hidden"
+      >
         <img
           src={roomImage}
           alt={room.title}
@@ -25,7 +29,7 @@ function RoomCard({ room }) {
         <div className="absolute right-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-sm font-semibold text-primary shadow-sm backdrop-blur-sm">
           {room.size} m²
         </div>
-      </div>
+      </Link>
 
       <div className="flex flex-grow flex-col p-6">
         <h3 className="mb-3 min-h-[3.5rem] font-display text-2xl leading-tight text-foreground">

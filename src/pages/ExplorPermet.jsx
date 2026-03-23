@@ -49,7 +49,7 @@ function ExplorPermet() {
         variants={staggerContainer}
       >
         <img
-          src={imageLibrary.permetLandscape}
+          src={imageLibrary.topAttractionsBackground}
           alt=""
           className="absolute inset-0 h-full w-full object-cover"
         />
