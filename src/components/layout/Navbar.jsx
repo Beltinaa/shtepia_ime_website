@@ -35,6 +35,27 @@ function Navbar() {
     setMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [menuOpen]);
+
   const shellClasses = isTransparent
     ? 'border-transparent bg-transparent text-white'
     : 'border-primary/10 bg-white/95 text-foreground shadow-sm backdrop-blur';
@@ -43,13 +64,15 @@ function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${shellClasses}`}
     >
-      <Container className="flex h-20 items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
-          <img src={siteMedia.logo.src} alt={siteMedia.logo.alt} className="h-10 w-auto" />
-          <span className="font-display text-xl font-semibold">Shtëpia Ime</span>
+      <Container className="flex h-20 items-center justify-between gap-4">
+        <Link to="/" className="flex min-w-0 items-center gap-3">
+          <img src={siteMedia.logo.src} alt={siteMedia.logo.alt} className="h-9 w-auto sm:h-10" />
+          <span className="truncate font-display text-lg font-semibold sm:text-xl">
+            Shtëpia Ime
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-6 xl:gap-8 lg:flex" aria-label="Primary navigation">
           {navigation.map(({ label, to }) => (
             <NavLink
               key={to}
@@ -67,7 +90,7 @@ function Navbar() {
           ))}
           <a
             href={reservationEmailHref}
-            className="btn-primary btn-lift inline-flex items-center justify-center px-6 py-3 text-sm"
+            className="btn-primary btn-lift inline-flex items-center justify-center px-5 py-3 text-sm"
           >
             Book Now
           </a>
@@ -75,7 +98,7 @@ function Navbar() {
 
         <button
           type="button"
-          className={`inline-flex rounded-xl border p-3 transition duration-300 lg:hidden ${
+          className={`inline-flex min-h-[3rem] min-w-[3rem] items-center justify-center rounded-xl border p-3 transition duration-300 lg:hidden ${
             isTransparent ? 'border-white/30 text-white' : 'border-primary/15 text-primary'
           }`}
           onClick={() => setMenuOpen((value) => !value)}
@@ -92,8 +115,10 @@ function Navbar() {
         aria-hidden="true"
       />
       <div
-        className={`card-surface fixed right-4 top-24 z-50 w-[min(22rem,calc(100vw-2rem))] p-6 transition duration-300 lg:hidden ${
-          menuOpen ? 'translate-x-0 opacity-100' : 'translate-x-6 opacity-0'
+        className={`card-surface fixed inset-x-4 top-[5.5rem] z-50 max-h-[calc(100vh-6.5rem)] overflow-y-auto p-4 shadow-xl transition duration-300 sm:top-24 sm:p-6 lg:hidden ${
+          menuOpen
+            ? 'pointer-events-auto translate-y-0 opacity-100'
+            : 'pointer-events-none -translate-y-3 opacity-0'
         }`}
       >
         <nav className="flex flex-col gap-2" aria-label="Mobile navigation">
@@ -102,7 +127,7 @@ function Navbar() {
               key={to}
               to={to}
               className={({ isActive }) =>
-                `rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.16em] transition duration-300 ${
+                `rounded-xl px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.16em] transition duration-300 ${
                   isActive ? 'bg-muted text-primary' : 'text-foreground/70 hover:bg-muted'
                 }`
               }
@@ -112,7 +137,7 @@ function Navbar() {
           ))}
           <a
             href={reservationEmailHref}
-            className="btn-primary mt-4 inline-flex items-center justify-center text-sm"
+            className="btn-primary mt-4 inline-flex w-full items-center justify-center text-sm"
           >
             Book Now
           </a>

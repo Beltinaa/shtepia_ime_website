@@ -20,14 +20,16 @@ function SectionHeading({
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
       variants={fadeInUp}
-      className={className}
+      className={`min-w-0 ${className}`.trim()}
     >
       {eyebrow ? (
         <span className={`eyebrow ${eyebrowClasses} ${alignment}`.trim()}>{eyebrow}</span>
       ) : null}
-      <h2 className={`section-title ${titleClasses} ${alignment}`.trim()}>{title}</h2>
+      <h2 className={`section-title break-words ${titleClasses} ${alignment}`.trim()}>{title}</h2>
       {description ? (
-        <p className={`section-copy ${copyClasses} mt-6 ${alignment}`.trim()}>{description}</p>
+        <p className={`section-copy mt-6 break-words ${copyClasses} ${alignment}`.trim()}>
+          {description}
+        </p>
       ) : null}
     </motion.div>
   );

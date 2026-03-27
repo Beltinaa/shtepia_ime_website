@@ -41,7 +41,7 @@ function Amenities() {
     >
       <Container>
         <SectionHeading title="Serene & Comfortable Stay" light />
-        <motion.div variants={staggerContainer} className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <motion.div variants={staggerContainer} className="mt-12 grid gap-6 sm:mt-16 md:grid-cols-2 xl:grid-cols-4">
           {amenities.map(({ id, title, description }) => (
             <motion.article
               key={id}
@@ -51,13 +51,15 @@ function Amenities() {
                 boxShadow: '0 20px 40px rgba(26,26,26,0.08)',
                 transition: { duration: 0.3, ease: 'easeOut' },
               }}
-              className="card-surface p-8"
+              className="card-surface p-6 sm:p-8"
             >
               <span className="text-sm font-semibold uppercase tracking-[0.2em] text-primary/60">
                 {String(id).padStart(2, '0')}
               </span>
-              <h3 className="font-display text-2xl text-foreground">{title}</h3>
-              <p className="mt-4 text-muted-foreground">{description}</p>
+              <h3 className="mt-4 font-display text-xl text-foreground sm:text-2xl">{title}</h3>
+              <p className="mt-3 text-sm leading-7 text-muted-foreground sm:text-base">
+                {description}
+              </p>
             </motion.article>
           ))}
         </motion.div>

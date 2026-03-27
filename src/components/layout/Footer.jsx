@@ -6,37 +6,45 @@ import Container from '../ui/Container';
 
 function Footer() {
   return (
-    <footer className="border-t border-primary/10 bg-primary py-16 text-white">
+    <footer className="border-t border-primary/10 bg-primary py-12 text-white sm:py-16">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
-          <div className="max-w-md">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
+          <div className="max-w-md min-w-0">
             <div className="flex items-center gap-3">
               <img src={siteMedia.logo.src} alt={siteMedia.logo.alt} className="h-10 w-auto" />
-              <p className="font-display text-3xl">Shtëpia Ime</p>
+              <p className="font-display text-2xl sm:text-3xl">Shtëpia Ime</p>
             </div>
-            <p className="mt-5 text-white/74">
+            <p className="mt-4 text-sm leading-7 text-white/78 sm:mt-5 sm:text-base">
               Located in a serene and beautiful area of the city, our guest house offers comfort
               and relaxation for anyone looking to explore the &apos;City of Flowers&apos; and its
               breathtaking natural landscapes.
             </p>
           </div>
 
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-secondary">Contact</p>
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary sm:text-sm sm:tracking-[0.22em]">
+              Contact
+            </p>
             <div className="mt-5 space-y-4 text-white/78">
               <p className="flex items-start gap-3">
                 <MapPin size={18} className="mt-1 shrink-0 text-secondary" />
-                <span>{siteDetails.address}</span>
+                <span className="break-words leading-7">{siteDetails.address}</span>
               </p>
-              <div className="flex items-center gap-3">
-                <Phone size={18} className="shrink-0 text-secondary" />
-                <a href={`tel:${siteDetails.phone.replace(/\s+/g, '')}`} className="hover:text-white">
+              <div className="flex items-start gap-3">
+                <Phone size={18} className="mt-1 shrink-0 text-secondary" />
+                <a
+                  href={`tel:${siteDetails.phone.replace(/\s+/g, '')}`}
+                  className="break-words leading-7 hover:text-white"
+                >
                   {siteDetails.phone}
                 </a>
               </div>
-              <div className="mt-4 flex items-center gap-3">
-                <Mail size={18} className="shrink-0 text-secondary" />
-                <a href={`mailto:${siteDetails.email}`} className="hover:text-white">
+              <div className="mt-4 flex items-start gap-3">
+                <Mail size={18} className="mt-1 shrink-0 text-secondary" />
+                <a
+                  href={`mailto:${siteDetails.email}`}
+                  className="break-words leading-7 hover:text-white"
+                >
                   {siteDetails.email}
                 </a>
               </div>
@@ -45,17 +53,19 @@ function Footer() {
                   href="https://wa.me/355695602419"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 hover:text-white"
+                  className="flex items-start gap-3 leading-7 hover:text-white"
                 >
-                  <MessageCircle size={18} className="shrink-0 text-secondary" />
+                  <MessageCircle size={18} className="mt-1 shrink-0 text-secondary" />
                   {siteDetails.whatsapp}
                 </a>
               </div>
             </div>
           </div>
 
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-secondary">Explore</p>
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary sm:text-sm sm:tracking-[0.22em]">
+              Explore
+            </p>
             <div className="mt-5 flex flex-col gap-3 text-white/78">
               <Link to="/rooms" className="hover:text-white">
                 Rooms
@@ -76,7 +86,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6 text-sm text-white/55">
+        <div className="mt-10 border-t border-white/10 pt-5 text-sm text-white/55 sm:mt-12 sm:pt-6">
           <p>© 2026 Shtëpia Ime.</p>
         </div>
       </Container>

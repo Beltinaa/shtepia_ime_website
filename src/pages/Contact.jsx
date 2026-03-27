@@ -26,24 +26,24 @@ function ContactInfoCard({ item, index }) {
       href={item.href}
       target={item.label === 'WhatsApp' || item.label === 'Address' ? '_blank' : undefined}
       rel={item.label === 'WhatsApp' || item.label === 'Address' ? 'noopener noreferrer' : undefined}
-      className="group flex items-start gap-5 rounded-2xl border border-primary/10 bg-white p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-lg"
+      className="group flex items-start gap-4 rounded-2xl border border-primary/10 bg-white p-4 transition-all duration-300 hover:border-primary/30 hover:shadow-lg sm:gap-5 sm:p-5"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.3 + index * 0.1, ease: 'easeOut' }}
       whileHover={{ x: 4 }}
     >
-      <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary">
+      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary sm:h-14 sm:w-14">
         <Icon className="h-6 w-6 text-primary transition-colors group-hover:text-white" />
       </div>
       <div className="min-w-0 flex-1">
-        <span className="mb-1 block text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+        <span className="mb-1 block text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground sm:tracking-[0.18em]">
           {item.label}
         </span>
-        <span className="break-words text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+        <span className="break-words text-base font-semibold leading-7 text-foreground transition-colors group-hover:text-primary sm:text-lg">
           {item.value}
         </span>
       </div>
-      <ArrowRight className="mt-1 h-5 w-5 flex-shrink-0 text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <ArrowRight className="mt-1 hidden h-5 w-5 flex-shrink-0 text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:block" />
     </motion.a>
   );
 }
@@ -57,6 +57,15 @@ const initialFormData = {
   checkout: '',
   message: '',
 };
+
+const labelClasses =
+  'mb-2 flex flex-wrap items-center gap-1 text-sm font-medium leading-6 text-foreground';
+const optionalLabelClasses = 'text-xs text-[color:var(--muted-foreground)]';
+const fieldBaseClasses =
+  'w-full min-h-[3.25rem] rounded-lg border border-gray-200 bg-white px-4 py-3.5 text-base transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20';
+const fieldWithIconClasses = `${fieldBaseClasses} pl-12`;
+const errorFieldClasses =
+  'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200';
 
 function Contact() {
   const [formData, setFormData] = useState(initialFormData);
@@ -221,8 +230,8 @@ ${formData.message}
   };
 
   return (
-    <main className="min-h-screen bg-background pt-20">
-      <section className="relative overflow-hidden bg-primary py-24 lg:py-32">
+    <main className="min-h-screen bg-background">
+      <section className="relative overflow-hidden bg-primary pb-20 pt-28 sm:py-24 lg:py-32">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute left-0 top-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white blur-3xl" />
           <div className="absolute bottom-0 right-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-secondary blur-3xl" />
@@ -238,7 +247,7 @@ ${formData.message}
             <h1 className="mb-6 font-display text-4xl font-bold text-white md:text-5xl lg:text-6xl">
               Contact Us
             </h1>
-            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">
+            <p className="mx-auto max-w-2xl text-base leading-7 text-white/80 sm:text-lg sm:leading-relaxed md:text-xl">
               Looking for a cozy and welcoming place to stay? At Shtepia Ime guest house, we offer
               a peaceful retreat with all the comforts you need. We can&apos;t wait to welcome you!
             </p>
@@ -246,9 +255,9 @@ ${formData.message}
         </Container>
       </section>
 
-      <section className="py-16 lg:py-24">
+      <section className="py-14 sm:py-16 lg:py-24">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
+          <div className="grid gap-10 sm:gap-12 lg:grid-cols-5 lg:gap-16">
             <motion.div
               className="space-y-8 lg:col-span-2"
               initial={{ opacity: 0, x: -30 }}
@@ -259,8 +268,8 @@ ${formData.message}
                 <span className="text-sm font-medium uppercase tracking-[0.24em] text-primary">
                   Reach out to us
                 </span>
-                <h2 className="mt-2 font-display text-3xl md:text-4xl">Get in Touch</h2>
-                <p className="mt-4 text-[color:var(--muted-foreground)]">
+                <h2 className="mt-2 font-display text-2xl sm:text-3xl md:text-4xl">Get in Touch</h2>
+                <p className="mt-4 text-base leading-7 text-[color:var(--muted-foreground)]">
                   We&apos;d love to hear from you! Whether you need more information or want to
                   book your stay, feel free to reach out. Our team is here to assist you.
                 </p>
@@ -273,7 +282,7 @@ ${formData.message}
               </div>
 
               <motion.div
-                className="rounded-2xl bg-muted/70 p-6"
+                className="rounded-2xl bg-muted/70 p-5 sm:p-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.7, ease: 'easeOut' }}
@@ -284,7 +293,7 @@ ${formData.message}
                   </div>
                   <h3 className="text-lg font-semibold text-foreground">Response Time</h3>
                 </div>
-                <p className="text-sm text-[color:var(--muted-foreground)]">
+                <p className="text-sm leading-6 text-[color:var(--muted-foreground)]">
                   We typically respond within 2-4 hours during business hours. For urgent inquiries,
                   please contact us via WhatsApp.
                 </p>
@@ -298,7 +307,7 @@ ${formData.message}
               >
                 <a
                   href="mailto:info@shtepiaime.eu?subject=Booking%20Inquiry"
-                  className="btn-primary flex flex-1 items-center justify-center gap-2 px-6 py-3 text-base"
+                  className="btn-primary flex w-full flex-1 items-center justify-center gap-2 px-6 py-3 text-base"
                 >
                   <Mail className="h-5 w-5" />
                   Email Us
@@ -307,7 +316,7 @@ ${formData.message}
                   href="https://wa.me/355695602419?text=Hello!%20I%20would%20like%20to%20inquire%20about%20booking%20a%20room."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-green-600 px-6 py-3 font-medium text-white transition-colors hover:bg-green-700"
+                  className="flex min-h-[3.25rem] w-full flex-1 items-center justify-center gap-2 rounded-xl bg-green-600 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-green-700"
                 >
                   <MessageCircle className="h-5 w-5" />
                   WhatsApp
@@ -321,10 +330,10 @@ ${formData.message}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
             >
-              <div className="rounded-2xl border border-gray-100 bg-white p-8 shadow-xl lg:p-10">
+              <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-xl sm:p-6 lg:p-10">
                 <div className="mb-8">
-                  <h2 className="font-display text-2xl md:text-3xl">Send us a Message</h2>
-                  <p className="mt-2 text-[color:var(--muted-foreground)]">
+                  <h2 className="font-display text-2xl sm:text-3xl">Send us a Message</h2>
+                  <p className="mt-2 text-base leading-7 text-[color:var(--muted-foreground)]">
                     Fill out the form below and we&apos;ll get back to you as soon as possible.
                   </p>
                 </div>
@@ -335,10 +344,10 @@ ${formData.message}
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="mb-6 flex items-center gap-3 rounded-xl border border-green-200 bg-green-50 p-4"
+                      className="mb-6 flex items-start gap-3 rounded-xl border border-green-200 bg-green-50 p-4"
                     >
                       <CheckCircle className="h-5 w-5 flex-shrink-0 text-green-600" />
-                      <p className="text-sm text-green-800">
+                      <p className="text-sm leading-6 text-green-800">
                         Your email client should open shortly. Thank you for reaching out!
                       </p>
                     </motion.div>
@@ -348,7 +357,7 @@ ${formData.message}
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid gap-6 md:grid-cols-2">
                     <div>
-                      <label className="mb-2 block text-sm font-medium text-foreground">
+                      <label className={labelClasses}>
                         Name <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
@@ -360,10 +369,10 @@ ${formData.message}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           placeholder="Your full name"
-                          className={`w-full rounded-lg border py-3.5 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
+                          className={`${fieldWithIconClasses} ${
                             errors.name && touched.name
-                              ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200'
-                              : 'border-gray-200 focus:border-primary focus:ring-primary/20'
+                              ? errorFieldClasses
+                              : ''
                           }`}
                         />
                       </div>
@@ -383,7 +392,7 @@ ${formData.message}
                     </div>
 
                     <div>
-                      <label className="mb-2 block text-sm font-medium text-foreground">
+                      <label className={labelClasses}>
                         Email <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
@@ -395,10 +404,10 @@ ${formData.message}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           placeholder="your@email.com"
-                          className={`w-full rounded-lg border py-3.5 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
+                          className={`${fieldWithIconClasses} ${
                             errors.email && touched.email
-                              ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200'
-                              : 'border-gray-200 focus:border-primary focus:ring-primary/20'
+                              ? errorFieldClasses
+                              : ''
                           }`}
                         />
                       </div>
@@ -420,8 +429,8 @@ ${formData.message}
 
                   <div className="grid gap-6 md:grid-cols-2">
                     <div>
-                      <label className="mb-2 block text-sm font-medium text-foreground">
-                        Phone <span className="text-xs text-[color:var(--muted-foreground)]">(Optional)</span>
+                      <label className={labelClasses}>
+                        Phone <span className={optionalLabelClasses}>(Optional)</span>
                       </label>
                       <div className="relative">
                         <Phone className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[color:var(--muted-foreground)]" />
@@ -432,10 +441,10 @@ ${formData.message}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           placeholder="+355 69 XXX XXXX"
-                          className={`w-full rounded-lg border py-3.5 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
+                          className={`${fieldWithIconClasses} ${
                             errors.phone && touched.phone
-                              ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200'
-                              : 'border-gray-200 focus:border-primary focus:ring-primary/20'
+                              ? errorFieldClasses
+                              : ''
                           }`}
                         />
                       </div>
@@ -455,15 +464,14 @@ ${formData.message}
                     </div>
 
                     <div>
-                      <label className="mb-2 block text-sm font-medium text-foreground">
-                        Select Room{' '}
-                        <span className="text-xs text-[color:var(--muted-foreground)]">(Optional)</span>
+                      <label className={labelClasses}>
+                        Select Room <span className={optionalLabelClasses}>(Optional)</span>
                       </label>
                       <select
                         name="room"
                         value={formData.room}
                         onChange={handleChange}
-                        className="w-full cursor-pointer appearance-none rounded-lg border border-gray-200 bg-white px-4 py-3.5 transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        className={`${fieldBaseClasses} cursor-pointer appearance-none`}
                       >
                         <option value="">Choose a room...</option>
                         {roomOptions.map((room) => (
@@ -477,9 +485,8 @@ ${formData.message}
 
                   <div className="grid gap-6 md:grid-cols-2">
                     <div>
-                      <label className="mb-2 block text-sm font-medium text-foreground">
-                        Check-in Date{' '}
-                        <span className="text-xs text-[color:var(--muted-foreground)]">(Optional)</span>
+                      <label className={labelClasses}>
+                        Check-in Date <span className={optionalLabelClasses}>(Optional)</span>
                       </label>
                       <div className="relative">
                         <Calendar className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[color:var(--muted-foreground)]" />
@@ -490,10 +497,10 @@ ${formData.message}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           min={today}
-                          className={`w-full cursor-pointer rounded-lg border py-3.5 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
+                          className={`${fieldWithIconClasses} cursor-pointer ${
                             errors.checkin && touched.checkin
-                              ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200'
-                              : 'border-gray-200 focus:border-primary focus:ring-primary/20'
+                              ? errorFieldClasses
+                              : ''
                           }`}
                         />
                       </div>
@@ -513,9 +520,8 @@ ${formData.message}
                     </div>
 
                     <div>
-                      <label className="mb-2 block text-sm font-medium text-foreground">
-                        Check-out Date{' '}
-                        <span className="text-xs text-[color:var(--muted-foreground)]">(Optional)</span>
+                      <label className={labelClasses}>
+                        Check-out Date <span className={optionalLabelClasses}>(Optional)</span>
                       </label>
                       <div className="relative">
                         <Calendar className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[color:var(--muted-foreground)]" />
@@ -526,10 +532,10 @@ ${formData.message}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           min={formData.checkin || today}
-                          className={`w-full cursor-pointer rounded-lg border py-3.5 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
+                          className={`${fieldWithIconClasses} cursor-pointer ${
                             errors.checkout && touched.checkout
-                              ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200'
-                              : 'border-gray-200 focus:border-primary focus:ring-primary/20'
+                              ? errorFieldClasses
+                              : ''
                           }`}
                         />
                       </div>
@@ -550,7 +556,7 @@ ${formData.message}
                   </div>
 
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-foreground">
+                    <label className={labelClasses}>
                       Message <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -562,15 +568,15 @@ ${formData.message}
                         onBlur={handleBlur}
                         placeholder="Tell us about your stay requirements, special requests, or any questions you have..."
                         rows={5}
-                        className={`w-full resize-none rounded-lg border py-3.5 pl-12 pr-4 transition-colors focus:outline-none focus:ring-2 ${
+                        className={`${fieldWithIconClasses} resize-none ${
                           errors.message && touched.message
-                            ? 'border-red-300 bg-red-50 focus:border-red-500 focus:ring-red-200'
-                            : 'border-gray-200 focus:border-primary focus:ring-primary/20'
+                            ? errorFieldClasses
+                            : ''
                         }`}
                       />
                     </div>
 
-                    <div className="mt-2 flex justify-between">
+                    <div className="mt-2 flex flex-wrap items-start justify-between gap-2">
                       <AnimatePresence>
                         {errors.message && touched.message ? (
                           <motion.p
@@ -601,7 +607,7 @@ ${formData.message}
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`flex w-full items-center justify-center gap-3 rounded-xl px-8 py-4 text-lg font-semibold text-white transition-all duration-300 ${
+                    className={`flex min-h-[3.25rem] w-full items-center justify-center gap-3 rounded-xl px-8 py-4 text-base font-semibold text-white transition-all duration-300 sm:text-lg ${
                       isSubmitting
                         ? 'cursor-not-allowed bg-primary/70'
                         : 'bg-primary hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25'
@@ -648,7 +654,7 @@ ${formData.message}
         </Container>
       </section>
 
-      <section className="bg-muted py-16">
+      <section className="bg-muted py-14 sm:py-16">
         <Container>
           <motion.div
             className="mb-10 text-center"
@@ -658,7 +664,7 @@ ${formData.message}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <h2 className="font-display text-3xl md:text-4xl">Find Us</h2>
-            <p className="mt-4 text-[color:var(--muted-foreground)]">
+            <p className="mt-4 text-base leading-7 text-[color:var(--muted-foreground)]">
               Located in the heart of Permet, just 500m from the city center
             </p>
           </motion.div>
@@ -673,7 +679,7 @@ ${formData.message}
             <iframe
               title="Map showing the location of Shtepia Ime in Permet"
               src={siteDetails.mapEmbedUrl}
-              className="h-[450px] w-full border-0"
+              className="h-[320px] w-full border-0 sm:h-[450px]"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

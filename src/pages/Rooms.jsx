@@ -13,21 +13,20 @@ function Rooms() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
-      className="pt-28"
     >
-      <section className="relative flex min-h-[70vh] items-end overflow-hidden pb-16 pt-32 text-white">
+      <section className="relative flex min-h-[60vh] items-end overflow-hidden pb-12 pt-28 text-white sm:min-h-[70vh] sm:pb-16 sm:pt-32">
         <img
           src={imageLibrary.roomWide}
           alt="Wide guest room interior at Shtëpia Ime"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/48 via-foreground/34 to-foreground/62" />
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/58 via-foreground/40 to-foreground/72" />
         <Container className="relative z-10">
           <motion.div initial="hidden" animate="visible" variants={fadeInUp} className="max-w-3xl">
-            <h1 className="font-display text-5xl font-semibold leading-tight text-[#5f4b36] drop-shadow-sm sm:text-6xl">
+            <h1 className="font-display text-4xl font-semibold leading-tight text-white sm:text-5xl md:text-6xl">
               Our Rooms
             </h1>
-            <p className="mt-6 max-w-2xl text-lg font-medium leading-8 text-[#5f4b36] drop-shadow-sm">
+            <p className="mt-6 max-w-2xl text-base leading-7 text-white/88 sm:text-lg sm:leading-8">
               Our guest house consists of six comfortable rooms, carefully furnished to create a
               warm and homely atmosphere. Our accommodations are perfect for solo travelers,
               families, or groups of friends seeking a special place to stay.
@@ -47,7 +46,7 @@ function Rooms() {
 
       <section className="section-shell bg-background">
         <Container>
-          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 xl:grid-cols-3">
             {rooms.map((room) => (
               <RoomCard key={room.id} room={room} />
             ))}

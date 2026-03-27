@@ -19,18 +19,15 @@ function FeaturedRooms() {
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading title="Our Rooms" />
           <motion.div variants={fadeInUp}>
-            <Button as="link" to="/rooms" variant="secondary">
+            <Button as="link" to="/rooms" variant="secondary" className="w-full sm:w-auto">
               View All →
             </Button>
           </motion.div>
         </div>
 
-        <motion.div
-          variants={staggerContainer}
-          className="-mx-4 mt-16 flex snap-x gap-6 overflow-x-auto px-4 pb-2 md:mx-0 md:grid md:grid-cols-2 md:px-0"
-        >
+        <motion.div variants={staggerContainer} className="mt-12 grid gap-6 sm:mt-16 md:grid-cols-2">
           {rooms.slice(0, 2).map((room) => (
-            <motion.div key={room.id} variants={fadeInUp} className="snap-start md:min-w-0">
+            <motion.div key={room.id} variants={fadeInUp} className="min-w-0">
               <RoomCard room={room} />
             </motion.div>
           ))}

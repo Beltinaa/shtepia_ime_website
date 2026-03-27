@@ -8,7 +8,7 @@ function Welcome() {
   return (
     <section id="welcome" className="section-shell bg-background">
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+        <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -34,14 +34,14 @@ function Welcome() {
             <h2 className="section-title mt-5 max-w-2xl">
               A peaceful guesthouse rooted in warmth and place
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
+            <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
               Located in a serene and beautiful area of the city, our guest house offers comfort
               and relaxation for anyone looking to explore the &apos;City of Flowers&apos; and its
               breathtaking natural landscapes.
             </p>
             <Link
               to="/about"
-              className="btn-primary mt-8 inline-flex items-center justify-center"
+              className="btn-primary mt-8 inline-flex w-full items-center justify-center sm:w-auto"
             >
               Read More
             </Link>

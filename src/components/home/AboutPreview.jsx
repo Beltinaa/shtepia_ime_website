@@ -10,7 +10,7 @@ function AboutPreview() {
   return (
     <section className="section-shell bg-background">
       <Container>
-        <div className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <div className="grid items-start gap-10 sm:gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -18,7 +18,7 @@ function AboutPreview() {
             variants={fadeInLeft}
           >
             <SectionHeading title="make your stay truly exceptional" />
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">
+            <p className="mt-6 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
               Shtëpia Ime – a charming and cozy guest house in the heart of Përmet, where the
               warmth of Albanian hospitality meets the tranquility of nature. Our name, meaning
               &apos;My Home&apos;, reflects our dedication to creating a welcoming and comfortable

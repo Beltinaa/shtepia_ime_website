@@ -23,7 +23,7 @@ function Experiences() {
           />
         </div>
 
-        <motion.div variants={staggerContainer} className="mt-16 grid gap-6 lg:grid-cols-3">
+        <motion.div variants={staggerContainer} className="mt-12 grid gap-6 sm:mt-16 lg:grid-cols-3">
           {experiences.map((experience) => (
             <motion.div key={experience.id} variants={fadeInUp}>
               <ExperienceCard experience={experience} />
@@ -34,7 +34,7 @@ function Experiences() {
         <motion.a
           variants={fadeInUp}
           href={reservationEmailHref}
-          className="btn-primary mt-10 inline-flex items-center justify-center"
+          className="btn-primary mt-10 inline-flex w-full items-center justify-center sm:w-auto"
         >
           Book Your Adventure Today!
         </motion.a>

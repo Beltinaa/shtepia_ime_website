@@ -30,27 +30,30 @@ function Testimonials() {
       <Container>
         <SectionHeading eyebrow="Testimonials" title="Guest Experiences" />
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div className="mt-12 grid gap-6 sm:mt-16 lg:grid-cols-[1fr_auto] lg:items-end">
           <motion.article
             key={`${review.name}-${review.country}`}
             initial="hidden"
             animate="visible"
             variants={scaleIn}
-            className="card-surface-lg p-8 sm:p-12"
+            className="card-surface-lg p-6 sm:p-10 lg:p-12"
           >
-            <Quote size={36} className="text-secondary" />
-            <p className="mt-8 max-w-3xl font-display text-3xl leading-tight text-foreground sm:text-4xl">
+            <Quote size={32} className="text-secondary sm:h-9 sm:w-9" />
+            <p className="mt-6 max-w-3xl font-display text-2xl leading-tight text-foreground sm:mt-8 sm:text-3xl lg:text-4xl">
               “{review.text}”
             </p>
-            <p className="mt-8 text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground sm:mt-8 sm:tracking-[0.2em]">
               {review.name}, {review.country}
             </p>
           </motion.article>
 
-          <motion.div variants={fadeInUp} className="flex items-center gap-3 lg:flex-col lg:items-end">
+          <motion.div
+            variants={fadeInUp}
+            className="flex w-full items-center justify-between gap-3 sm:justify-start lg:w-auto lg:flex-col lg:items-end"
+          >
             <button
               type="button"
-              className="btn-lift inline-flex rounded-full border border-primary/15 bg-white p-3 text-primary transition duration-300 hover:bg-primary hover:text-white"
+              className="btn-lift inline-flex min-h-[3rem] min-w-[3rem] items-center justify-center rounded-full border border-primary/15 bg-white p-3 text-primary transition duration-300 hover:bg-primary hover:text-white"
               onClick={() =>
                 setActiveIndex((activeIndex - 1 + testimonials.length) % testimonials.length)
               }
@@ -69,7 +72,7 @@ function Testimonials() {
           </motion.div>
         </div>
 
-        <div className="mt-8 flex gap-2">
+        <div className="mt-8 flex justify-center gap-2 sm:justify-start">
           {testimonials.map((item, index) => (
             <button
               key={`${item.name}-${item.country}`}

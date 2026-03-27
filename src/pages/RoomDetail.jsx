@@ -62,10 +62,10 @@ function RoomDetail() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
-      className="min-h-screen bg-background pb-24 pt-24 lg:pb-32"
+      className="min-h-screen bg-background pb-24 pt-24 sm:pt-28 lg:pb-32"
     >
       <Container>
-        <div className="mb-10">
+        <div className="mb-8 sm:mb-10">
           <Link
             to="/rooms"
             className="inline-flex items-center gap-2 text-sm font-medium tracking-[0.08em] text-muted-foreground transition-colors hover:text-primary"
@@ -75,7 +75,7 @@ function RoomDetail() {
           </Link>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div className="grid gap-8 sm:gap-12 lg:grid-cols-2 lg:items-start">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -85,12 +85,12 @@ function RoomDetail() {
             <img
               src={room.image ?? room.images?.[0]}
               alt={room.title}
-              className="h-[26rem] w-full object-cover md:h-[34rem]"
+              className="h-64 w-full object-cover sm:h-[26rem] md:h-[34rem]"
             />
           </motion.div>
 
           <motion.div initial="hidden" animate="visible" variants={fadeInRight}>
-            <h1 className="font-display text-4xl leading-tight text-foreground md:text-5xl">
+            <h1 className="font-display text-3xl leading-tight text-foreground sm:text-4xl md:text-5xl">
               {room.title}
             </h1>
 
@@ -109,7 +109,9 @@ function RoomDetail() {
               </div>
             </div>
 
-            <p className="mb-8 text-lg leading-8 text-muted-foreground">{room.description}</p>
+            <p className="mb-8 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+              {room.description}
+            </p>
 
             <div className="mb-10">
               <h2 className="font-body text-lg font-semibold text-foreground">Amenities</h2>
@@ -124,7 +126,10 @@ function RoomDetail() {
                   const Icon = item.icon;
 
                   return (
-                    <div key={amenity} className="flex items-center gap-3 text-muted-foreground">
+                    <div
+                      key={amenity}
+                      className="flex items-center gap-3 text-sm text-muted-foreground sm:text-base"
+                    >
                       <Icon className="h-5 w-5 text-primary" />
                       <span className="capitalize">{item.label}</span>
                     </div>
@@ -136,7 +141,7 @@ function RoomDetail() {
             <div className="flex flex-col gap-4 sm:flex-row">
               <a
                 href={buildRoomEmailHref(room.title)}
-                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 font-semibold text-white transition-colors hover:bg-primary-light"
+                className="flex min-h-[3.25rem] w-full flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-primary-light"
               >
                 <Mail className="h-5 w-5" />
                 Book via Email
@@ -145,7 +150,7 @@ function RoomDetail() {
                 href={buildRoomWhatsAppHref(room.title)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-green-600 px-6 py-4 font-semibold text-white transition-colors hover:bg-green-700"
+                className="flex min-h-[3.25rem] w-full flex-1 items-center justify-center gap-2 rounded-xl bg-green-600 px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-green-700"
               >
                 <MessageCircle className="h-5 w-5" />
                 Book via WhatsApp

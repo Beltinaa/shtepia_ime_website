@@ -24,7 +24,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen overflow-x-clip bg-background text-foreground">
       <ScrollToTop />
       <Navbar />
       <AnimatePresence mode="wait">

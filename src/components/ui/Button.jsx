@@ -6,13 +6,13 @@ const variantClasses = {
 };
 
 const sizeClasses = {
-  sm: 'px-4 py-2.5 text-sm',
-  md: 'px-6 py-3 text-sm sm:text-base',
-  lg: 'px-8 py-4 text-base',
+  sm: 'px-4 py-3 text-sm',
+  md: 'px-5 py-3.5 text-sm sm:px-6 sm:text-base',
+  lg: 'px-6 py-3.5 text-sm sm:px-8 sm:py-4 sm:text-base',
 };
 
 function sharedClasses({ variant, size, className }) {
-  return `btn-lift inline-flex items-center justify-center font-semibold transition duration-300 ease-out ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
+  return `btn-lift inline-flex items-center justify-center text-center font-semibold whitespace-normal transition duration-300 ease-out ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
 }
 
 function Button({

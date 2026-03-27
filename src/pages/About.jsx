@@ -21,9 +21,8 @@ function About() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
-      className="pt-20"
     >
-      <section className="relative flex min-h-[70vh] items-end overflow-hidden pb-16 pt-32 text-white">
+      <section className="relative flex min-h-[60vh] items-end overflow-hidden pb-12 pt-28 text-white sm:min-h-[70vh] sm:pb-16 sm:pt-32">
         <img
           src={siteMedia.aboutHero.src}
           alt={siteMedia.aboutHero.alt}
@@ -37,8 +36,8 @@ function About() {
             variants={fadeInUp}
             className="max-w-3xl"
           >
-            <h1 className="font-display text-5xl leading-tight sm:text-6xl">About Us</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">
+            <h1 className="font-display text-4xl leading-tight sm:text-5xl md:text-6xl">About Us</h1>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-white/85 sm:text-lg sm:leading-8">
               Join us at GuestHouse &apos;Shtëpia ime&apos; for a stay filled with warmth, comfort,
               and unforgettable moments in the heart of Përmet. Whether you&apos;re here to explore
               nature, relax in a peaceful setting, or experience local hospitality, we&apos;re
@@ -50,7 +49,7 @@ function About() {
 
       <section className="section-shell bg-background">
         <Container>
-          <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+          <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -61,7 +60,7 @@ function About() {
               <img
                 src={siteMedia.aboutStory.src}
                 alt={siteMedia.aboutStory.alt}
-                className="h-full min-h-[520px] w-full object-cover"
+                className="h-full min-h-[320px] w-full object-cover sm:min-h-[420px] lg:min-h-[520px]"
               />
             </motion.div>
 
@@ -76,7 +75,7 @@ function About() {
                 title="Welcome to Shtëpia Ime"
                 description="We are a charming and cozy guest house in the heart of Përmet, where the warmth of Albanian hospitality meets the tranquility of nature. Our name, meaning 'My Home', reflects our dedication to creating a welcoming and comfortable atmosphere for every guest who walks through our doors. Whether you are visiting Përmet for its breathtaking landscapes, rich cultural heritage, or simply seeking a peaceful retreat, we are here to make your stay memorable."
               />
-              <Button as="link" to="/rooms" className="mt-8">
+              <Button as="link" to="/rooms" className="mt-8 w-full sm:w-auto">
                 Our Rooms
               </Button>
             </motion.div>
@@ -92,73 +91,79 @@ function About() {
         variants={staggerContainer}
       >
         <Container>
-          <motion.div variants={staggerContainer} className="grid gap-6 md:grid-cols-2 xl:grid-cols-6">
-            <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/60">
+          <motion.div
+            variants={staggerContainer}
+            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6"
+          >
+            <motion.article variants={fadeInUp} className="panel-card p-5 text-center sm:p-6">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary/60">
                 Rating
               </p>
-              <p className="font-display text-4xl text-primary">{ratings.staff}</p>
-              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-muted-foreground">Staff</p>
+              <p className="font-display text-3xl text-primary sm:text-4xl">{ratings.staff}</p>
+              <p className="mt-3 text-sm uppercase tracking-[0.16em] text-muted-foreground">Staff</p>
             </motion.article>
-            <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/60">
+            <motion.article variants={fadeInUp} className="panel-card p-5 text-center sm:p-6">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary/60">
                 Rating
               </p>
-              <p className="font-display text-4xl text-primary">{ratings.facilities}</p>
-              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-muted-foreground">
+              <p className="font-display text-3xl text-primary sm:text-4xl">{ratings.facilities}</p>
+              <p className="mt-3 text-sm uppercase tracking-[0.16em] text-muted-foreground">
                 Facilities
               </p>
             </motion.article>
-            <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/60">
+            <motion.article variants={fadeInUp} className="panel-card p-5 text-center sm:p-6">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary/60">
                 Rating
               </p>
-              <p className="font-display text-4xl text-primary">{ratings.cleanliness}</p>
-              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-muted-foreground">
+              <p className="font-display text-3xl text-primary sm:text-4xl">{ratings.cleanliness}</p>
+              <p className="mt-3 text-sm uppercase tracking-[0.16em] text-muted-foreground">
                 Cleanliness
               </p>
             </motion.article>
-            <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/60">
+            <motion.article variants={fadeInUp} className="panel-card p-5 text-center sm:p-6">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary/60">
                 Rating
               </p>
-              <p className="font-display text-4xl text-primary">{ratings.comfort}</p>
-              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-muted-foreground">
+              <p className="font-display text-3xl text-primary sm:text-4xl">{ratings.comfort}</p>
+              <p className="mt-3 text-sm uppercase tracking-[0.16em] text-muted-foreground">
                 Comfort
               </p>
             </motion.article>
-            <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/60">
+            <motion.article variants={fadeInUp} className="panel-card p-5 text-center sm:p-6">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary/60">
                 Rating
               </p>
-              <p className="font-display text-4xl text-primary">{ratings.valueForMoney}</p>
-              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-muted-foreground">
+              <p className="font-display text-3xl text-primary sm:text-4xl">{ratings.valueForMoney}</p>
+              <p className="mt-3 text-sm uppercase tracking-[0.16em] text-muted-foreground">
                 Value for Money
               </p>
             </motion.article>
-            <motion.article variants={fadeInUp} className="panel-card p-6 text-center">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/60">
+            <motion.article variants={fadeInUp} className="panel-card p-5 text-center sm:p-6">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-primary/60">
                 Rating
               </p>
-              <p className="font-display text-4xl text-primary">{ratings.location}</p>
-              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-muted-foreground">
+              <p className="font-display text-3xl text-primary sm:text-4xl">{ratings.location}</p>
+              <p className="mt-3 text-sm uppercase tracking-[0.16em] text-muted-foreground">
                 Location
               </p>
             </motion.article>
           </motion.div>
-          <motion.p variants={fadeInUp} className="mt-10 text-center text-lg text-muted-foreground">
+          <motion.p
+            variants={fadeInUp}
+            className="mt-10 text-center text-base text-muted-foreground sm:text-lg"
+          >
             We pride ourselves on delivering unparalleled service to our guests.
           </motion.p>
         </Container>
       </motion.section>
 
       <section className="section-shell bg-background">
-        <Container className="space-y-24">
+        <Container className="space-y-16 sm:space-y-24">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-100px' }}
-            className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20"
+            className="grid items-center gap-10 sm:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20"
           >
             <motion.div variants={fadeInLeft}>
               <img
@@ -168,10 +173,10 @@ function About() {
               />
             </motion.div>
             <motion.div variants={fadeInRight}>
-              <h2 className="font-display text-4xl leading-tight sm:text-5xl">
+              <h2 className="font-display text-3xl leading-tight sm:text-4xl lg:text-5xl">
                 A Home Away from Home
               </h2>
-              <p className="mt-6 text-lg leading-8 text-muted-foreground">
+              <p className="mt-6 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
                 At Shtëpia Ime, we believe that every guest deserves a place where they can feel at
                 ease, relax, and fully enjoy their journey. Our guest house is designed with a
                 homely and inviting ambiance, offering the perfect balance between traditional charm
@@ -186,13 +191,13 @@ function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-100px' }}
-            className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20"
+            className="grid items-center gap-10 sm:gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20"
           >
             <motion.div variants={fadeInLeft}>
-              <h2 className="font-display text-4xl leading-tight sm:text-5xl">
+              <h2 className="font-display text-3xl leading-tight sm:text-4xl lg:text-5xl">
                 An Oasis of Tranquility
               </h2>
-              <p className="mt-6 text-lg leading-8 text-muted-foreground">
+              <p className="mt-6 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
                 Surrounded by lush greenery, Shtëpia Ime features a spacious courtyard where guests
                 can unwind, read a book, or simply enjoy the fresh air under the shade of trees.
                 One of the highlights of our outdoor space is our seasonal fruit garden, where
@@ -214,7 +219,7 @@ function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-100px' }}
-            className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20"
+            className="grid items-center gap-10 sm:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20"
           >
             <motion.div variants={fadeInLeft}>
               <img
@@ -224,10 +229,10 @@ function About() {
               />
             </motion.div>
             <motion.div variants={fadeInRight}>
-              <h2 className="font-display text-4xl leading-tight sm:text-5xl">
+              <h2 className="font-display text-3xl leading-tight sm:text-4xl lg:text-5xl">
                 Authentic Hospitality
               </h2>
-              <p className="mt-6 text-lg leading-8 text-muted-foreground">
+              <p className="mt-6 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
                 What truly sets us apart is our commitment to hospitality. We take pride in
                 offering personalized service, ensuring that each guest feels valued and cared for
                 throughout their stay. Whether it&apos;s providing local recommendations, arranging
@@ -245,7 +250,7 @@ function About() {
             title="Explore Përmet"
             description="At Shtëpia Ime, we invite you to embrace the beauty of Përmet while enjoying the comfort of a home away from home. Whether you're here for a weekend escape, a cultural journey, or an outdoor adventure, our doors are always open to welcome you."
           />
-          <Button as="link" to="/explore-permet" className="mt-10">
+          <Button as="link" to="/explore-permet" className="mt-10 w-full sm:w-auto">
             Explore Përmet
           </Button>
         </Container>

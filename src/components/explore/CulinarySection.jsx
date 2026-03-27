@@ -23,7 +23,7 @@ function CulinarySection() {
 
         <motion.div
           variants={staggerContainer}
-          className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+          className="mt-12 grid gap-6 sm:mt-16 md:grid-cols-2 lg:grid-cols-4"
         >
           {culinaryDelights.map((item) => (
             <motion.article
@@ -36,7 +36,7 @@ function CulinarySection() {
               }}
               className="card-surface overflow-hidden transition-shadow duration-300"
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-44 overflow-hidden sm:h-48">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -47,11 +47,13 @@ function CulinarySection() {
                 </div>
               </div>
 
-              <div className="p-6">
+              <div className="p-5 sm:p-6">
                 <h3 className="font-display text-xl font-semibold leading-tight text-foreground">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm text-muted-foreground">{item.description}</p>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
+                  {item.description}
+                </p>
               </div>
             </motion.article>
           ))}

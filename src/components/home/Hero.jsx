@@ -188,9 +188,9 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/35 to-foreground/65" />
       <div className="absolute inset-0 bg-foreground/10" />
 
-      <Container className="relative z-10 flex min-h-screen items-center justify-center px-4 py-32">
+      <Container className="relative z-10 flex min-h-screen items-center justify-center pb-24 pt-32 sm:py-32">
         <motion.div
-          className="max-w-5xl text-center"
+          className="max-w-4xl text-center"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
@@ -201,40 +201,40 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
           >
-            <span className="hero-text-shadow block text-4xl font-light text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            <span className="hero-text-shadow block text-3xl font-light text-white sm:text-5xl md:text-6xl lg:text-7xl">
               Experience
             </span>
-            <span className="hero-title-green block text-5xl font-semibold sm:text-6xl md:text-7xl lg:text-8xl">
+            <span className="hero-title-green mt-2 block text-4xl font-semibold sm:text-6xl md:text-7xl lg:text-8xl">
               Comfort &amp; Authenticity
             </span>
-            <span className="hero-text-shadow mt-4 block text-2xl font-light tracking-[0.08em] text-white/92 sm:text-3xl md:text-4xl">
+            <span className="hero-text-shadow mt-5 block text-xl font-light tracking-[0.06em] text-white/92 sm:text-3xl md:text-4xl">
               in the Heart of Përmet
             </span>
           </motion.h1>
 
           <motion.p
-            className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-white/95 sm:text-xl"
+            className="mx-auto mt-6 max-w-3xl text-base leading-7 text-white/95 sm:mt-8 sm:text-xl sm:leading-8"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
           >
-            <span className="hero-text-shadow inline-block rounded-2xl border border-white/20 bg-black/20 px-5 py-3 backdrop-blur-md">
+            <span className="hero-text-shadow inline-block rounded-2xl border border-white/20 bg-black/20 px-4 py-3 backdrop-blur-md sm:px-5">
               Where Albanian hospitality meets the tranquility of nature
             </span>
           </motion.p>
 
           <motion.div
-            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+            className="mx-auto mt-8 flex w-full max-w-sm flex-col items-stretch justify-center gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:items-center"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
           >
-            <Button as="a" href={reservationEmailHref} size="lg">
+            <Button as="a" href={reservationEmailHref} size="lg" className="w-full sm:w-auto">
               Book Your Stay
             </Button>
             <a
               href="/rooms"
-              className="inline-flex items-center justify-center rounded-xl border border-white/35 bg-white/12 px-8 py-4 text-base font-semibold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20"
+              className="inline-flex w-full items-center justify-center rounded-xl border border-white/35 bg-white/12 px-6 py-3.5 text-sm font-semibold leading-snug text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
             >
               Explore Rooms
             </a>
@@ -245,7 +245,7 @@ function Hero() {
       <motion.button
         type="button"
         onClick={scrollToContent}
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-white/80 transition-colors hover:text-white"
+        className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 text-white/80 transition-colors hover:text-white sm:bottom-8"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.4, ease: 'easeOut' }}
@@ -256,7 +256,7 @@ function Hero() {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <ChevronDown className="h-10 w-10" />
+          <ChevronDown className="h-8 w-8 sm:h-10 sm:w-10" />
         </motion.span>
       </motion.button>
 

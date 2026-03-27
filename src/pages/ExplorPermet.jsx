@@ -16,10 +16,9 @@ function ExplorPermet() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
-      className="pt-28"
     >
       <motion.section
-        className="section-shell bg-background"
+        className="section-shell bg-background pt-28 sm:pt-32"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-100px' }}
@@ -31,7 +30,7 @@ function ExplorPermet() {
             description="At Shtëpia Ime, we invite you to embark on a journey to one of Albania's most breathtaking and authentic destinations—Përmet. Known as the 'City of Roses,' Përmet is a land of natural wonders, rich history, and warm hospitality. Whether you seek adventure, relaxation, or cultural immersion, Përmet offers an unforgettable experience."
           />
 
-          <motion.div variants={staggerContainer} className="mt-16 grid gap-6 lg:grid-cols-3">
+          <motion.div variants={staggerContainer} className="mt-12 grid gap-6 sm:mt-16 lg:grid-cols-3">
             {experiences.map((experience) => (
               <motion.div key={experience.id} variants={fadeInUp}>
                 <ExperienceCard experience={experience} compact />
@@ -42,7 +41,7 @@ function ExplorPermet() {
       </motion.section>
 
       <motion.section
-        className="relative overflow-hidden py-20 text-white lg:py-32"
+        className="relative overflow-hidden py-16 text-white sm:py-20 lg:py-32"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-100px' }}
@@ -60,7 +59,7 @@ function ExplorPermet() {
           <motion.div variants={fadeInUp} className="mx-auto max-w-3xl text-center">
             <p className="eyebrow text-secondary">Discover</p>
             <h2 className="section-title text-white">Top Attractions in Përmet</h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/78">
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/78 sm:text-lg sm:leading-8">
               Explore the breathtaking natural wonders and historical treasures of this hidden gem
             </p>
           </motion.div>
@@ -104,7 +103,7 @@ function ExplorPermet() {
             for every traveler.
           </motion.p>
 
-          <div className="mt-16 space-y-24">
+          <div className="mt-12 space-y-16 sm:mt-16 sm:space-y-24">
             {attractions.map((attraction, index) => (
               <AttractionCard key={attraction.id} attraction={attraction} index={index} />
             ))}

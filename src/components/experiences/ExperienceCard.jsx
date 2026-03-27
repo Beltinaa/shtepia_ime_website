@@ -10,7 +10,7 @@ function ExperienceCard({ experience, compact = false }) {
       variants={fadeInUp}
       whileHover={hoverEffects.scale}
       className={`group relative overflow-hidden rounded-2xl shadow-lg ${
-        compact ? 'min-h-[18rem] sm:min-h-[20rem]' : 'min-h-[22rem] sm:min-h-[25rem]'
+        compact ? 'min-h-[16rem] sm:min-h-[20rem]' : 'min-h-[19rem] sm:min-h-[25rem]'
       }`}
     >
       <img
@@ -21,9 +21,9 @@ function ExperienceCard({ experience, compact = false }) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/42 to-black/18" />
       <div className="absolute inset-0 bg-primary/18 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-      <div className="relative flex h-full flex-col justify-end p-6 text-white sm:p-8">
+      <div className="relative flex h-full flex-col justify-end p-5 text-white sm:p-8">
         <h3
-          className={`hero-text-shadow ${compact ? 'text-2xl sm:text-3xl' : 'text-3xl sm:text-4xl'} font-display font-semibold leading-tight`}
+          className={`hero-text-shadow ${compact ? 'text-xl sm:text-3xl' : 'text-2xl sm:text-4xl'} font-display font-semibold leading-tight`}
         >
           {experience.title}
         </h3>

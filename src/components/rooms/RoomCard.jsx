@@ -18,7 +18,7 @@ function RoomCard({ room }) {
       <Link
         to={`/rooms/${room.slug}`}
         aria-label={`View details for ${room.title}`}
-        className="relative block h-64 overflow-hidden"
+        className="relative block h-56 overflow-hidden sm:h-64"
       >
         <img
           src={roomImage}
@@ -26,17 +26,17 @@ function RoomCard({ room }) {
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-        <div className="absolute right-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-sm font-semibold text-primary shadow-sm backdrop-blur-sm">
+        <div className="absolute right-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-primary shadow-sm backdrop-blur-sm sm:right-4 sm:top-4 sm:py-1.5 sm:text-sm">
           {room.size} m²
         </div>
       </Link>
 
-      <div className="flex flex-grow flex-col p-6">
-        <h3 className="mb-3 min-h-[3.5rem] font-display text-2xl leading-tight text-foreground">
+      <div className="flex min-w-0 flex-grow flex-col p-5 sm:p-6">
+        <h3 className="mb-3 break-words font-display text-xl leading-tight text-foreground sm:min-h-[3.5rem] sm:text-2xl">
           {room.title}
         </h3>
 
-        <div className="mb-4 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+        <div className="mb-4 flex flex-wrap items-center gap-3 text-sm text-muted-foreground sm:gap-4">
           <span className="inline-flex items-center gap-1.5">
             <Users size={16} className="text-primary" />
             {room.guests} guests
@@ -47,11 +47,11 @@ function RoomCard({ room }) {
           </span>
         </div>
 
-        <p className="mb-6 text-sm leading-7 text-muted-foreground">{room.description}</p>
+        <p className="mb-5 text-sm leading-6 text-muted-foreground">{room.description}</p>
 
         <Link
           to={`/rooms/${room.slug}`}
-          className="mt-auto inline-flex items-center gap-2 font-semibold text-primary transition-all duration-300 hover:gap-3 hover:text-primary-light"
+          className="mt-auto inline-flex w-full items-center justify-between gap-2 font-semibold text-primary transition-all duration-300 hover:gap-3 hover:text-primary-light sm:w-auto sm:justify-start"
         >
           View Details
           <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
